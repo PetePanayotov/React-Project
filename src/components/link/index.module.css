@@ -1,0 +1,64 @@
+/* Header //////////////////////////////////////////////////// */
+
+.header-list-item {
+    margin: 0 10px;
+}
+
+
+.header-link {
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header-link:hover {
+    color: #00D8FF;
+    border-bottom: 2px solid #00D8FF;
+    padding-bottom: 5px;
+}
+/* Aside ///////////////////////////////////////////////////////////////////////////// */
+
+.aside-list-item {
+    display: block;
+    width: 98%;
+    border-left: 2px solid #234465;
+    border-right: 2px solid #234465;
+    margin-bottom: 11%;
+    height: 5vh;
+    text-align: center;
+}
+
+.aside-link {
+    color: #234465;
+    text-align: center;
+    text-decoration: none;
+    padding-top: 5%;
+    height: 60%;
+    display: block;
+}
+
+.aside-list-item:hover {
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+    border-top: 2px solid #234465;
+    border-bottom: 2px solid #234465;
+    color: #ffa000;
+}
+
+/* Footer////////////////////////////////////////////////////////////////////////////////////// */
+
+.footer-link {
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-decoration: none;
+    
+}
+
+.footer-link:hover {
+    color: #00D8FF;
+    padding-bottom: 5px;
+}
