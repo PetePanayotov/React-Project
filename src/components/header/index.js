@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.css'
-import Link  from '../link';
-import logo from '../images/logo.jpg';
+import LinkComponent  from '../link';
+import logo from '../../images/logo.jpg';
 
 function Header () {
 
@@ -11,10 +11,10 @@ function Header () {
 
             <div className={styles.linkContainer}>
                 
-                <Link href="/" title="Home" type="header"/>
-                <Link href="/" title="About Us" type="header"/>
-                <Link href="/" title="Login" type="header"/>
-                <Link href="/" title="Register" type="header"/>
+                <LinkComponent href="/" title="Home" type="header"/>
+                <LinkComponent href="/about" title="About Us" type="header"/>
+                <LinkComponent href="/" title="Login" type="header"/>
+                <LinkComponent href="/" title="Register" type="header"/>
                 
             </div>
         </header>
