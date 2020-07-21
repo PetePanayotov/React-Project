@@ -1,7 +1,6 @@
 import React from 'react';
-import Link from '../link';
+import LinkComponent from '../link';
 import styles from './index.module.css';
-import image from '../images/blue-origami-bird-flipped.png'
 
 function Footer() {
 
@@ -9,10 +8,10 @@ function Footer() {
 
         <footer className={styles.footer}>
             <div className={styles.linkContainer}>
-                <Link href="/" title="Home" type="footer"/>
-                <Link href="/" title="About Us" type="footer"/>
-                <Link href="/" title="Login" type="footer"/>
-                <Link href="/" title="Register" type="footer"/>
+                <LinkComponent href="/" title="Home" type="footer"/>
+                <LinkComponent href="/about" title="About Us" type="footer"/>
+                <LinkComponent href="/" title="Login" type="footer"/>
+                <LinkComponent href="/" title="Register" type="footer"/>
             </div>
             <p className={styles.paragraph}>Samo Tupalki</p>
         </footer>

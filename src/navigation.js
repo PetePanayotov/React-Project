@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import GuestHomePage  from './pages/guest-home-page';
+import AboutPage  from './pages/about-page';
 
 
 function Navigation() {
@@ -14,7 +15,8 @@ function Navigation() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" component={GuestHomePage}/>
+                <Route exact path="/" component={GuestHomePage}/>
+                <Route path="/about" component={AboutPage}/>
             </Switch>
         </BrowserRouter>
     );
