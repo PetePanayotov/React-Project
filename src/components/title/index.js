@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './index.module.css'
 
-function Title() {
+function Title(props) {
     return (
-        <p className={styles.paragraph}>Fast Cars are your passion?</p>
+    <p className={styles.paragraph}>{props.text}</p>
     )
 }
 

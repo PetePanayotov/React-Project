@@ -8,7 +8,7 @@ function GuestHomePage() {
   return (
       <PageWrapper>
           <div className={styles.container}>
-            <Title />
+            <Title text="Fast Cars are your passion?"/>
           </div>
           <Player/>
       </PageWrapper>

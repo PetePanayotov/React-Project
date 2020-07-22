@@ -10,8 +10,8 @@ function Footer() {
             <div className={styles.linkContainer}>
                 <LinkComponent href="/" title="Home" type="footer"/>
                 <LinkComponent href="/about" title="About Us" type="footer"/>
-                <LinkComponent href="/" title="Login" type="footer"/>
-                <LinkComponent href="/" title="Register" type="footer"/>
+                <LinkComponent href="/login" title="Login" type="footer"/>
+                <LinkComponent href="/register" title="Register" type="footer"/>
             </div>
             <p className={styles.paragraph}>Samo Tupalki</p>
         </footer>
