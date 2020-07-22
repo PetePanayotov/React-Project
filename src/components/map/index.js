@@ -7,7 +7,7 @@ const mapStyles = {
     width: '100%',
     height: '100%',
     border: '1px solid white',
-    'border-radius': '20px'
+    borderRadius: '20px'
 };
 
 const containerStyle = {
