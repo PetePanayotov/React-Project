@@ -1,16 +1,41 @@
-const controllers = require('../controllers/');
+const config = require('../config/config');
 const router = require('express').Router();
+const {getUsers , registerUser , loginUser , updatedUser , deleteUser} = require('../controllers/user');
 
-router.get('/', controllers.user.get);
+router.post('/register' , async (req , res , next) => {
+    
+    await registerUser(req , res , next);
 
-router.post('/register', controllers.user.post.register);
+});
 
-router.post('/login', controllers.user.post.login);
+router.get('/', async (req , res , next) => {
+    
+    await getUsers(req , res , next);
 
-router.post('/logout', controllers.user.post.logout);
+});
 
-router.put('/:id', controllers.user.put);
+router.post('/login', async (req , res , next) => {
+    
+    await loginUser(req , res , next);
 
-router.delete('/:id', controllers.user.delete);
+});
+
+router.post('/logout', (req  , res) => {
+    
+    const cookieName = config.cookieName;
+    res.clearCookie(cookieName).send('Logout successfully')
+    
+});
+
+router.put('/:id', async (req , res , next) => {
+
+    await updatedUser(req , res , next);
+
+});
+
+router.delete('/:id', async (req , res , next) => {
+    
+    await deleteUser(req , res , next);
+})
 
 module.exports = router;
