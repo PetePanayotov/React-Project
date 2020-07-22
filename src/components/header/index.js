@@ -13,8 +13,8 @@ function Header () {
                 
                 <LinkComponent href="/" title="Home" type="header"/>
                 <LinkComponent href="/about" title="About Us" type="header"/>
-                <LinkComponent href="/" title="Login" type="header"/>
-                <LinkComponent href="/" title="Register" type="header"/>
+                <LinkComponent href="/login" title="Login" type="header"/>
+                <LinkComponent href="/register" title="Register" type="header"/>
                 
             </div>
         </header>
