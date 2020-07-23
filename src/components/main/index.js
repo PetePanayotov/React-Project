@@ -5,7 +5,7 @@ import styles from './index.module.css';
 function Main(props) {
 
     return (
-        <div className={styles.main}>
+        <div className={styles[props.layout]}>
             {props.children}
         </div>
     );

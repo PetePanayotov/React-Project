@@ -7,7 +7,7 @@ import Main  from '../../components/main';
 function AboutPage() {
   return (
         <PageWrapper>
-            <Main>
+            <Main layout="about">
                 <GoogleApiWrapper/>
                 <div className={styles.infoBox}>
                     <ul className={styles.info}>

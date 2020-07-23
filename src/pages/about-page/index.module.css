@@ -1,3 +1,9 @@
+.main {
+    width: 100%;
+    height: 72vh;
+    display: flex;
+}
+
 .infoBox {
     align-self: flex-end;
     margin: 0 auto;
