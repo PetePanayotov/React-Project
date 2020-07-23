@@ -2,7 +2,7 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../config/config');
-const cookieName = config.cookie;
+const cookieName = config.cookieName;
 
 const generateToken = async data => {
     const token = await jwt.sign(data , config.privateKey);

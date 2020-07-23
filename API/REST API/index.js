@@ -1,20 +1,34 @@
+const express = require('express');
+const mongoose = require('mongoose');
 const config = require('./config/config');
-const dbConnection = require('./config/database');
+const {userRouter , origami} = require('./routes/container');
+const expressConfigFunction = require('./config/express');
+const databaseUrl = config.dbURL;
 
-const app = require('express')();
 
-dbConnection().then(() => {
+const app = express();
 
-    require('./config/express')(app);
 
-    require('./config/routes')(app);
+mongoose.connect(databaseUrl, {
 
-    app.use(function (err, req, res, next) {
-        console.error(err);
-        res.status(500).send(err.message);
-        console.log('*'.repeat(90))
-    });
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 
-    app.listen(config.port, console.log(`Listening on port ${config.port}!`))
+} , (err) => {
 
-}).catch(console.error);
+    if(err) {
+        console.log(err);
+        throw new Error;
+    }
+
+    console.log('Database is setup and running');
+
+})
+
+expressConfigFunction(app);
+
+app.use('/api/user' , userRouter);
+app.use('/api/origami', origami);
+app.use('*', (req, res, next) => res.send('<h1> Something went wrong. Try again. :thumbsup: </h1>'))
+
+app.listen(config.port, console.log(`Listening on port ${config.port}!`));
