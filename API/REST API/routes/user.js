@@ -1,5 +1,6 @@
+const express = require('express');
 const config = require('../config/config');
-const router = require('express').Router();
+const router = express.Router();
 const {getUsers , registerUser , loginUser , updatedUser , deleteUser} = require('../controllers/user');
 
 router.post('/register' , async (req , res , next) => {

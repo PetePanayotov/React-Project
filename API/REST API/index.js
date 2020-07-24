@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config/config');
-const {userRouter , origami} = require('./routes/container');
+const {userRouter, carRouter } = require('./routes/container');
 const expressConfigFunction = require('./config/express');
 const databaseUrl = config.dbURL;
 
@@ -28,7 +28,7 @@ mongoose.connect(databaseUrl, {
 expressConfigFunction(app);
 
 app.use('/api/user' , userRouter);
-app.use('/api/origami', origami);
+app.use('/api/car', carRouter);
 app.use('*', (req, res, next) => res.send('<h1> Something went wrong. Try again. :thumbsup: </h1>'))
 
 app.listen(config.port, console.log(`Listening on port ${config.port}!`));
