@@ -1,6 +1,7 @@
 import React from 'react';
 import LinkComponent from '../link';
 import styles from './index.module.css';
+import getLinks from '../../utils/navigation';
 
 function Footer() {
 
@@ -8,12 +9,15 @@ function Footer() {
 
         <footer className={styles.footer}>
             <div className={styles.linkContainer}>
-                <LinkComponent href="/" title="Home" type="footer"/>
-                <LinkComponent href="/about" title="About Us" type="footer"/>
-                <LinkComponent href="/login" title="Login" type="footer"/>
-                <LinkComponent href="/register" title="Register" type="footer"/>
+                
+                {getLinks().map( ({title , link}) => {
+                    
+                    return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
+
+                })}
+
             </div>
-            <p className={styles.paragraph}>Samo Tupalki</p>
+            <p className={styles.paragraph}>Samo Tupalki 2020</p>
         </footer>
     );   
 
