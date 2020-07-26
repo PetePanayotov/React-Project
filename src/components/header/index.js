@@ -12,6 +12,9 @@ class Header extends Component{
     render() {
         console.log(this.context)
         const {isLoggedIn , user} = this.context
+        const linksArray = getLinks(isLoggedIn , user);
+
+        console.log(linksArray)
         
         return (
             <header className={styles.navigation}>
@@ -19,7 +22,7 @@ class Header extends Component{
 
                 <div className={styles.linkContainer}>
 
-                    {getLinks(isLoggedIn , user).map( ({title , link}) => {
+                    {linksArray.map( ({title , link}) => {
 
                         return (<LinkComponent href={link} title={title} type="header" key={title}/>)
 

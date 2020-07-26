@@ -28,7 +28,7 @@ const getLinks = (isLoggedIn , user) => {
 
     const userLinks = [
         {
-            title: `{user.username}`,
+            title: `[${user.username}]`,
             link: '/profile'
             
         },

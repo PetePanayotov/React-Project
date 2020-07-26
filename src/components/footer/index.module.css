@@ -7,14 +7,10 @@
 
 }
 
-.div {
-    display: flex;
-    text-align: center;
-    font-weight: bold;;
-    margin-left: 20px;
-}
-
 .linkContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-left: 20px;
 }
 
