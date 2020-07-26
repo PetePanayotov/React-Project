@@ -40,11 +40,12 @@ const registerUser = async (req , res , next) => {
         password: hashedPassword
     });
 
-    console.log(newUser)
+    console.log('this is the new user' , newUser)
 
     try {
 
         const userObj = await newUser.save();
+        console.log('this is the userObj' ,userObj)
 
         if (!userObj) {
             throw new Error();
@@ -55,7 +56,7 @@ const registerUser = async (req , res , next) => {
             username: userObj.username
         });
 
-        res.cookie(cookieName, token).send(userObj);
+        res.header('Authorization' , token).send(userObj);
 
         
     } catch (error) {
@@ -84,7 +85,7 @@ const loginUser = async (req , res , next) => {
                 username: user.username
             });
     
-            res.cookie(cookieName , token).send(user);
+            res.header('Authorization' , token).send(user);
 
         }else{
             res.status(401).send('Invalid password');

@@ -5,7 +5,7 @@ import Footer from '../../components/footer';
 function PageWrapper(props) {
   return (
     <div className="wrapper">
-       <Header/>
+      <Header/>
             {props.children}
       <Footer/>
     </div>
