@@ -1,7 +1,10 @@
 import React , {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
 import Input from '../inputField';
 import getInputFields from '../../utils/inputFields';
+import submitHandlers from '../../utils/submitHandlers';
+import UserContext from '../../Context';
 
 class Form extends Component {
 
@@ -27,6 +30,8 @@ class Form extends Component {
 
     }
 
+    static contextType = UserContext;
+
     handleChange = (event , type) => {
 
         const newState = {};
@@ -40,14 +45,15 @@ class Form extends Component {
     render() {
 
         const page = this.props.page;
-        const {handleSubmit} = this.props
-       
+
+        const handleSubmit = submitHandlers[page];
+
         return(
             
-            <form className={styles.form} onSubmit={ async (event) => { await handleSubmit(event , this.state)}}>
+            <form className={styles.form} onSubmit={(event) => handleSubmit(event , this.props , this.state , this.context)}>
                
                 {getInputFields()[page].map(({label , type , value , key}) => {
-                    console.log()
+                    
                     return (
                     
                         <Input
@@ -71,4 +77,4 @@ class Form extends Component {
 
 };
 
-export default Form;
+export default withRouter(Form);
