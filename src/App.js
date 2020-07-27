@@ -46,8 +46,8 @@ class App extends Component {
             const cookieValue = getCookie('oreo');
 
             if (!cookieValue) {
-                this.logout()
-                return
+                return this.logout()
+                
             };
             
             const url = 'http://localhost:9999/api/user/verify';
@@ -63,12 +63,16 @@ class App extends Component {
             };
     
             const promise = await fetch(url , headersObj);
-            
-            const response = await promise.json();
-    
-            const [isAdmin , user] = response;
 
-            this.login(user , isAdmin);
+            if (promise.status === 200) {
+                
+                const response = await promise.json();
+                const [isAdmin , user] = response;
+    
+                return this.login(user , isAdmin);
+            };
+
+            return this.logout();
     
         })();
 
