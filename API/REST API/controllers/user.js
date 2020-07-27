@@ -31,6 +31,16 @@ const getUsers = async (req , res , next) => {
 const registerUser = async (req , res , next) => {
     
     const { username, password } = req.body;
+
+    const statusObj = {
+        allClear: true
+    };
+
+    const userInfo = {
+        username: '',
+        password: ''
+    }
+    
    
     const salt =  await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password , salt);
@@ -40,13 +50,11 @@ const registerUser = async (req , res , next) => {
         password: hashedPassword
     });
 
-    console.log('this is the new user' , newUser)
 
     try {
 
         const userObj = await newUser.save();
-        console.log('this is the userObj' ,userObj)
-
+  
         if (!userObj) {
             throw new Error();
         };
