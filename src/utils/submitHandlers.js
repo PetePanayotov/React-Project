@@ -19,13 +19,15 @@ export default {
                 };
                 const promise = await fetch(url , headerObj);
                 const response = await promise.json();
-               
+                
                 if (response) {
                     
+                    const [isAdmin , userObj] = response;
+                   
                     context.login({
-                        username: response.username,
-                        userId: response._id
-                    })
+                        username: userObj.username,
+                        userId: userObj._id
+                    } , isAdmin)
 
                     const token = promise.headers.get('Authorization');
                     
@@ -37,7 +39,7 @@ export default {
 
             },
 
-    register : async (event , props , state) => {
+    register : async (event , props , state , context) => {
                     
                     event.preventDefault();
 
@@ -57,13 +59,27 @@ export default {
                 
                 
                     const promise = await fetch(url , headerObj);
-                
-                    const token = promise.headers.get('Authorization');
-                
-                    document.cookie = `oreo=${token}`;
-                
                     const response = await promise.json();
-                
-                    props.history.push('/');
+                   
+                    const [statusOfRegistration , userObj] = response;
+
+                    if (statusOfRegistration) {
+                        
+                        const token = promise.headers.get('Authorization');
+                    
+                        document.cookie = `oreo=${token}`;
+
+                        context.login({
+                            username: userObj.username,
+                            userId: userObj._id
+                        })
+                    
+                        props.history.push('/');
+
+                    }else {
+                        alert('Invalid Credentials')
+                        props.history.push('/register');
+                    }
+
             },
 };

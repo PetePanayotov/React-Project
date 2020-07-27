@@ -29,52 +29,49 @@ const getUsers = async (req , res , next) => {
 };
 
 const registerUser = async (req , res , next) => {
+
+    const {statusOfRegistration} = req.params;
+    const {username, password} = req.body;
     
-    const { username, password } = req.body;
-
-    const statusObj = {
-        allClear: true
-    };
-
-    const userInfo = {
-        username: '',
-        password: ''
-    }
+    if (statusOfRegistration) {
+        
+        const salt =  await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password , salt);
     
-   
-    const salt =  await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password , salt);
-
-    const newUser = new User({
-        username: username,
-        password: hashedPassword
-    });
-
-
-    try {
-
-        const userObj = await newUser.save();
-  
-        if (!userObj) {
-            throw new Error();
+        const newUser = new User({
+            username: username,
+            password: hashedPassword
+        });
+    
+        try {
+    
+            const userObj = await newUser.save();
+           
+            if (!userObj) {
+                throw new Error();
+            };
+    
+            const token = await generateToken({ 
+                userId: userObj._id,
+                username: userObj.username
+            });
+    
+            res.header('Authorization' , token).send([statusOfRegistration , userObj]);
+    
+        } catch (error) {
+            next();
         };
 
-        const token = await generateToken({ 
-            userId: userObj._id,
-            username: userObj.username
-        });
+    }else {
+        res.send([statusOfRegistration])
+    }
 
-        res.header('Authorization' , token).send(userObj);
-
-        
-    } catch (error) {
-        next();
-    };
 };
 
 const loginUser = async (req , res , next) => {
 
     const {username , password} = req.body;
+    let isAdmin = undefined;
 
     try {
         
@@ -90,10 +87,15 @@ const loginUser = async (req , res , next) => {
             
             const token = await generateToken({ 
                 userId: user._id,
-                username: user.username
+                username: user.username,
+                password: user.password
             });
+
+            if (user.username === 'admin') {
+                isAdmin = true;
+            };
     
-            res.header('Authorization' , token).send(user);
+            res.header('Authorization' , token).send([isAdmin ,user]);
 
         }else{
             res.status(401).send('Invalid password');
@@ -103,6 +105,29 @@ const loginUser = async (req , res , next) => {
     } catch (error) {
         next();
     };
+
+};
+
+const verifyUser = (req , res , next) => {
+
+    const {token} = req.body;
+
+    const decodeObj = jwt.verify(token , config.privateKey);
+    
+    const {username , userId} = decodeObj;
+    
+    let isAdmin = true;
+
+    if (username !== 'admin') {
+        isAdmin = false;
+    };
+
+    const userInfo = {
+        username,
+        userId
+    };
+
+    res.send([isAdmin , userInfo]);
 
 };
 
@@ -167,7 +192,8 @@ module.exports = {
     loginUser,
     logoutUser,
     updatedUser,
-    deleteUser
+    deleteUser,
+    verifyUser
 }
 
 // module.exports = {

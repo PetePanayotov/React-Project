@@ -51,13 +51,13 @@
 /* Footer////////////////////////////////////////////////////////////////////////////////////// */
 
 .footer-list-item {
-    margin-bottom: -3px;
+    margin-right: 10px
 }
 
 .footer-link {
     color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
    
 }

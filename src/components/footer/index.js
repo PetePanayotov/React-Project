@@ -10,18 +10,24 @@ class Footer extends Component {
 
     render() {
 
-        const {isLoggedIn , user} = this.context
-
+        const {isLoggedIn , user , userStatus} = this.context;
+        const linksArray = getLinks(isLoggedIn , user , userStatus)
+       
         return (
 
             <footer className={styles.footer}>
                 <div className={styles.linkContainer}>
 
-                    {getLinks(isLoggedIn , user).map( ({title , link}) => {
+                    {linksArray.map( ({title , link}) => {
 
                         return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
 
                     })}
+                    {this.context.isLoggedIn && 
+                        <div className={styles['footer-button-div']}>
+                            <div className={styles['footer-button']} onClick={this.logout}>Logout</div>
+                        </div>
+                    }
 
                 </div>
                 <p className={styles.paragraph}>AUTO CAR 2020</p>
