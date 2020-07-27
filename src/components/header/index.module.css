@@ -23,3 +23,23 @@
     margin: 5px 0 5px 20px;
 
 }
+
+.header-button-div {
+    margin: 0 10px;
+}
+
+
+.header-button {
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+    border-bottom: 2px solid #00D8FF;
+    padding-bottom: 5px;
+}

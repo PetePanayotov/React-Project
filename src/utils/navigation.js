@@ -1,4 +1,4 @@
-const getLinks = (isLoggedIn , user) => {
+const getLinks = (isLoggedIn , user , userStatus) => {
 
     const guestLinks = [
         {
@@ -29,7 +29,7 @@ const getLinks = (isLoggedIn , user) => {
     const userLinks = [
         {
             title: `[${user.username}]`,
-            link: '/profile'
+            link: `/profile/${user.userId}`
             
         },
         
@@ -51,14 +51,46 @@ const getLinks = (isLoggedIn , user) => {
             
         },
 
+    ];
+
+    const adminLinks = [
         {
-            title: 'Logout',
-            link: '/logout'
+            title: `[${user.username}]`,
+            link: `/profile/${user.userId}`
             
-        }
+        },
+        
+        {
+            title: 'Home',
+            link: '/home'
+            
+        },
+
+        {
+            title: 'Catalog',
+            link: '/catalog'
+            
+        },
+
+        {
+            title: 'Create',
+            link: '/create'
+            
+        },
+
+        {
+            title: 'About Us',
+            link: '/about'
+            
+        },
+
     ];
 
     if (isLoggedIn) {
+
+        if (userStatus) {
+            return adminLinks
+        }
 
         return userLinks;
         
