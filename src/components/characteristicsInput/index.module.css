@@ -1,0 +1,24 @@
+.div {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.left {
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.right {
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+    margin-left: 10px;
+}

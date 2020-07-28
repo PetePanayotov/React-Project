@@ -35,7 +35,14 @@ const CarSchema = new mongoose.Schema({
     isVipOffer: {
         type: Boolean,
         required: true
-    }
+    },
+
+    characteristics: {
+            required: true,
+            type: String
+        }
+    
+
 
 });
 

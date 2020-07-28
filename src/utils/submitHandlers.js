@@ -82,4 +82,34 @@ export default {
                     }
 
             },
+
+            create: async (event,state , props) => {
+                event.preventDefault();
+                const url = 'http://localhost:9999/api/car/';
+                const {model , price , imageUrl , description , isVipOffer , characteristicsObj} = state;
+                
+                const data = { model,
+                               price,
+                               imageUrl, 
+                               description, 
+                               isVipOffer, 
+                               characteristicsObj
+            
+                };
+            
+                const headerObj = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                };
+            
+                const promise = await fetch(url , headerObj);
+                
+                if (promise.status === 200) {
+                    props.history.push('/home')
+                };
+               
+            },
 };

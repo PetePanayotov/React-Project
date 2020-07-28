@@ -1,0 +1,24 @@
+
+.div{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.input{
+    height: 30px;
+    width: 80%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+}
+
+.label {
+    color: #282C34;
+    font-size: 30px;
+    font-family: impact;
+}
