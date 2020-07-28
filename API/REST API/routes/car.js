@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {createCar , updateCar , deleteCar} = require('../controllers/car');
+const {getCar , createCar , updateCar , deleteCar} = require('../controllers/car');
+
+router.get('/:id' , async (req , res , next) => {
+
+    await getCar(req , res , next);
+
+});
 
 router.post('/' , async (req , res, next) => {
     

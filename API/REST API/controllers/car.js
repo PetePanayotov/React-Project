@@ -1,12 +1,34 @@
 const Car = require('../models/Car');
 
+
+const getCar = async (req , res , next) => {
+
+    const {id} = req.params;
+
+    try {
+        
+        const car  = await Car.findOne({_id: id});
+        
+        if (!car) {
+            throw new Error()
+        };
+
+        res.send(car);
+        
+    } catch (error) {
+        next()
+    };
+
+
+};
+
 const createCar = async (req , res , next) => {
 
-    const {model , price , imageUrl , description , isVipOffer , characteristicsObj} = req.body;
+    let {brand , model , price , imageUrl , description , isVipOffer , specifications} = req.body;
     
-    const characteristics = JSON.stringify(characteristicsObj);
+    specifications = JSON.stringify(specifications);
     
-    const newCar = new Car({model , price , imageUrl , description , isVipOffer , characteristics});
+    const newCar = new Car({brand , model , price , imageUrl , description , isVipOffer , specifications});
     
     try {
         
@@ -19,7 +41,7 @@ const createCar = async (req , res , next) => {
         res.send(newCar)
         
     } catch (error) {
-        console.log('Something is wrong')
+        console.log('Something is wrong' , error)
         next()
     }
 
@@ -73,6 +95,7 @@ const deleteCar = async (req , res , next) => {
 };
 
 module.exports = {
+    getCar,
     createCar,
     updateCar,
     deleteCar

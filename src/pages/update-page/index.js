@@ -1,22 +1,25 @@
-import React from 'react';
+import React , {Component} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
-import Form from '../../components/form';
+import Form from '../../components/create-update-form';
 import styles from './index.module.css';
 
 
-function RegisterPage() {
+function UpdatePage () {
+
     return (
         <PageWrapper>
             <Main layout="forms">
                 <div className={styles.firstDiv}></div>
                 <div className={styles.formDiv}>
-                    <Form page="register"/>
+                   <Form page="update"/>
                 </div>
                 <div className={styles.secondDiv}></div>
             </Main>
         </PageWrapper>
     );
+
 };
 
-export default RegisterPage;
+
+export default UpdatePage;

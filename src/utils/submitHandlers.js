@@ -33,7 +33,7 @@ export default {
                     
                     document.cookie = `oreo=${token}`;
                     
-                    props.history.push('/');
+                    props.history.push('/home');
                 }
                 
 
@@ -74,7 +74,7 @@ export default {
                             userId: userObj._id
                         })
                     
-                        props.history.push('/');
+                        props.history.push('/home');
 
                     }else {
                         alert('Invalid Credentials')
@@ -86,14 +86,16 @@ export default {
             create: async (event,state , props) => {
                 event.preventDefault();
                 const url = 'http://localhost:9999/api/car/';
-                const {model , price , imageUrl , description , isVipOffer , characteristicsObj} = state;
+                const {brand ,model , price , imageUrl , description , isVipOffer , specifications} = state;
                 
-                const data = { model,
+                const data = { 
+                               brand,
+                               model,
                                price,
                                imageUrl, 
                                description, 
                                isVipOffer, 
-                               characteristicsObj
+                               specifications
             
                 };
             
