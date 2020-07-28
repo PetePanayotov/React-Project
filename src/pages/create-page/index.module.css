@@ -1,0 +1,72 @@
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid #282C34;
+    background-color: #FFFFF0;
+    width: 71vw;
+    min-height: 60vh;
+    margin: 50px auto;
+    padding: 20px 0;
+
+}
+
+.leftDiv {
+    width: 50%;
+    height: 100%;
+}
+
+.rightDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 50%;
+    height: 100%;
+}
+
+.label {
+    color: #282C34;
+    font-size: 30px;
+    font-family: impact;
+}
+
+.buttonDiv {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: #282C34;
+    border: 1px solid #282C34;
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+    border-radius: 100px;
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.button:hover {
+    
+    color: #00D8FF;
+    cursor: pointer;
+}
+
+.submitButton {
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 30px;
+    width: 100px;
+    font-size: 18px;
+    font-family: impact;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+}
+
+.submitButton:hover{
+    cursor: pointer;
+    background-color: #282C34;
+    color: #ffffff;
+}
+

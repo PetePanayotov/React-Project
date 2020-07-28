@@ -1,0 +1,22 @@
+.descriptionDiv {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.label {
+    color: #282C34;
+    font-size: 30px;
+    font-family: impact;
+}
+
+.description {
+    border: 1px solid #282C34;
+    font-size: 16px;
+    width: 100%;
+    min-height: 150px;
+    overflow-y: scroll;
+}

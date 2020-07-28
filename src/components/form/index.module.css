@@ -22,6 +22,7 @@
 }
 
 .submit:hover{
+    cursor: pointer;
     background-color: #282C34;
     color: #ffffff;
 }

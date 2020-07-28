@@ -2,11 +2,12 @@ const Car = require('../models/Car');
 
 const createCar = async (req , res , next) => {
 
-    const {model , price , imageUrl , description , isVipOffer} = req.body;
-
-    const newCar = new Car({model , price , imageUrl , description , isVipOffer});
-    console.log(newCar)
-
+    const {model , price , imageUrl , description , isVipOffer , characteristicsObj} = req.body;
+    
+    const characteristics = JSON.stringify(characteristicsObj);
+    
+    const newCar = new Car({model , price , imageUrl , description , isVipOffer , characteristics});
+    
     try {
         
         const carObj = await newCar.save();
@@ -18,6 +19,7 @@ const createCar = async (req , res , next) => {
         res.send(newCar)
         
     } catch (error) {
+        console.log('Something is wrong')
         next()
     }
 
