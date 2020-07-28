@@ -10,7 +10,7 @@ function LoginPage(props) {
     return (
         <PageWrapper>
             <Main layout="forms">
-                <div className={styles.div}></div>
+                <div className={styles.firstDiv}></div>
                 <div className={styles.formDiv}>
                     <Form page='login'/>
                 </div>

@@ -12,6 +12,7 @@ import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
 import CreatePage from './pages/create-page';
 import UserHomePage from './pages/user-home-page';
+import UpdatePage from './pages/update-page';
 
 function Navigation() {
 
@@ -24,6 +25,7 @@ function Navigation() {
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/create" component={CreatePage}/>
+                <Route path="/update" component={UpdatePage}/>
             </Switch>
         </BrowserRouter>
     );

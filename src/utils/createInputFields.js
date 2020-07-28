@@ -1,6 +1,13 @@
 export default () => {
 
     return [
+
+        {
+            label: 'Brand',
+            stateProperty: 'brand',
+            type: 'text'
+        },
+
         {
             label: 'Model',
             stateProperty: 'model',
