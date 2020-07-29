@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.css';
 
-function Input ({type , label , stateValue , handler}) {
+function Input ({type, isChecked , label , stateValue , handler}) {
 
     return (
         <div className={styles.div} key='1'>
@@ -10,6 +10,7 @@ function Input ({type , label , stateValue , handler}) {
             </label>
             <input 
                 type={type}
+                checked={isChecked}
                 value={stateValue} 
                 className={styles.input}
                 onChange={handler} 
