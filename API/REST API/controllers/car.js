@@ -1,6 +1,24 @@
 const Car = require('../models/Car');
 
 
+const getAllCars = async (req , res, next) => {
+
+    try {
+        
+        const cars = await Car.find();
+        
+        if (!cars) {
+            throw new Error();
+        };
+
+        res.send(cars);
+
+    } catch (error) {
+        next();
+    };
+
+};
+
 const getCar = async (req , res , next) => {
 
     const {id} = req.params;
@@ -95,6 +113,7 @@ const deleteCar = async (req , res , next) => {
 };
 
 module.exports = {
+    getAllCars,
     getCar,
     createCar,
     updateCar,

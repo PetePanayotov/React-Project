@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 85%;
+    min-height: 290px;
+    background-color: #FFFFF0;
+    border: 1.5px solid #282C34;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 100px;
+}

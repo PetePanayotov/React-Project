@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {getCar , createCar , updateCar , deleteCar} = require('../controllers/car');
+const {getAllCars , getCar , createCar , updateCar , deleteCar} = require('../controllers/car');
+
+router.get('/' , async (req , res , next) => {
+    
+    await getAllCars(req , res , next);
+
+});
 
 router.get('/:id' , async (req , res , next) => {
 
