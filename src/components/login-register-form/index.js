@@ -2,7 +2,7 @@ import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
 import Input from '../inputField';
-import getInputFields from '../../utils/inputFields';
+import getInputFields from '../../utils/login-register-input-Fields';
 import submitHandlers from '../../utils/submitHandlers';
 import UserContext from '../../Context';
 
