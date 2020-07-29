@@ -67,3 +67,27 @@
 
 
 }
+
+/* CAR ////////////////////////////////////////////////////////////////////////////////////////// */
+
+.car-list-item{
+    width: 40%;
+    height: 25px;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.car-link {
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+   
+}
+
+.car-link:hover {
+    color: #00D8FF;
+}
