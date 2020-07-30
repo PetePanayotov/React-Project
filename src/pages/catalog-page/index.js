@@ -14,7 +14,7 @@ class CatalogPage extends Component {
         super(props);
 
         this.state = {
-            queryString: '',
+            queryString: this.props.location.search,
         }
 
     };
