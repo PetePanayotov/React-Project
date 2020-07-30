@@ -44,7 +44,7 @@ class Form extends Component {
 
     render() {
 
-        const page = this.props.page;
+        const {page} = this.props;
 
         const handleSubmit = submitHandlers[page];
 
@@ -68,7 +68,7 @@ class Form extends Component {
                     )
                 })}
 
-                <input className={styles.submit} type="submit" value="Submit" />
+                <input className={styles.submit} type="submit" value={page === 'login' ? "Login" : "Register"} />
 
             </form>
         );

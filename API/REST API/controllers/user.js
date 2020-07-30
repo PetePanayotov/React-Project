@@ -76,7 +76,8 @@ const loginUser = async (req , res , next) => {
     try {
         
         const user = await User.findOne({username});
-
+        
+       
         if (!user) {
             throw new Error();
         };
@@ -84,14 +85,16 @@ const loginUser = async (req , res , next) => {
         const passwordsMatch = await bcrypt.compare(password , user.password);
     
         if (passwordsMatch) {
+
+            const userId = user._id.toString()
             
             const token = await generateToken({ 
-                userId: user._id,
+                userId,
                 username: user.username,
                 password: user.password
             });
 
-            if (user.username === 'admin') {
+            if (userId === config.adminId) {
                 isAdmin = true;
             };
     
@@ -118,7 +121,7 @@ const verifyUser = (req , res , next) => {
     
     let isAdmin = true;
 
-    if (username !== 'admin') {
+    if (userId !== config.adminId) {
         isAdmin = false;
     };
 

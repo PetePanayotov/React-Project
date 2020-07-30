@@ -18,7 +18,7 @@ function AboutPage() {
                             <span>Phone: </span><span>089*******</span>
                         </li>
                         <li>
-                            <span>Email: </span><span>autocars@abv.bg</span>
+                            <span>Email: </span><span>autocar@abv.bg</span>
                         </li>
                     </ul>
                 </div>

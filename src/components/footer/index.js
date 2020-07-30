@@ -30,7 +30,7 @@ class Footer extends Component {
                     }
 
                 </div>
-                <p className={styles.paragraph}>AUTO CAR 2020</p>
+                <p className={styles.paragraph}>AUTO CAR</p>
             </footer>
         );
         
