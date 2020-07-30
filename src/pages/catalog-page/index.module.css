@@ -1,0 +1,17 @@
+.div {
+    width: 100px;
+    height: 70px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
+
+.logoContainer {
+    display: flex;
+    height: 80px;
+    width: 90%;
+    justify-content: space-between;
+    margin-top: 20px;
+}

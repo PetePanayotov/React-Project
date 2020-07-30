@@ -2,9 +2,7 @@
 .paragraph {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 60px;
-    color:#282C34;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    color: #282C34;
+    margin: 0 auto;
+    margin-top: 50px;
+}
