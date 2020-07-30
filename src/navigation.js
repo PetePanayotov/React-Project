@@ -14,6 +14,7 @@ import CreatePage from './pages/create-page';
 import UserHomePage from './pages/user-home-page';
 import UpdatePage from './pages/update-page';
 import DetailsPage from './pages/details-page';
+import CatalogPage from './pages/catalog-page';
 
 function Navigation() {
 
@@ -28,6 +29,7 @@ function Navigation() {
                 <Route path="/create" component={CreatePage}/>
                 <Route path="/update" component={UpdatePage}/>
                 <Route path="/details" component={DetailsPage}/>
+                <Route path="/catalog" component={CatalogPage}/>
             </Switch>
         </BrowserRouter>
     );

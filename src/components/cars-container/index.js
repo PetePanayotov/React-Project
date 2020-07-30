@@ -1,4 +1,5 @@
 import React , {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
 import Car from '../car';
 
@@ -9,8 +10,8 @@ class Cars extends Component{
 
         this.state = {
             
-            cars: []
-
+            cars: [],
+        
         }
 
     };
@@ -19,15 +20,21 @@ class Cars extends Component{
         
         (async() => {
 
+            const {page} = this.props;
             const url = 'http://localhost:9999/api/car/';
             const promise = await fetch(url);
+            const response = await promise.json();
+
+            let cars = response.slice(0);
             
-            const response = await promise.json()
-          
-            const bestOffers = response.filter(car => car.isVipOffer === true);
+            if (page !== 'catalog') {
+              
+                cars = cars.filter(car => car.isVipOffer === true);
+
+            };
             
             this.setState({
-                cars: bestOffers
+                cars
             });
 
         })();
@@ -35,8 +42,20 @@ class Cars extends Component{
 
 
     render() {
+        
+        const {page} = this.props;
+        const {queryString} = this.props;
+        let cars = this.state.cars.slice(0);
 
-        const {cars} = this.state
+        if (page === 'catalog'  && queryString !== '') {
+            
+            const startIndex = queryString.indexOf('=');
+            const brand = queryString.substr(startIndex + 1);
+    
+            cars = cars.filter(car => car.brand.toLowerCase() === brand);
+        }
+
+
 
         return (
             <div className={styles.container}>
@@ -53,7 +72,8 @@ class Cars extends Component{
                             price={price}
                             imageUrl={imageUrl}    
                         />
-                    )
+                       
+                    );
 
                 })}
             </div>
@@ -62,4 +82,4 @@ class Cars extends Component{
 
 };
 
-export default Cars;
+export default withRouter(Cars);

@@ -9,9 +9,9 @@ function UserHomePage() {
 
     return(
         <PageWrapper>
-            <Main layout="about">
+            <Main layout="forms">
                 <Title text="Our best offers"/>
-                <Cars/>
+                <Cars page="home"/>
             </Main>
         </PageWrapper>
     );
