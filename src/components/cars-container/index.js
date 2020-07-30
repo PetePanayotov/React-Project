@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
 import Car from '../car';
+import PageButton from '../pagesButtons';
 
 class Cars extends Component{
 
@@ -11,8 +12,8 @@ class Cars extends Component{
         this.state = {
             
             cars: [],
-        
-        }
+            
+        };
 
     };
 
@@ -27,7 +28,7 @@ class Cars extends Component{
 
             let cars = response.slice(0);
             
-            if (page !== 'catalog') {
+            if (page === 'home') {
               
                 cars = cars.filter(car => car.isVipOffer === true);
 
@@ -45,7 +46,8 @@ class Cars extends Component{
         
         const {page} = this.props;
         const {queryString} = this.props;
-        let cars = this.state.cars.slice(0);
+        const {pages} = this.state;
+        let {cars} = this.state;
 
         if (page === 'catalog'  && queryString !== '') {
             
@@ -53,9 +55,7 @@ class Cars extends Component{
             const brand = queryString.substr(startIndex + 1);
     
             cars = cars.filter(car => car.brand.toLowerCase() === brand);
-        }
-
-
+        };
 
         return (
             <div className={styles.container}>
@@ -76,8 +76,10 @@ class Cars extends Component{
                     );
 
                 })}
+
             </div>
         )
+        
     }
 
 };
