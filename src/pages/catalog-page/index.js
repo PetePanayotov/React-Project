@@ -21,9 +21,13 @@ class CatalogPage extends Component {
 
     updateState = (newQueryString) => {
 
-        this.setState({
-            queryString: newQueryString
-        });
+        const {queryString} = this.state;
+
+        const newState = {
+            queryString: queryString !== newQueryString ? newQueryString : ''
+        }
+
+        this.setState(newState);
     };
 
     render() {
