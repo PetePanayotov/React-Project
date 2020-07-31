@@ -1,17 +1,57 @@
 import React , {Component} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
+import CarDetails from '../../components/car-details';
+import Title from '../../components/title';
 
 
-function DetailsPage() {
+class DetailsPage extends Component {
 
-    return(
-        <PageWrapper>
-            <Main layout="about">
+    constructor(props) {
+        super(props);
 
-            </Main>
-        </PageWrapper>
-    );
+        this.state = {
+            car: {}
+        };
+    };
+
+    componentDidMount() {
+
+        const queryStr = this.props.location.search;
+
+        const startIndex = queryStr.indexOf('=');
+
+        const id = queryStr.substr(startIndex + 1);
+
+        (async() => {
+
+            const url = `http://localhost:9999/api/car/${id}`
+
+            const promise = await fetch(url);
+            const response = await promise.json();
+    
+            this.setState({
+                car: response
+            });
+
+        })();
+
+    };
+
+    render() {
+
+        const {car} = this.state;
+        
+        return(
+            <PageWrapper>
+                <Main layout="forms">
+                    <Title text={`${car.brand} ${car.model}`}/>
+                    <CarDetails/>
+                </Main>
+            </PageWrapper>
+        );
+
+    }
    
 };
 
