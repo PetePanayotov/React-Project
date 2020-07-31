@@ -21,10 +21,8 @@ class CatalogPage extends Component {
 
     updateState = (newQueryString) => {
 
-        const {queryString} = this.state;
-
         const newState = {
-            queryString: queryString !== newQueryString ? newQueryString : ''
+            queryString: newQueryString
         }
 
         this.setState(newState);
@@ -34,7 +32,7 @@ class CatalogPage extends Component {
 
         const logos = getLogos();
         const {queryString} = this.state
-
+        
         return(
             <PageWrapper>
                 <Main layout="forms">
@@ -42,13 +40,15 @@ class CatalogPage extends Component {
                     <div className={styles.logoContainer}>
                         {logos.map(logo => {
 
-                            const {href , src , logoName} = logo;
+                            const {qString , src , logoName} = logo;
+
+                            const newQueryString = qString !== queryString ? qString : ''
 
                             return (<Logo
-                                        href={href}
+                                        href={`/catalog${newQueryString}`}
                                         src={src}
                                         logoName={logoName}
-                                        handler={() =>this.updateState(href)}
+                                        handler={() =>this.updateState(newQueryString)}
                                    />
                             )
                         })}

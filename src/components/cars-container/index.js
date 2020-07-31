@@ -48,7 +48,7 @@ class Cars extends Component{
         const {queryString} = this.props;
         const {pages} = this.state;
         let {cars} = this.state;
-
+        console.log('this is from the container',queryString)
         if (page === 'catalog'  && queryString !== '') {
             
             const startIndex = queryString.indexOf('=');

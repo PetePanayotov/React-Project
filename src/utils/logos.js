@@ -15,55 +15,55 @@ const getLogos = () => {
         
         [
             {
-                href: "?brand=mercedes",
+                qString: "?brand=mercedes",
                 src: mercedesLogo,
                 logoName: "Mercedes"
             },
 
             {
-                href: "?brand=bmw",
+                qString: "?brand=bmw",
                 src: bmwLogo,
                 logoName: "BMW"
             },
 
             {
-                href: "?brand=audi",
+                qString: "?brand=audi",
                 src: audiLogo,
                 logoName: "Audi"
             },
 
             {
-                href: "?brand=porsche",
+                qString: "?brand=porsche",
                 src: porscheLogo,
                 logoName: "Porsche"
             },
 
             {
-                href: "?brand=honda",
+                qString: "?brand=honda",
                 src: hondaLogo,
                 logoName: "Honda"
             },
 
             {
-                href: "?brand=chevrolet",
+                qString: "?brand=chevrolet",
                 src: vetteLogo,
                 logoName: "Chevrolet"
             },
 
             {
-                href: "?brand=maserati",
+                qString: "?brand=maserati",
                 src: maseratiLogo,
                 logoName: "Maserati"
             },
 
             {
-                href: "?brand=lamborghini",
+                qString: "?brand=lamborghini",
                 src: lamboLogo,
                 logoName: "Lamborghini"
             },
 
             {
-                href: "?brand=ferrari",
+                qString: "?brand=ferrari",
                 src: ferrariLogo,
                 logoName: "Ferrari"
             },
