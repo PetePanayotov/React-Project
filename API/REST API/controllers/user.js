@@ -30,42 +30,34 @@ const getUsers = async (req , res , next) => {
 
 const registerUser = async (req , res , next) => {
 
-    const {statusOfRegistration} = req.params;
     const {username, password} = req.body;
     
-    if (statusOfRegistration) {
-        
-        const salt =  await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password , salt);
-    
-        const newUser = new User({
-            username: username,
-            password: hashedPassword
-        });
-    
-        try {
-    
-            const userObj = await newUser.save();
-           
-            if (!userObj) {
-                throw new Error();
-            };
-    
-            const token = await generateToken({ 
-                userId: userObj._id,
-                username: userObj.username
-            });
-    
-            res.header('Authorization' , token).send([statusOfRegistration , userObj]);
-    
-        } catch (error) {
-            next();
+    const salt =  await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password , salt);
+
+    const newUser = new User({
+        username,
+        password: hashedPassword
+    });
+
+    try {
+
+        const userObj = await newUser.save();
+       
+        if (!userObj) {
+            throw new Error();
         };
 
-    }else {
-        res.send([statusOfRegistration])
-    }
+        const token = await generateToken({ 
+            userId: userObj._id,
+            username: userObj.username
+        });
 
+        res.header('Authorization' , token).send(userObj);
+
+    } catch (error) {
+        next();
+    };
 };
 
 const loginUser = async (req , res , next) => {
@@ -77,7 +69,6 @@ const loginUser = async (req , res , next) => {
         
         const user = await User.findOne({username});
         
-       
         if (!user) {
             throw new Error();
         };
@@ -94,7 +85,7 @@ const loginUser = async (req , res , next) => {
                 password: user.password
             });
 
-            if (userId === config.adminId) {
+            if (user.isAdmin) {
                 isAdmin = true;
             };
     
@@ -111,19 +102,23 @@ const loginUser = async (req , res , next) => {
 
 };
 
-const verifyUser = (req , res , next) => {
+const verifyUser = async (req , res , next) => {
 
     const {token} = req.body;
 
     const decodeObj = jwt.verify(token , config.privateKey);
     
     const {username , userId} = decodeObj;
-    
-    let isAdmin = true;
 
-    if (userId !== config.adminId) {
-        isAdmin = false;
+    const user = await User.findOne({_id:userId});
+    
+    let isAdmin = false;
+
+    if (user.isAdmin) {
+        isAdmin = true;
     };
+
+    console.log(isAdmin);
 
     const userInfo = {
         username,

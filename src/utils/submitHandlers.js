@@ -3,7 +3,7 @@ export default {
     login:  async (event , props , state , context) => {
 
                 event.preventDefault();
-                console.log(context);
+                
                 const url = 'http://localhost:9999/api/user/login';
                 
                 const {username , password} = state;
@@ -60,26 +60,16 @@ export default {
                 
                     const promise = await fetch(url , headerObj);
                     const response = await promise.json();
-                   
-                    const [statusOfRegistration , userObj] = response;
 
-                    if (statusOfRegistration) {
-                        
-                        const token = promise.headers.get('Authorization');
-                    
-                        document.cookie = `oreo=${token}`;
-
-                        context.login({
-                            username: userObj.username,
-                            userId: userObj._id
-                        })
-                    
-                        props.history.push('/home');
-
-                    }else {
-                        alert('Invalid Credentials')
-                        props.history.push('/register');
-                    }
+                    const token = promise.headers.get('Authorization');
+                
+                    document.cookie = `oreo=${token}`;
+                    context.login({
+                        username: response.username,
+                        userId: response._id
+                    })
+                
+                    props.history.push('/home');
 
             },
 

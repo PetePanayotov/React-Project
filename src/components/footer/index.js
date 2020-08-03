@@ -10,8 +10,8 @@ class Footer extends Component {
 
     render() {
 
-        const {isLoggedIn , user , userStatus} = this.context;
-        const linksArray = getLinks(isLoggedIn , user , userStatus)
+        const {isLoggedIn , user , isAdmin} = this.context;
+        const linksArray = getLinks(isLoggedIn , user , isAdmin)
        
         return (
 
