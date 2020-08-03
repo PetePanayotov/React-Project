@@ -1,4 +1,4 @@
-const getLinks = (isLoggedIn , user , userStatus) => {
+const getLinks = (isLoggedIn , user , isAdmin) => {
 
     const guestLinks = [
         {
@@ -88,7 +88,7 @@ const getLinks = (isLoggedIn , user , userStatus) => {
 
     if (isLoggedIn) {
 
-        if (userStatus) {
+        if (isAdmin) {
             return adminLinks
         }
 

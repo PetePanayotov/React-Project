@@ -14,16 +14,16 @@ class App extends Component {
         this.state = {
             isLoggedIn: null,
             user: {},
-            userStatus: undefined
+            isAdmin: undefined
         }
     };
 
-    login = (user , userStatus) => {
+    login = (user , isAdmin) => {
         
         this.setState({
             isLoggedIn: true,
             user,
-            userStatus
+            isAdmin
         });
     };
 
@@ -33,7 +33,7 @@ class App extends Component {
         this.setState({
             isLoggedIn: false,
             user: {},
-            userStatus: undefined
+            isAdmin: undefined
         });
 
     };
@@ -68,7 +68,7 @@ class App extends Component {
                 
                 const response = await promise.json();
                 const [isAdmin , user] = response;
-    
+                console.log('this is the status',isAdmin)
                 return this.login(user , isAdmin);
             };
 
@@ -81,7 +81,7 @@ class App extends Component {
 
     render() {
 
-        const {isLoggedIn , user, userStatus} = this.state;
+        const {isLoggedIn , user, isAdmin} = this.state;
 
         if (isLoggedIn === null) {
             return(<div>Loading...</div>);
@@ -92,7 +92,7 @@ class App extends Component {
                 value = {{
                     isLoggedIn,
                     user,
-                    userStatus,
+                    isAdmin,
                     login: this.login,
                     logout: this.logout
     
