@@ -1,17 +1,29 @@
-.header-button-div {
-    margin: 0 10px;
+
+.delete-button-div {
+    width: 40%;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
 }
 
-.header-button {
-    color: #ffffff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 22px;
-    text-decoration: none;
-    margin: 0 10px;
+.delete-button {
+
 }
 
-.header-button:hover {
-    color: #00D8FF;
-    border-bottom: 2px solid #00D8FF;
-    padding-bottom: 5px;
+.delete-button:hover {
+
+}
+
+.like-button-div {
+
+}
+
+.like-button {
+
+}
+
+.like-button:hover {
+    
 }

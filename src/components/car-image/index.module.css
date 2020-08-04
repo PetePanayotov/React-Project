@@ -1,0 +1,23 @@
+
+.catalog-imageWrapper {
+    width: 100%;
+    height: 68%;
+    border-bottom: 1px solid #282C34;
+}
+
+.catalog-image {
+    width: 100%;
+    height: 100%;
+}
+
+
+.details-imageWrapper{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.details-image {
+    width: 100%;
+    height: 100%;
+}
