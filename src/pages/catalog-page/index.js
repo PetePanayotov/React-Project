@@ -29,7 +29,7 @@ class CatalogPage extends Component {
     };
 
     componentDidMount() {
-        document.title = 'Catalog'
+        document.title = 'Catalog';
     }
 
     render() {
