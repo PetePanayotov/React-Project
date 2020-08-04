@@ -48,6 +48,7 @@ class Cars extends Component{
         const {queryString} = this.props;
         
         let {cars} = this.state;
+        cars = cars.reverse();
         
         if (page === 'catalog'  && queryString !== '') {
             
