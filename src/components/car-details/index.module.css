@@ -65,3 +65,29 @@
     cursor: pointer;
     color: #00D8FF;
 }
+
+.like-button-div {
+    width: 10%;
+    height: 25px;
+    text-align: center;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+}
+
+.like-button {
+
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.like-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+}

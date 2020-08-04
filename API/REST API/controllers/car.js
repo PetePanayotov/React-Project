@@ -88,6 +88,33 @@ const updateCar = async (req , res , next) => {
 
 };
 
+const likeCar = async (req , res , next) => {
+    
+    const {id} = req.params;
+    const {userId} = req.body;
+
+    try {
+        const car = await Car.findByIdAndUpdate(id , {
+
+                $addToSet: {
+                    likes: [userId]
+                }
+                
+            })
+
+        if (!car) {
+            throw new Error();
+        };
+
+        res.send(car);
+        
+    } catch (error) {
+        next()
+    }
+
+
+};
+
 const deleteCar = async (req , res , next) => {
 
     const {id} = req.params;
@@ -117,7 +144,8 @@ module.exports = {
     getCar,
     createCar,
     updateCar,
-    deleteCar
+    deleteCar,
+    likeCar
 }
 
 // module.exports = {

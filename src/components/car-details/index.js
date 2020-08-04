@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
+import detailsPageHandlers from '../../utils/details-page-handlers';
 import styles from './index.module.css';
 
 
@@ -14,7 +15,8 @@ class CarDetails extends Component {
 
         this.state ={
             car: {
-                specifications: []
+                specifications: [],
+                likes: []
             }
             
         };
@@ -48,22 +50,15 @@ class CarDetails extends Component {
 
     };
 
-    deleteCar = async () => {
-        const id = this.state.car._id;
-        const url = `http://localhost:9999/api/car/${id}`;
-
-        await fetch(url , {method: "DELETE"});
-
-        this.props.history.push('/home');
-
-    }
-
-
     render() {
 
         const {car} = this.state;
-        const {isAdmin} = this.context
-        const updateLink = `/update?carId=${car._id}`
+        const carId = car._id;
+        const {isAdmin , user} = this.context;
+        const {userId} = user;
+        const updateLink = `/update?carId=${car._id}`;
+        const canLike = !car.likes.includes(userId);
+        
 
         return(
             
@@ -103,17 +98,17 @@ class CarDetails extends Component {
                         <LinkComponent title="Update" href={updateLink} type="update"/>
                         
                         <div className={styles['delete-button-div']}>
-                            <div className={styles['delete-button']} onClick={(e) => this.deleteCar()}>Delete</div>
+                            <div className={styles['delete-button']} onClick={(e) => detailsPageHandlers.delete(this.props , carId)}>Delete</div>
                         </div>
 
                     </div>
                 }
-                {/* {
-                    !isAdmin &&
-                    <div className={styles["buttons-div"]}>
-                        <Button text="Like" type="like" handler=""/>
+                {
+                    !isAdmin && canLike &&
+                    <div className={styles['like-button-div']}>
+                        <div className={styles['like-button']} onClick={(e) => detailsPageHandlers.like(this.props , carId , userId)}>Like</div>
                     </div>
-                } */}
+                }
             </div>
         );
 
