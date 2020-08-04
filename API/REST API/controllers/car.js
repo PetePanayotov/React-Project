@@ -1,4 +1,5 @@
 const Car = require('../models/Car');
+const User = require('../models/User');
 
 
 const getAllCars = async (req , res, next) => {
@@ -94,15 +95,21 @@ const likeCar = async (req , res , next) => {
     const {userId} = req.body;
 
     try {
-        const car = await Car.findByIdAndUpdate(id , {
+        const car = await Car.findOneAndUpdate({_id: id} , {
 
                 $addToSet: {
                     likes: [userId]
                 }
                 
-            })
+            });
 
-        if (!car) {
+        const user = await User.findOneAndUpdate({_id: userId} , {
+            $addToSet: {
+                likedCars: [id]
+            }
+        })
+
+        if (!car || !user) {
             throw new Error();
         };
 
