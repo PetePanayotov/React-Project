@@ -17,6 +17,8 @@ class DetailsPage extends Component {
 
     componentDidMount() {
 
+        document.title = 'Details Page';
+
         const queryStr = this.props.location.search;
 
         const startIndex = queryStr.indexOf('=');

@@ -28,6 +28,10 @@ class CatalogPage extends Component {
         this.setState(newState);
     };
 
+    componentDidMount() {
+        document.title = 'Catalog'
+    }
+
     render() {
 
         const logos = getLogos();

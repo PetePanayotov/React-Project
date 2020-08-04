@@ -1,4 +1,4 @@
-import React , {Component} from 'react';
+import React , {Component, useEffect} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import Form from '../../components/create-update-form';
@@ -6,6 +6,10 @@ import styles from './index.module.css';
 
 
 function UpdatePage () {
+
+    useEffect(() => {
+        document.title = 'Update Page';
+    })
 
     return (
         <PageWrapper>
