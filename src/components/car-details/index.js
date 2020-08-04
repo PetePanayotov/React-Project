@@ -3,7 +3,6 @@ import {withRouter} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
-import Button from  '../button';
 import styles from './index.module.css';
 
 
@@ -109,12 +108,12 @@ class CarDetails extends Component {
 
                     </div>
                 }
-                {
+                {/* {
                     !isAdmin &&
                     <div className={styles["buttons-div"]}>
                         <Button text="Like" type="like" handler=""/>
                     </div>
-                }
+                } */}
             </div>
         );
 

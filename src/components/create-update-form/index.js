@@ -15,6 +15,7 @@ class Form extends Component {
 
         this.state = {
             brand: '',
+            _id: '',
             model: '',
             price: '',
             imageUrl: '',
@@ -33,10 +34,14 @@ class Form extends Component {
     componentDidMount() {
 
         if (this.props.page === 'update') {
+
+            const queryString = this.props.location.search;
+            const startIndex = queryString.indexOf('=');
+            const id = queryString.substring(startIndex + 1);
             
             (async() => {
 
-                const promise = await fetch('http://localhost:9999/api/car/5f21200d6803c425d8ba2d31');
+                const promise = await fetch(`http://localhost:9999/api/car/${id}`);
                 const response = await promise.json();
                 response.specifications = JSON.parse(response.specifications)
 
@@ -52,7 +57,7 @@ class Form extends Component {
 
         const array = this.state.specifications;
         const inputFieldsArray = getCreateInputFields();
-        const handleSubmit = this.props.page === 'create' ?submitHandlers.create : undefined
+        const handleSubmit = this.props.page === 'create' ?submitHandlers.create : submitHandlers.update
         
         return (
             <form className={styles.form}>
