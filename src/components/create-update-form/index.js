@@ -85,6 +85,8 @@ class Form extends Component {
 
                 <div className={styles.rightDiv}>
 
+                    {   this.props.page === 'create' &&
+
                     <div className={styles.buttonDiv}>
                         <label className={styles.label}>
                             Specifications:
@@ -92,6 +94,7 @@ class Form extends Component {
                         <button className={styles.button} 
                         onClick={(event) => handlers.handlePlusButtonClick(event , this.state , this.updateState)}>+</button>
                     </div>
+                    }
 
                     { array.map(arr => {
                             return (
