@@ -58,8 +58,7 @@ class CarDetails extends Component {
         const {userId} = user;
         const updateLink = `/update?carId=${car._id}`;
         const canLike = !car.likes.includes(userId);
-        
-
+       
         return(
             
             <div className={styles.wrapper}>
