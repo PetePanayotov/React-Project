@@ -118,8 +118,6 @@ const verifyUser = async (req , res , next) => {
         isAdmin = true;
     };
 
-    console.log(isAdmin);
-
     const userInfo = {
         username,
         userId
