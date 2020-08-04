@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {Component} from 'react';
 import {
     BrowserRouter,
     Switch,
@@ -15,24 +15,46 @@ import UserHomePage from './pages/user-home-page';
 import UpdatePage from './pages/update-page';
 import DetailsPage from './pages/details-page';
 import CatalogPage from './pages/catalog-page';
+import UserContext from './Context';
 
-function Navigation() {
+class Navigation extends Component {
 
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={GuestHomePage}/>
-                <Route path="/home" component={UserHomePage}/>
-                <Route path="/about" component={AboutPage}/>
-                <Route path="/login" component={LoginPage}/>
-                <Route path="/register" component={RegisterPage}/>
-                <Route path="/create" component={CreatePage}/>
-                <Route path="/update" component={UpdatePage}/>
-                <Route path="/details" component={DetailsPage}/>
-                <Route path="/catalog" component={CatalogPage}/>
-            </Switch>
-        </BrowserRouter>
-    );
+    static contextType = UserContext;
+
+
+    componentDidMount() {
+        console.log('this is the context' , this.context);
+    }
+
+    render() {
+
+        const {isAdmin , isLoggedIn} = this.context;
+
+        return (
+            <BrowserRouter>
+                <Switch>
+
+                    <Route exact path="/" component={isLoggedIn ? UserHomePage : GuestHomePage}/>
+                    
+                    <Route exact path="/home" component={isLoggedIn ? UserHomePage : GuestHomePage}/>
+                    
+                    <Route path="/about" component={AboutPage}/>
+                    
+                    <Route exact path="/login" component={isLoggedIn ? UserHomePage : LoginPage}/>
+
+                    <Route exact path="/register" component={isLoggedIn ? UserHomePage : RegisterPage}/>
+
+                    <Route exact path="/create" component={isLoggedIn && isAdmin ? CreatePage : UserHomePage}/>
+
+                    <Route exact path="/update" component={isLoggedIn && isAdmin ? UpdatePage : UserHomePage}/>
+                    
+                    <Route path="/details" component={isLoggedIn ? DetailsPage : GuestHomePage}/>
+                    
+                    <Route path="/catalog" component={isLoggedIn ? CatalogPage : GuestHomePage}/>
+                </Switch>
+            </BrowserRouter>
+        );
+    }
 
 };
 
