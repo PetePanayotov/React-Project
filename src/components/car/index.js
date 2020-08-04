@@ -1,20 +1,15 @@
 import React , {Component} from 'react';
-import styles from './index.module.css';
 import LinkComponent from '../link';
+import CarImage from '../car-image';
+import styles from './index.module.css';
 
 
 function Car({key , brand , model , id , price , imageUrl}) {
 
     return (
         <div key={key} className={styles.wrapper}>
-            <section className={styles.imageWrapper}>
-                <img 
-                    className={styles.image}
-                    src={imageUrl} 
-                    alt="Car Image">
 
-                </img>
-            </section>
+            <CarImage imageUrl={imageUrl} page="catalog"/>
             <div>
                 <p className={styles.paragraph}>{`${brand} ${model}`}</p>
                 <p className={styles.paragraph}>Price: {price} BGN</p>

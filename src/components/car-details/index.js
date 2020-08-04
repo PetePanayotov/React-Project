@@ -1,6 +1,9 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import UserContext from '../../Context';
+import CarImage from '../car-image';
+import LinkComponent from '../link';
+import Button from  '../button';
 import styles from './index.module.css';
 
 
@@ -46,48 +49,76 @@ class CarDetails extends Component {
 
     };
 
+    deleteCar = async () => {
+        const id = this.state.car._id;
+        const url = `http://localhost:9999/api/car/${id}`;
 
+        await fetch(url , {method: "DELETE"});
+
+        this.props.history.push('/home');
+
+    }
 
 
     render() {
 
         const {car} = this.state;
+        const {isAdmin} = this.context
+        const updateLink = `/update?carId=${car._id}`
 
         return(
             
             <div className={styles.wrapper}>
-                <section className={styles.imageWrapper}>
-                    <img className={styles.image} src={car.imageUrl}></img>
-                </section>
+                <CarImage imageUrl={car.imageUrl} page="details"/>
+                
                 <div className={styles.descriptionWrapper}>
                     <div className={styles.leftDiv}>
 
-                    <p>Price: {car.price}</p>
-                    <label>Specifications:</label>
+                        <p><label className={styles.label}>Price: </label>{car.price} BGN</p>
+                        <label className={styles.label}>Specifications:</label>
 
-                    {
-                        car.specifications.map(([property , value]) => {
+                        {
+                            car.specifications.map(([property , value]) => {
 
-                            const text = `${property} : ${value}`
+                                const text = `${property} : ${value}`
 
-                            return(
-                                <p>{text}</p>
-                            )
+                                return(
+                                    <p>{text}</p>
+                                )
 
-                        })
-                    }
+                            })
+                        }
 
                     </div>
                     <div className={styles.rightDiv}>
 
-                        <label>Description:</label>
+                        <p><label className={styles.label}>Description:</label></p>
                         <p>{car.description}</p>
+
                     </div>
                 </div>
-            </div>
-        )
+                {
+                    isAdmin &&
+                    <div className={styles["buttons-div"]}>
+                        
+                        <LinkComponent title="Update" href={updateLink} type="update"/>
+                        
+                        <div className={styles['delete-button-div']}>
+                            <div className={styles['delete-button']} onClick={(e) => this.deleteCar()}>Delete</div>
+                        </div>
 
-    }
+                    </div>
+                }
+                {
+                    !isAdmin &&
+                    <div className={styles["buttons-div"]}>
+                        <Button text="Like" type="like" handler=""/>
+                    </div>
+                }
+            </div>
+        );
+
+    };
 
 };
 
