@@ -1,7 +1,7 @@
 const express = require('express');
 const config = require('../config/config');
 const router = express.Router();
-const {getUsers , registerUser , loginUser , updatedUser , deleteUser , verifyUser} = require('../controllers/user');
+const {getUsers , registerUser , loginUser , updatedUser , deleteUser , verifyUser , getUserWithCars} = require('../controllers/user');
 
 
 router.get('/', async (req , res , next) => {
@@ -10,11 +10,18 @@ router.get('/', async (req , res , next) => {
 
 });
 
+router.get('/:id' , async (req , res , next) => {
+    
+    await getUserWithCars(req , res , next);
+
+});
+
 router.post('/register' , async (req , res , next) => {
     
     await registerUser(req , res , next);
 
 });
+
 
 
 router.post('/login', async (req , res , next) => {

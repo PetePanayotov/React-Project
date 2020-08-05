@@ -29,7 +29,7 @@ const getLinks = (isLoggedIn , user , isAdmin) => {
     const userLinks = [
         {
             title: `[${user.username}]`,
-            link: `/profile/${user.userId}`
+            link: `/profile?userId=${user.userId}`
             
         },
         
@@ -56,7 +56,7 @@ const getLinks = (isLoggedIn , user , isAdmin) => {
     const adminLinks = [
         {
             title: `[${user.username}]`,
-            link: `/profile/${user.userId}`
+            link: `/profile?userId=${user.userId}`
             
         },
         
