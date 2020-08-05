@@ -1,0 +1,130 @@
+/* Header Button ////////////////////////////////////////////////////// */
+
+.header-button-div {
+    margin: 0 10px;
+}
+
+
+.header-button {
+    background-color: #282C34;
+    border: none;
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.header-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+    border-bottom: 2px solid #00D8FF;
+    padding-bottom: 5px;
+}
+
+/* Footer Button /////////////////////////////////////////////////////// */
+
+.footer-button-div {
+    margin-right: 10px;
+}
+
+.footer-button {
+    background-color: #282C34;
+    border: none;
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 0;
+   
+}
+
+.footer-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+   
+
+}
+
+/* Delete Button ////////////////////////////////////////////// */
+
+.delete-button-div {
+    width: 40%;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
+}
+
+.delete-button {
+    background-color: #282C34;
+    border: none;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.delete-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+}
+
+
+
+/* Like Button /////////////////////////////////////////////////// */
+
+.like-button-div {
+    width: 10%;
+    height: 25px;
+    text-align: center;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+}
+
+.like-button {
+    background-color: #282C34;
+    border: none;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+
+}
+
+.like-button:hover {
+    cursor: pointer;
+    color: #00D8FF;
+}
+
+
+/* Plus Button //////////////////////////////////////////////////// */
+
+.plus-button-div {
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+.plus-button {
+    background-color: #282C34;
+    border: none;
+    color: white;
+    font-size: 35px;
+    border: 1px solid #282C34;
+    border-radius: 100px;
+    text-align: center;
+    width: 45px;
+}
+
+.plus-button:hover {
+    
+    color: #00D8FF;
+    cursor: pointer;
+}

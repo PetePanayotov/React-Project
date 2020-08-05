@@ -1,10 +1,11 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import styles from './index.module.css';
+import UserContext from '../../Context';
 import Input from '../inputField';
+import SubmitButton from '../submit-button';
+import styles from './index.module.css';
 import getInputFields from '../../utils/login-register-input-Fields';
 import submitHandlers from '../../utils/submitHandlers';
-import UserContext from '../../Context';
 
 class Form extends Component {
 
@@ -50,7 +51,7 @@ class Form extends Component {
 
         return(
             
-            <form className={styles.form} onSubmit={(event) => handleSubmit(event , this.props , this.state , this.context)}>
+            <form className={styles.form}>
                
                 {getInputFields()[page].map(({label , type , value , key}) => {
                     
@@ -68,7 +69,10 @@ class Form extends Component {
                     )
                 })}
 
-                <input className={styles.submit} type="submit" value={page === 'login' ? "Login" : "Register"} />
+                <SubmitButton type="loginRegister" 
+                              text={page === 'login' ? 'Login' : 'Register'} 
+                              handler={(event) => handleSubmit(event , this.props , this.state , this.context)}
+                />
 
             </form>
         );

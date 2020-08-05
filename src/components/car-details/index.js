@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
+import Button from '../../components/button';
 import detailsPageHandlers from '../../utils/details-page-handlers';
 import styles from './index.module.css';
 
@@ -95,18 +96,14 @@ class CarDetails extends Component {
                     <div className={styles["buttons-div"]}>
                         
                         <LinkComponent title="Update" href={updateLink} type="update"/>
-                        
-                        <div className={styles['delete-button-div']}>
-                            <div className={styles['delete-button']} onClick={(e) => detailsPageHandlers.delete(this.props , carId)}>Delete</div>
-                        </div>
+
+                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(this.props , carId)}/>
 
                     </div>
                 }
                 {
                     !isAdmin && canLike &&
-                    <div className={styles['like-button-div']}>
-                        <div className={styles['like-button']} onClick={(e) => detailsPageHandlers.like(this.props , carId , userId)}>Like</div>
-                    </div>
+                    <Button type ="like" text="Like" handler={(e) => detailsPageHandlers.like(this.props , carId , userId)}/>
                 }
             </div>
         );

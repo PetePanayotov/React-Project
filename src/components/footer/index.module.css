@@ -26,22 +26,4 @@
 
 }
 
-.footer-button-div {
-    margin-right: 10px
-}
-
-.footer-button {
-    color: #ffffff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 16px;
-    text-decoration: none;
-   
-}
-
-.footer-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-   
-
-}
 

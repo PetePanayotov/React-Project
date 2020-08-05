@@ -51,8 +51,6 @@ class Cars extends Component{
         
             (async() => {
 
-                console.log('nqshto drugo');
-
                 const url = 'http://localhost:9999/api/car/';
                 const promise = await fetch(url);
                 const response = await promise.json();

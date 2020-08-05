@@ -29,38 +29,7 @@
 .buttonDiv {
     width: 60%;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.button {
-    background-color: #282C34;
-    border: 1px solid #282C34;
-    height: 40px;
-    width: 40px;
-    margin-left: 20px;
-    border-radius: 100px;
-    font-size: 30px;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.button:hover {
-    
-    color: #00D8FF;
-    cursor: pointer;
-}
-
-.submitButton {
-    margin: 50px auto;
-    height: 40px;
-    width: 150px;
-    font-size: 22px;
-    font-family: impact;
-    border: 1px solid #282C34;
-    border-radius: 5px;
-}
-
-.submitButton:hover{
-    cursor: pointer;
-    background-color: #282C34;
-    color: #ffffff;
-}
