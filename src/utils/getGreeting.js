@@ -3,11 +3,11 @@ const getGreeting = (hour , isAdmin , username) => {
     let firstPart = '';
     let secondPart = '';
 
-    if (hour >=4 && hour <= 12) {
+    if (hour >=4 && hour <= 11) {
 
         firstPart = 'Good Morning';
 
-    }else if(hour > 12 && hour <=18) {
+    }else if(hour > 11 && hour <=17) {
         
         firstPart = 'Good Afternoon';
 
