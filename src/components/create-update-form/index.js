@@ -4,6 +4,8 @@ import styles from './index.module.css';
 import CharacteristicsBox from '../specifications-Input';
 import Input from '../create-Input-Fields';
 import DescriptionInput from '../description-Input';
+import SubmitButton from '../submit-button';
+import Button from '../button';
 import getCreateInputFields from '../../utils/create-Input-Fields';
 import submitHandlers from '../../utils/submitHandlers';
 import handlers from '../../utils/create-form-handlers';
@@ -54,7 +56,8 @@ class Form extends Component {
 };
 
     render() {
-
+        
+        const {page} = this.props
         const array = this.state.specifications;
         const inputFieldsArray = getCreateInputFields();
         const handleSubmit = this.props.page === 'create' ?submitHandlers.create : submitHandlers.update
@@ -85,18 +88,20 @@ class Form extends Component {
 
                 <div className={styles.rightDiv}>
 
-                    {   this.props.page === 'create' &&
+                    {page === 'create' &&
 
-                    <div className={styles.buttonDiv}>
-                        <label className={styles.label}>
-                            Specifications:
-                        </label>
-                        <button className={styles.button} 
-                        onClick={(event) => handlers.handlePlusButtonClick(event , this.state , this.updateState)}>+</button>
-                    </div>
+                        <div className={styles.buttonDiv}>
+                            <label className={styles.label}>
+                                Specifications:
+                            </label>
+                            <Button text="+" type="plus" handler={(event) => handlers.handlePlusButtonClick(event , this.state , this.updateState)}/>
+
+                        </div>
                     }
 
-                    { array.map(arr => {
+                    {page === 'create' && 
+                        
+                        array.map(arr => {
                             return (
                                 <CharacteristicsBox inputsValue={arr} 
                                 handleBlur={(event) => handlers.handleCharactericsChange(event , this.state , this.updateState)}/>
@@ -105,12 +110,11 @@ class Form extends Component {
                     }
                                 
                 </div>
-                
-                <input 
-                    className={styles.submitButton} 
-                    type="submit" 
-                    value={this.props.page === 'create' ?'Create' :'Update'}
-                    onClick={(event) => handleSubmit(event , this.state , this.props)}
+
+                <SubmitButton
+                    type="createUpdate"
+                    text={page === 'create' ? 'Create' : 'Update'}
+                    handler={(event) => handleSubmit(event , this.state , this.props)}
                 />
 
             </form>

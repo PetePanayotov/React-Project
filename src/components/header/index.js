@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import styles from './index.module.css'
 import LinkComponent  from '../link';
+import Button from '../button';
 import logo from '../../images/logo.jpg';
 import getLinks from '../../utils/navigation';
 import UserContext from '../../Context';
@@ -39,9 +40,8 @@ class Header extends Component{
 
                     })}
                     {this.context.isLoggedIn && 
-                        <div className={styles['header-button-div']}>
-                            <div className={styles[`header-button`]} onClick={this.logout}>Logout</div>
-                        </div>
+
+                        <Button type="header" text="Logout" handler={this.logout}/>
                     }
                 </div>
             </header>

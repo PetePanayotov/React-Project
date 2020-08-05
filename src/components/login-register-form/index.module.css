@@ -9,20 +9,3 @@
   
 }
 
-.submit{
-    
-    height: 30px;
-    width: 100px;
-    font-size: 18px;
-    font-family: impact;
-    border: 1px solid #282C34;
-    border-radius: 5px;
-    margin: 0 auto;
-    margin-bottom: 20px;
-}
-
-.submit:hover{
-    cursor: pointer;
-    background-color: #282C34;
-    color: #ffffff;
-}
