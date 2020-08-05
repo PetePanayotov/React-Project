@@ -16,6 +16,7 @@ import UpdatePage from './pages/update-page';
 import DetailsPage from './pages/details-page';
 import CatalogPage from './pages/catalog-page';
 import UserContext from './Context';
+import ProfilePage from './pages/user-profile-page';
 
 class Navigation extends Component {
 
@@ -51,6 +52,9 @@ class Navigation extends Component {
                     <Route path="/details" component={isLoggedIn ? DetailsPage : GuestHomePage}/>
                     
                     <Route path="/catalog" component={isLoggedIn ? CatalogPage : GuestHomePage}/>
+
+                    <Route path="/profile" component={isLoggedIn ? ProfilePage : GuestHomePage}/>
+
                 </Switch>
             </BrowserRouter>
         );

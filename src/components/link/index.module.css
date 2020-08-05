@@ -76,8 +76,7 @@
     border: 2px solid #282C34;
     border-radius: 10px;
     background-color: #282C34;
-    margin: 0 auto;
-    margin-top: 10px;
+    text-align: center;
 }
 
 .car-link {

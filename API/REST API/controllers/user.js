@@ -181,6 +181,26 @@ const deleteUser = async (req , res , next) => {
  
 };
 
+const getUserWithCars = async (req , res , next) => {
+
+    const {id} = req.params;
+    
+    try {
+
+        const user = await User.findById(id).populate('likedCars').lean();
+
+        if (!user) {
+            throw new Error();
+        };
+
+        res.send(user);
+        
+    } catch (error) {
+        next();
+    }
+
+}
+
 
 module.exports = {
     getUsers,
@@ -189,7 +209,8 @@ module.exports = {
     logoutUser,
     updatedUser,
     deleteUser,
-    verifyUser
+    verifyUser,
+    getUserWithCars
 }
 
 // module.exports = {

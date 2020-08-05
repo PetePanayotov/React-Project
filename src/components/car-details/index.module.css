@@ -3,7 +3,7 @@
     width: 80%;
     min-height: 100vh;
     border: 1px solid;
-    margin: 100px 0;
+    margin: 70px 0;
     background-color: #FFFFF0;
 }
 
@@ -22,9 +22,11 @@
 
 .rightDiv{
 
-    width: 15%;
-    height: 100%;
+    width: 30%;
+    height: 90%;
     margin: 0 auto;
+    margin-right: 12vw;
+    text-align: -webkit-left;
 
 }
 

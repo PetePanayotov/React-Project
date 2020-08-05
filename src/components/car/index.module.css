@@ -4,6 +4,7 @@
     border: 1px solid #282C34;
     margin: 20px;
     background-color: #ffffff;
+    padding-bottom: 5px;
 }
 
 .wrapper:hover{
@@ -23,3 +24,21 @@
     border-radius: 0 25px 25px 0;
      
 }
+
+.like-link-div {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    
+}
+
+.likes-div {
+    width: 40%;
+    height: 25px;
+    border: 2px solid #282C34;
+    border-radius: 10px;
+    background-color: #282C34;
+    text-align: center;
+    color: #ffffff;
+}
+
