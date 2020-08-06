@@ -1,4 +1,4 @@
-import React , {Component, useState, useContext} from 'react';
+import React , {Component, useState, useContext, useEffect} from 'react';
 import {withRouter, useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import Input from '../inputField';
@@ -12,6 +12,7 @@ function Form (props) {
     const {page} = props;
     const context = useContext(UserContext);
     const history = useHistory();
+    const handleSubmit = submitHandlers[page];
 
     const loginPageState = {
         username: '',
@@ -35,9 +36,6 @@ function Form (props) {
         setState({...state , ...newState});
 
     };
-
-
-    const handleSubmit = submitHandlers[page];
 
     return(
         
@@ -107,9 +105,10 @@ function Form (props) {
 //     render() {
 
 //         const {page} = this.props;
-
+//         console.log(page)
+        
 //         const handleSubmit = submitHandlers[page];
-
+//         console.log(handleSubmit);
 //         return(
             
 //             <form className={styles.form}>
