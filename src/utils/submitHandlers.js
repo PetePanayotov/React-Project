@@ -1,6 +1,6 @@
 export default {  
     
-    login:  async (event , history , state , context) => {
+    login :  async (event , history , state , context) => {
 
                 event.preventDefault();
 
@@ -18,9 +18,10 @@ export default {
                     body: JSON.stringify(data)
                 };
                 const promise = await fetch(url , headerObj);
-                const response = await promise.json();
-            
-                if (response) {
+                
+                if (promise.status === 200) {
+                    
+                    const response = await promise.json();
                     
                     const [isAdmin , userObj] = response;
                    
@@ -33,8 +34,10 @@ export default {
                     
                     document.cookie = `oreo=${token}`;
                     
-                    history.push('/home');
-                }
+                    return history.push('/home');
+                };
+
+                return alert('Invalid credentials')
                 
 
             },
@@ -45,35 +48,41 @@ export default {
 
                     const url = 'http://localhost:9999/api/user/register';
 
-                    const {username , password} = state;
+                    const {username , password , rePassword} = state;
 
-                    const data = {username , password};
-
-                    const headerObj = {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
+                    if (password === rePassword) {
+                        
+                        const data = {username , password};
+    
+                        const headerObj = {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        };
+                    
+                    
+                        const promise = await fetch(url , headerObj);
+                        const response = await promise.json();
+    
+                        const token = promise.headers.get('Authorization');
+                    
+                        document.cookie = `oreo=${token}`;
+                        context.login({
+                            username: response.username,
+                            userId: response._id
+                        })
+                    
+                        return history.push('/home');
                     };
-                
-                
-                    const promise = await fetch(url , headerObj);
-                    const response = await promise.json();
 
-                    const token = promise.headers.get('Authorization');
-                
-                    document.cookie = `oreo=${token}`;
-                    context.login({
-                        username: response.username,
-                        userId: response._id
-                    })
-                
-                    history.push('/home');
+                    return alert("Passwords don't match");
 
             },
 
-            create: async (event , state , props) => {
+    create : async (event , state , props) => {
+
                 event.preventDefault();
                 const url = 'http://localhost:9999/api/car/';
                 const {brand ,model , price , imageUrl , description , isVipOffer , specifications} = state;
@@ -105,7 +114,8 @@ export default {
                
             },
 
-            update: async (event , state , props) => {
+    update : async (event , state , props) => {
+        
                 event.preventDefault();
                 const {_id} = state;
                 const url = `http://localhost:9999/api/car/${_id}`;

@@ -89,7 +89,7 @@ function CarDetails(props) {
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text="Like" handler={(e) => detailsPageHandlers.like(props , carId , userId)}/>
+                    <Button type ="like" text={<i class="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(props , carId , userId)}/>
                 }
             </div>
         );
