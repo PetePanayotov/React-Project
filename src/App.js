@@ -68,7 +68,7 @@ class App extends Component {
                 
                 const response = await promise.json();
                 const [isAdmin , user] = response;
-                console.log('this is the status',isAdmin)
+                
                 return this.login(user , isAdmin);
             };
 

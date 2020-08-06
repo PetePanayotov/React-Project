@@ -2,9 +2,6 @@ import React from 'react';
 import styles from './index.module.css';
 import {Link} from 'react-router-dom';
 
-function mark(event) {
-    console.log(event.target);
-}
 
 function Logo ({href , src , logoName , handler}) {
 
