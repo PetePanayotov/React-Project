@@ -122,6 +122,39 @@ const likeCar = async (req , res , next) => {
 
 };
 
+const dislikeCar = async (req ,res) => {
+
+    const {id} = req.params;
+    const {userId} = req.body;
+
+    try {
+        const car = await Car.findOneAndUpdate({_id: id} , {
+
+                $pull: {
+                    likes: {$in: [userId]}
+                }
+                
+            });
+
+        const user = await User.findOneAndUpdate({_id: userId} , {
+            $pull: {
+                likedCars: {$in: [id]}
+            }
+        })
+
+        if (!car || !user) {
+            throw new Error();
+        };
+
+        res.send('All clear');
+        
+    } catch (error) {
+        next()
+    }
+
+};
+
+
 const deleteCar = async (req , res , next) => {
 
     const {id} = req.params;
@@ -152,7 +185,8 @@ module.exports = {
     createCar,
     updateCar,
     deleteCar,
-    likeCar
+    likeCar,
+    dislikeCar
 }
 
 // module.exports = {
