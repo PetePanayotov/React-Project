@@ -1,9 +1,9 @@
 export default {  
     
-    login:  async (event , props , state , context) => {
+    login:  async (event , history , state , context) => {
 
                 event.preventDefault();
-                
+
                 const url = 'http://localhost:9999/api/user/login';
                 
                 const {username , password} = state;
@@ -19,7 +19,7 @@ export default {
                 };
                 const promise = await fetch(url , headerObj);
                 const response = await promise.json();
-                
+            
                 if (response) {
                     
                     const [isAdmin , userObj] = response;
@@ -33,13 +33,13 @@ export default {
                     
                     document.cookie = `oreo=${token}`;
                     
-                    props.history.push('/home');
+                    history.push('/home');
                 }
                 
 
             },
 
-    register : async (event , props , state , context) => {
+    register : async (event , history , state , context) => {
                     
                     event.preventDefault();
 
@@ -69,7 +69,7 @@ export default {
                         userId: response._id
                     })
                 
-                    props.history.push('/home');
+                    history.push('/home');
 
             },
 

@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
-import CharacteristicsBox from '../specifications-Input';
+import SpecificationsBox from '../specifications-Input';
 import Input from '../create-Input-Fields';
 import DescriptionInput from '../description-Input';
 import SubmitButton from '../submit-button';
@@ -9,6 +9,7 @@ import Button from '../button';
 import getCreateInputFields from '../../utils/create-Input-Fields';
 import submitHandlers from '../../utils/submitHandlers';
 import handlers from '../../utils/create-form-handlers';
+import getQueryValue from '../../utils/getQueryValue';
 
 class Form extends Component {
 
@@ -37,9 +38,7 @@ class Form extends Component {
 
         if (this.props.page === 'update') {
 
-            const queryString = this.props.location.search;
-            const startIndex = queryString.indexOf('=');
-            const id = queryString.substring(startIndex + 1);
+            const id = getQueryValue(this.props.location);
             
             (async() => {
 
@@ -103,7 +102,7 @@ class Form extends Component {
                         
                         array.map(arr => {
                             return (
-                                <CharacteristicsBox inputsValue={arr} 
+                                <SpecificationsBox inputsValue={arr} 
                                 handleBlur={(event) => handlers.handleCharactericsChange(event , this.state , this.updateState)}/>
                             );
                         })

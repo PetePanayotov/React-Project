@@ -1,29 +1,22 @@
-import React , {Component} from 'react';
+import React , {useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import CarDetails from '../../components/car-details';
 import Title from '../../components/title';
+import getQueryValue from '../../utils/getQueryValue';
 
 
-class DetailsPage extends Component {
+function DetailsPage() {
 
-    constructor(props) {
-        super(props);
+    const [car , setCar] = useState({});
+    const location = useLocation();
 
-        this.state = {
-            car: {}
-        };
-    };
-
-    componentDidMount() {
+    useEffect(() => {
 
         document.title = 'Details Page';
 
-        const queryStr = this.props.location.search;
-
-        const startIndex = queryStr.indexOf('=');
-
-        const id = queryStr.substr(startIndex + 1);
+        const id = getQueryValue(location);
 
         (async() => {
 
@@ -32,29 +25,21 @@ class DetailsPage extends Component {
             const promise = await fetch(url);
             const response = await promise.json();
     
-            this.setState({
-                car: response
-            });
+            setCar(response);
 
         })();
 
-    };
+    });
 
-    render() {
+    return(
+        <PageWrapper>
+            <Main layout="forms">
+                <Title text={`${car.brand} ${car.model}`}/>
+                <CarDetails/>
+            </Main>
+        </PageWrapper>
+    );
 
-        const {car} = this.state;
-        
-        return(
-            <PageWrapper>
-                <Main layout="forms">
-                    <Title text={`${car.brand} ${car.model}`}/>
-                    <CarDetails/>
-                </Main>
-            </PageWrapper>
-        );
-
-    }
-   
 };
 
 export default DetailsPage

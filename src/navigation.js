@@ -22,11 +22,6 @@ class Navigation extends Component {
 
     static contextType = UserContext;
 
-
-    componentDidMount() {
-        console.log('this is the context' , this.context);
-    }
-
     render() {
 
         const {isAdmin , isLoggedIn} = this.context;

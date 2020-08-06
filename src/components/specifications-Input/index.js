@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './index.module.css';
 
-function CharacteristicsBox({inputsValue , handleBlur}) {
+function SpecificationsBox({inputsValue , handleBlur}) {
     return (
         <div className={styles.div}>
             <input value={inputsValue !== undefined ? inputsValue[0] : ''} className={styles.left}/>
@@ -10,4 +10,4 @@ function CharacteristicsBox({inputsValue , handleBlur}) {
     );
 };
 
-export default CharacteristicsBox;
+export default SpecificationsBox;

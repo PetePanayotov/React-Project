@@ -1,5 +1,5 @@
-import React , {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import React , {useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import styles from './index.module.css'
 import LinkComponent  from '../link';
 import Button from '../button';
@@ -8,46 +8,35 @@ import getLinks from '../../utils/navigation';
 import UserContext from '../../Context';
 
 
-class Header extends Component{
+function Header() {
 
-    constructor(props) {
-        super(props)
-    };
+    const context = useContext(UserContext);
+    const history = useHistory();
+    const {isLoggedIn , user , isAdmin} = context
+    const linksArray = getLinks(isLoggedIn , user ,  isAdmin);
 
-    static contextType = UserContext;
-
-    logout = () => {
+    const logout = () => {
         
-        this.context.logout();
-       
-        this.props.history.push('/');
+        context.logout();
+        history.push('/');
     };
 
-    render() {
-     
-        const {isLoggedIn , user , isAdmin} = this.context
-        const linksArray = getLinks(isLoggedIn , user ,  isAdmin);
+    return (
+        <header className={styles.navigation}>
+            <img alt="" className={styles.logo} src={logo}></img>
+            <div className={styles.linkContainer}>
 
-        return (
-            <header className={styles.navigation}>
-                <img alt="" className={styles.logo} src={logo}></img>
+                {linksArray.map( ({title , link}) => {
+                    return (<LinkComponent href={link} title={title} type="header" key={title}/>)
+                })}
+                {isLoggedIn && 
+                    <Button type="header" text="Logout" handler={logout}/>
+                }
 
-                <div className={styles.linkContainer}>
+            </div>
+        </header>
+    );
+   
+};
 
-                    {linksArray.map( ({title , link}) => {
-
-                        return (<LinkComponent href={link} title={title} type="header" key={title}/>)
-
-                    })}
-                    {this.context.isLoggedIn && 
-
-                        <Button type="header" text="Logout" handler={this.logout}/>
-                    }
-                </div>
-            </header>
-        )
-    }
-
-}
-
-export default withRouter(Header)
+export default Header

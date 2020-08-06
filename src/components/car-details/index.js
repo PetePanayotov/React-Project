@@ -1,38 +1,29 @@
-import React , {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import React , {useState, useContext, useEffect} from 'react';
+import {withRouter, useLocation} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import detailsPageHandlers from '../../utils/details-page-handlers';
 import styles from './index.module.css';
+import getQueryValue from '../../utils/getQueryValue';
 
 
-class CarDetails extends Component {
+function CarDetails(props) {
 
-    constructor(props) {
-
-        super(props);
-
-        this.state ={
-            car: {
-                specifications: [],
-                likes: []
-            }
-            
-        };
-
+    const context = useContext(UserContext);
+    const location = useLocation();
+    
+    const initialCarInfo = {
+        specifications: [],
+        likes: []
     };
 
-    static contextType = UserContext;
+    const [car , setCar] = useState(initialCarInfo);
 
-    componentDidMount() {
+    useEffect(() => {
 
-        const queryStr = this.props.location.search;
-
-        const startIndex = queryStr.indexOf('=');
-
-        const id = queryStr.substr(startIndex + 1);
+        const id = getQueryValue(location);
 
         (async() => {
 
@@ -42,23 +33,18 @@ class CarDetails extends Component {
             let response = await promise.json();
 
             response.specifications = JSON.parse(response.specifications);
-    
-            this.setState({
-                car: response
-            });
+
+            setCar(response);
 
         })();
 
-    };
+    });
 
-    render() {
-
-        const {car} = this.state;
-        const carId = car._id;
-        const {isAdmin , user} = this.context;
-        const {userId} = user;
-        const updateLink = `/update?carId=${car._id}`;
-        const canLike = !car.likes.includes(userId);
+    const carId = car._id;
+    const {isAdmin , user} = context;
+    const {userId} = user;
+    const updateLink = `/update?carId=${carId}`;
+    const canLike = !car.likes.includes(userId);
        
         return(
             
@@ -97,18 +83,16 @@ class CarDetails extends Component {
                         
                         <LinkComponent title="Update" href={updateLink} type="update"/>
 
-                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(this.props , carId)}/>
+                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(props , carId)}/>
 
                     </div>
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text="Like" handler={(e) => detailsPageHandlers.like(this.props , carId , userId)}/>
+                    <Button type ="like" text="Like" handler={(e) => detailsPageHandlers.like(props , carId , userId)}/>
                 }
             </div>
         );
-
-    };
 
 };
 

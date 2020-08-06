@@ -1,49 +1,41 @@
-import React , {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import React , {useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import LinkComponent from '../link';
 import Button from '../button';
 import styles from './index.module.css';
 import getLinks from '../../utils/navigation';
 
-class Footer extends Component {
+function Footer() {
 
-    static contextType = UserContext;
+    const context = useContext(UserContext);
+    const history = useHistory();
+    const {isLoggedIn , user , isAdmin} = context;
+    const linksArray = getLinks(isLoggedIn , user , isAdmin);
 
-    logout = () => {
+    const logout = () => {
         
-        this.context.logout();
-       
-        this.props.history.push('/');
+        context.logout();
+        history.push('/');
     };
+ 
+    return (
+        <footer className={styles.footer}>
+            <div className={styles.linkContainer}>
 
-    render() {
+                {linksArray.map( ({title , link}) => {
+                    return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
+                })}
+                {isLoggedIn && 
+                    
+                    <Button type="footer" text="Logout" handler={logout}/>
+                }
 
-        const {isLoggedIn , user , isAdmin} = this.context;
-        const linksArray = getLinks(isLoggedIn , user , isAdmin)
+            </div>
+            <p className={styles.paragraph}>AUTO CAR</p>
+        </footer>
+    );
        
-        return (
-
-            <footer className={styles.footer}>
-                <div className={styles.linkContainer}>
-
-                    {linksArray.map( ({title , link}) => {
-
-                        return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
-
-                    })}
-                    {this.context.isLoggedIn && 
-                        
-                        <Button type="footer" text="Logout" handler={this.logout}/>
-                    }
-
-                </div>
-                <p className={styles.paragraph}>AUTO CAR</p>
-            </footer>
-        );
-        
-    };
-
 };
 
-export default withRouter(Footer)
+export default Footer
