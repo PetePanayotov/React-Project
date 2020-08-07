@@ -12,15 +12,19 @@ function CommentsSection({commentsArray ,carId}) {
     const context = useContext(UserContext);
     const history = useHistory();
     const {username} = context.user;
+    let array = commentsArray.slice(0);
+    array = array.reverse();
 
     return (
         <div className={styles.container}>
             <p className={styles.title}>Comments</p>
             {
-                commentsArray.map(string => {
-                    const [author , comment] = JSON.parse(string);
+                array.map(string => {
+                    const [author , comment , time] = JSON.parse(string);
                     
-                    return <Comment author={author} comment={comment}/>
+                    return <Comment author={author} time={time} comment={comment} 
+                                handler={(event) => {detailsPageHandlers.removeComment()}}
+                            />
                 })
             }
             <CommentInput handler={(event) => detailsPageHandlers.comment(event , history , carId , username)}/>

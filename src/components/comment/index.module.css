@@ -3,10 +3,14 @@
     border: 1px solid #282C34;
     width: 70%;
     margin: 10px 0 20px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .author-paragraph {
     width: 70%;
+    border-bottom: 2px solid #282C34;
+    padding-bottom: 2px;
     color: #282C34;
     font-size: 18px;
     font-family: impact;
@@ -16,4 +20,10 @@
 .comment-paragraph {
     width: 70%;
     margin: 10px 0 10px 20px;
+}
+
+.label {
+    margin-left: 30px;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
 }

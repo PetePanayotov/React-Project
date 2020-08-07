@@ -1,4 +1,5 @@
 export default {
+
     like: async (props, carId , userId) => {
 
         const url = `http://localhost:9999/api/car/like/${carId}`;
@@ -20,6 +21,7 @@ export default {
         props.history.push('/home');
 
     },
+
 
     dislike : async (props, carId , userId) => {
 
@@ -43,6 +45,7 @@ export default {
 
     },
 
+
     delete: async (props , carId) => {
         
         const url = `http://localhost:9999/api/car/${carId}`;
@@ -52,15 +55,20 @@ export default {
         props.history.push('/home');
     },
 
+
     comment: async (event , history , carId , username) => {
 
         const parent = event.target.parentNode.parentNode;
         const textArea = parent.querySelector('#textArea');
         const comment = textArea.value;
+        const timeString = new Date().toString();
+        const [time, ] = timeString.split('G');
+        
         const data = {
             carId,
             username,
-            comment
+            comment,
+            time
         }
         const url = `http://localhost:9999/api/car/comment/${carId}`;
 
@@ -77,5 +85,9 @@ export default {
         textArea.value = '';
         history.push(`/details?id=${carId}`);
         
+    },
+
+    removeComment: {
+
     }
-}
+};

@@ -181,10 +181,10 @@ const deleteCar = async (req , res , next) => {
 
 const commentCar = async (req , res , next) => {
 
-    const {username , comment} = req.body;
+    const {username , comment , time} = req.body;
     const {id} = req.params;
 
-    const newComment = JSON.stringify([username , comment]);
+    const newComment = JSON.stringify([username , comment , time]);
 
     try {
         
