@@ -1,0 +1,19 @@
+.container {
+    background-color: #ffffff;
+    border: 1px solid #282C34;
+    width: 70%;
+    margin: 10px 0 20px 20px;
+}
+
+.author-paragraph {
+    width: 70%;
+    color: #282C34;
+    font-size: 18px;
+    font-family: impact;
+    margin: 5px 0 0 10px;
+}
+
+.comment-paragraph {
+    width: 70%;
+    margin: 10px 0 10px 20px;
+}
