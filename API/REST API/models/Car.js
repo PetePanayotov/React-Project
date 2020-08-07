@@ -43,12 +43,15 @@ const CarSchema = new mongoose.Schema({
     },
 
     specifications: {
-            required: true,
-            type: String
-        }
+        type: String,
+        required: true
+    },
+
+    comments: [{
+        type: String,
+        required: true
+    }]
     
-
-
 });
 
 module.exports = mongoose.model('Car' , CarSchema);

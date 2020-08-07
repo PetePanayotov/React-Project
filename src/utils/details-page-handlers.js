@@ -50,5 +50,32 @@ export default {
         await fetch(url , {method: "DELETE"});
 
         props.history.push('/home');
+    },
+
+    comment: async (event , history , carId , username) => {
+
+        const parent = event.target.parentNode.parentNode;
+        const textArea = parent.querySelector('#textArea');
+        const comment = textArea.value;
+        const data = {
+            carId,
+            username,
+            comment
+        }
+        const url = `http://localhost:9999/api/car/comment/${carId}`;
+
+        const headerObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const promise = await fetch(url , headerObj);
+        
+        textArea.value = '';
+        history.push(`/details?id=${carId}`);
+        
     }
 }

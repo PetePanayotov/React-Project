@@ -179,6 +179,35 @@ const deleteCar = async (req , res , next) => {
 
 };
 
+const commentCar = async (req , res , next) => {
+
+    const {username , comment} = req.body;
+    const {id} = req.params;
+
+    const newComment = JSON.stringify([username , comment]);
+
+    try {
+        
+        const car = await Car.findOneAndUpdate({_id: id} , {
+
+            $addToSet: {
+                comments: [newComment]
+            }
+
+        });
+
+        if (!car) {
+            throw new Error();
+        };
+
+        res.send(car);
+        
+    } catch (error) {
+        next();
+    };
+
+};
+
 module.exports = {
     getAllCars,
     getCar,
@@ -186,7 +215,8 @@ module.exports = {
     updateCar,
     deleteCar,
     likeCar,
-    dislikeCar
+    dislikeCar,
+    commentCar
 }
 
 // module.exports = {

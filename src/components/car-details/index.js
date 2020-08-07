@@ -16,7 +16,8 @@ function CarDetails(props) {
     
     const initialCarInfo = {
         specifications: [],
-        likes: []
+        likes: [],
+        
     };
 
     const [car , setCar] = useState(initialCarInfo);

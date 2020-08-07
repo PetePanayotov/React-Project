@@ -4,12 +4,16 @@ import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import CarDetails from '../../components/car-details';
 import Title from '../../components/title';
+import CommentsSection from '../../components/comments-section';
 import getQueryValue from '../../utils/getQueryValue';
 
 
 function DetailsPage() {
 
-    const [car , setCar] = useState({});
+    const initialState = {
+        comments: []
+    }
+    const [car , setCar] = useState(initialState);
     const location = useLocation();
 
     useEffect(() => {
@@ -36,6 +40,7 @@ function DetailsPage() {
             <Main layout="forms">
                 <Title text={`${car.brand} ${car.model}`}/>
                 <CarDetails/>
+                <CommentsSection commentsArray={car.comments} carId={car._id}/>
             </Main>
         </PageWrapper>
     );
