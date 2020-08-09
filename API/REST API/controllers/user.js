@@ -70,6 +70,7 @@ const loginUser = async (req , res , next) => {
         const user = await User.findOne({username});
         
         if (!user) {
+            res.status(401);
             throw new Error();
         };
 

@@ -13,7 +13,9 @@ function CommentsSection({commentsArray ,carId}) {
     const history = useHistory();
     const {username} = context.user;
     let array = commentsArray.slice(0);
-    array = array.reverse();
+    // array = array.reverse();
+
+    const {comment , removeComment} = detailsPageHandlers;
 
     return (
         <div className={styles.container}>
@@ -23,11 +25,11 @@ function CommentsSection({commentsArray ,carId}) {
                     const [author , comment , time] = JSON.parse(string);
                     
                     return <Comment author={author} time={time} comment={comment} 
-                                handler={(event) => {detailsPageHandlers.removeComment()}}
+                                handler={(event) => removeComment(event, history , carId ,string)}
                             />
                 })
             }
-            <CommentInput handler={(event) => detailsPageHandlers.comment(event , history , carId , username)}/>
+            <CommentInput handler={(event) => comment(event , history , carId , username)}/>
         </div>
     );
 

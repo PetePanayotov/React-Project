@@ -81,13 +81,35 @@ export default {
         };
 
         const promise = await fetch(url , headerObj);
-        
-        textArea.value = '';
-        history.push(`/details?id=${carId}`);
+
+        if (promise.status === 200) {
+            
+            textArea.value = '';
+            return history.push(`/details?id=${carId}`);
+        };
         
     },
 
-    removeComment: {
+    removeComment: async (event , history , carId , string) => {
 
+        const url = `http://localhost:9999/api/car/remove-comment/${carId}`;
+        const data = {comment: string};
+
+        const headerObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const promise = await fetch(url , headerObj);
+
+        if (promise.status === 200) {
+            
+            return history.push(`/details?id=${carId}`);
+        };
+        
+        
     }
 };

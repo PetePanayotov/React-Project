@@ -208,6 +208,33 @@ const commentCar = async (req , res , next) => {
 
 };
 
+const removeComment = async (req , res , next) => {
+
+    const {comment} = req.body;
+    const {id} = req.params;
+
+    try {
+
+        const car = await Car.findOneAndUpdate({_id: id} , {
+
+            $pull: {
+                comments: {$in: [comment]}
+            }
+            
+        });
+
+        if (!car) {
+            throw new Error();
+        };
+
+        res.send('All clear');
+        
+    } catch (error) {
+        next();
+    };
+
+};
+
 module.exports = {
     getAllCars,
     getCar,
@@ -216,7 +243,8 @@ module.exports = {
     deleteCar,
     likeCar,
     dislikeCar,
-    commentCar
+    commentCar,
+    removeComment
 }
 
 // module.exports = {

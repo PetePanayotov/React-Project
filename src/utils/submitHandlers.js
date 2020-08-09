@@ -39,7 +39,6 @@ export default {
 
                 return alert('Invalid credentials')
                 
-
             },
 
     register : async (event , history , state , context) => {
