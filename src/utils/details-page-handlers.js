@@ -18,7 +18,7 @@ export default {
 
         await fetch(url , headerObj);
 
-        history.push('/home');
+        history.replace(`/details?id=${carId}`);
 
     },
 
@@ -40,9 +40,9 @@ export default {
         }
 
         await fetch(url , headerObj);
-
-        history.push('/home');
-
+        
+        history.replace(`/details?id=${carId}`);
+        
     },
 
 
@@ -85,7 +85,7 @@ export default {
         if (promise.status === 200) {
             
             textArea.value = '';
-            return history.push(`/details?id=${carId}`);
+            return history.replace(`/details?id=${carId}`);
         };
         
     },
@@ -107,7 +107,7 @@ export default {
 
         if (promise.status === 200) {
             
-            return history.push(`/details?id=${carId}`);
+            return history.replace(`/details?id=${carId}`);
         };
         
         

@@ -63,12 +63,12 @@ function CarDetails(props) {
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text={<i class="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(history , carId , userId)}/>
+                    <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(history , carId , userId)}/>
                 }
                 {
 
                     !isAdmin && !canLike &&
-                    <Button type ="dislike" text={<i class="far fa-thumbs-down"> Don't Like</i>} handler={(e) => detailsPageHandlers.dislike(history , carId , userId)}/>
+                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => detailsPageHandlers.dislike(history , carId , userId)}/>
 
                 }
             </div>
