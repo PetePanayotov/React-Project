@@ -1,4 +1,4 @@
-import React , {Component, useState, useContext, useEffect} from 'react';
+import React , {useState, useContext} from 'react';
 import {withRouter, useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import Input from '../inputField';
