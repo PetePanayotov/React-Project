@@ -8,7 +8,7 @@ function GuestHomePage() {
 
   useEffect(() => {
     document.title = 'Home'
-  })
+  } , [])
 
   return (
       <PageWrapper>

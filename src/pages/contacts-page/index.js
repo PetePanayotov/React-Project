@@ -8,7 +8,7 @@ function ContactsPage() {
 
     useEffect(() => {
         document.title = 'About'
-    })
+    } , [])
 
     return (
           <PageWrapper>

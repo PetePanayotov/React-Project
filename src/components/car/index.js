@@ -4,10 +4,10 @@ import CarImage from '../car-image';
 import styles from './index.module.css';
 
 
-function Car({page , isAdmin , likes , key , brand , model , id , price , imageUrl}) {
+function Car({page , isAdmin , likes , brand , model , id , price , imageUrl}) {
 
     return (
-        <div key={key} className={styles.wrapper}>
+        <div className={styles.wrapper}>
 
             <CarImage imageUrl={imageUrl} page="catalog"/>
             <div>

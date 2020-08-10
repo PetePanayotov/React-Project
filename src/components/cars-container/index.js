@@ -58,7 +58,7 @@ function Cars(props) {
     
         };
 
-    });
+    } , []);
 
     
     if (page === 'catalog'  && queryString !== '') {
@@ -79,18 +79,19 @@ function Cars(props) {
         cars = cars.slice(0 , 10);
         
     };
+
     
     return (
         <div className={styles.container}>
-            {cars.map((car , index) => {
+            {cars.map((car ) => {
                 const {_id , brand , model , price , imageUrl , likes } = car;
-                
+
                 return (
                     <Car
+                        key={_id}
                         page={page}
                         isAdmin={isAdmin}
                         likes={likes.length}
-                        key={index}
                         id={_id}
                         brand={brand}
                         model={model}

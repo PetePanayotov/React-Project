@@ -17,7 +17,7 @@ function CatalogPage () {
 
     useEffect(() => {
         document.title = 'Catalog';
-    })
+    } , [])
  
     return(
 
@@ -25,10 +25,11 @@ function CatalogPage () {
             <Main layout="forms">
                 <div className={styles.logoContainer}>
 
-                    {logos.map(logo => {
-                        const {qString , src , logoName} = logo;
+                    {logos.map((logo ) => {
+                        const {id , qString , src , logoName} = logo;
                         const newQueryString = qString !== queryString ? qString : ''
                         return (<Logo
+                                    key={id}
                                     href={`/catalog${newQueryString}`}
                                     src={src}
                                     logoName={logoName}

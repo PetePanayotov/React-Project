@@ -13,8 +13,8 @@ const mapStyles = {
 const containerStyle = {
     width: '70%',
     height: '35%',
-    'margin-top': '20px',
-    'margin-left': '225px'
+    marginTop: '20px',
+    marginLeft: '225px'
  
 }
 

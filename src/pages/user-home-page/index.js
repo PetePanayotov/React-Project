@@ -9,7 +9,7 @@ function UserHomePage() {
 
     useEffect(() => {
         document.title = 'Home';
-    })
+    } , [])
 
     return(
         <PageWrapper>

@@ -36,7 +36,7 @@ function DetailsPage() {
 
         })();
 
-    });
+    } , []);
 
     return(
         <PageWrapper>

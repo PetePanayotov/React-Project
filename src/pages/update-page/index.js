@@ -9,7 +9,7 @@ function UpdatePage () {
 
     useEffect(() => {
         document.title = 'Update Page';
-    })
+    } , [])
 
     return (
         <PageWrapper>

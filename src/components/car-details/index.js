@@ -32,12 +32,12 @@ function CarDetails(props) {
                         <label className={styles.label}>Specifications:</label>
 
                         {
-                            car.specifications.map(([property , value]) => {
+                            car.specifications.map(([property , value] , index) => {
 
                                 const text = `${property} : ${value}`
 
                                 return(
-                                    <p>{text}</p>
+                                    <p key={index}>{text}</p>
                                 )
 
                             })

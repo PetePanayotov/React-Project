@@ -46,13 +46,13 @@ export default {
     },
 
 
-    delete: async (props , carId) => {
+    delete: async (history , carId) => {
         
         const url = `http://localhost:9999/api/car/${carId}`;
 
         await fetch(url , {method: "DELETE"});
 
-        props.history.push('/home');
+        history.push('/home');
     },
 
 

@@ -9,7 +9,7 @@ function LoginPage(props) {
 
     useEffect(() => {
         document.title = 'Login Page';
-    })
+    } , [])
 
     return (
         <PageWrapper>
