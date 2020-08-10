@@ -1,51 +1,24 @@
-import React , {useState, useContext, useEffect} from 'react';
-import {withRouter, useLocation} from 'react-router-dom';
+import React , {useContext} from 'react';
+import {useHistory} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import detailsPageHandlers from '../../utils/details-page-handlers';
 import styles from './index.module.css';
-import getQueryValue from '../../utils/getQueryValue';
 
 
 function CarDetails(props) {
 
     const context = useContext(UserContext);
-    const location = useLocation();
-    
-    const initialCarInfo = {
-        specifications: [],
-        likes: [],
-        
-    };
-
-    const [car , setCar] = useState(initialCarInfo);
-
-    useEffect(() => {
-
-        const id = getQueryValue(location);
-
-        (async() => {
-
-            const url = `http://localhost:9999/api/car/${id}`
-
-            const promise = await fetch(url);
-            let response = await promise.json();
-
-            response.specifications = JSON.parse(response.specifications);
-
-            setCar(response);
-
-        })();
-
-    });
-
+    const history = useHistory();
+    const {car} = props;
     const carId = car._id;
     const {isAdmin , user} = context;
     const {userId} = user;
     const updateLink = `/update?carId=${carId}`;
     const canLike = !car.likes.includes(userId);
+    
        
         return(
             
@@ -84,18 +57,18 @@ function CarDetails(props) {
                         
                         <LinkComponent title="Update" href={updateLink} type="update"/>
 
-                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(props , carId)}/>
+                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(history , carId)}/>
 
                     </div>
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text={<i class="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(props , carId , userId)}/>
+                    <Button type ="like" text={<i class="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(history , carId , userId)}/>
                 }
                 {
 
                     !isAdmin && !canLike &&
-                    <Button type ="dislike" text={<i class="far fa-thumbs-down"> Don't Like</i>} handler={(e) => detailsPageHandlers.dislike(props , carId , userId)}/>
+                    <Button type ="dislike" text={<i class="far fa-thumbs-down"> Don't Like</i>} handler={(e) => detailsPageHandlers.dislike(history , carId , userId)}/>
 
                 }
             </div>
@@ -103,4 +76,4 @@ function CarDetails(props) {
 
 };
 
-export default withRouter(CarDetails);
+export default CarDetails;

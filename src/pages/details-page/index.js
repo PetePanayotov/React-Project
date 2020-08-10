@@ -11,7 +11,9 @@ import getQueryValue from '../../utils/getQueryValue';
 function DetailsPage() {
 
     const initialState = {
-        comments: []
+        comments: [],
+        specifications: [],
+        likes: [],
     }
     const [car , setCar] = useState(initialState);
     const location = useLocation();
@@ -27,8 +29,9 @@ function DetailsPage() {
             const url = `http://localhost:9999/api/car/${id}`
 
             const promise = await fetch(url);
-            const response = await promise.json();
-    
+            let response = await promise.json();
+            response.specifications = JSON.parse(response.specifications);
+
             setCar(response);
 
         })();
@@ -39,7 +42,7 @@ function DetailsPage() {
         <PageWrapper>
             <Main layout="forms">
                 <Title text={`${car.brand} ${car.model}`}/>
-                <CarDetails/>
+                <CarDetails car={car}/>
                 <CommentsSection commentsArray={car.comments} carId={car._id}/>
             </Main>
         </PageWrapper>

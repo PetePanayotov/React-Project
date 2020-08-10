@@ -1,6 +1,6 @@
 export default {
 
-    like: async (props, carId , userId) => {
+    like: async (history , carId , userId) => {
 
         const url = `http://localhost:9999/api/car/like/${carId}`;
         
@@ -18,12 +18,12 @@ export default {
 
         await fetch(url , headerObj);
 
-        props.history.push('/home');
+        history.push('/home');
 
     },
 
 
-    dislike : async (props, carId , userId) => {
+    dislike : async (history, carId , userId) => {
 
         const url = `http://localhost:9999/api/car/dislike/${carId}`;
         
@@ -41,7 +41,7 @@ export default {
 
         await fetch(url , headerObj);
 
-        props.history.push('/home');
+        history.push('/home');
 
     },
 

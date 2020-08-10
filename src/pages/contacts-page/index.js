@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import styles from './index.module.css';
 import PageWrapper from '../../components/page-wrapper';
 import GoogleApiWrapper from '../../components/map';
 import Main  from '../../components/main';
+import styles from './index.module.css';
 
-function AboutPage() {
+function ContactsPage() {
 
     useEffect(() => {
         document.title = 'About'
@@ -35,4 +35,4 @@ function AboutPage() {
 
 
 
-export default AboutPage;
+export default ContactsPage;

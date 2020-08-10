@@ -8,8 +8,8 @@ const getLinks = (isLoggedIn , user , isAdmin) => {
         },
         
         {
-            title: 'About Us',
-            link: '/about'
+            title: 'Contacts',
+            link: '/contacts'
             
         },
 
@@ -46,8 +46,8 @@ const getLinks = (isLoggedIn , user , isAdmin) => {
         },
 
         {
-            title: 'About Us',
-            link: '/about'
+            title: 'Contacts',
+            link: '/contacts'
             
         },
 
@@ -79,8 +79,8 @@ const getLinks = (isLoggedIn , user , isAdmin) => {
         },
 
         {
-            title: 'About Us',
-            link: '/about'
+            title: 'Contacts',
+            link: '/contacts'
             
         },
 

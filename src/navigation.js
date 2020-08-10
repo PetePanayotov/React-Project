@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import GuestHomePage  from './pages/guest-home-page';
-import AboutPage  from './pages/about-page';
+import ContactsPage  from './pages/contacts-page';
 import LoginPage from './pages/login-page';
 import RegisterPage from './pages/register-page';
 import CreatePage from './pages/create-page';
@@ -34,7 +34,7 @@ class Navigation extends Component {
                     
                     <Route exact path="/home" component={isLoggedIn ? UserHomePage : GuestHomePage}/>
                     
-                    <Route path="/about" component={AboutPage}/>
+                    <Route path="/contacts" component={ContactsPage}/>
                     
                     <Route exact path="/login" component={isLoggedIn ? UserHomePage : LoginPage}/>
 
