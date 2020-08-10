@@ -1,4 +1,4 @@
-import React , {useState, useContext, useEffect} from 'react';
+import React , {useState, useContext, useEffect, useCallback} from 'react';
 import {useLocation} from 'react-router-dom';
 import UserContext from '../../Context';
 import styles from './index.module.css';
@@ -14,51 +14,49 @@ function Cars(props) {
     const {isAdmin} = context;
     const location = useLocation();
     const queryString = location.search;
+    
+    const getUserLikedCars = useCallback(async () => {
+            
+        const {userId} = props
+        const url = `http://localhost:9999/api/user/${userId}`;
+        const promise = await fetch(url);
+        const user = await promise.json();
+           
+        let {likedCars} = user;
+        likedCars = likedCars.reverse();
+        
+        setCars(likedCars);
+    });
+
+    const getAllCars = useCallback(async () => {
+        
+        const url = 'http://localhost:9999/api/car/';
+        const promise = await fetch(url);
+        const response = await promise.json();
+        
+        let cars = response.slice(0);
+        
+        if (page === 'home') {
+        
+            cars = cars.filter(car => car.isVipOffer === true);
+        };
+        cars = cars.reverse()
+        setCars(cars);
+    });
 
     useEffect(() => {
 
         if (page === 'profile' && !isAdmin) {
             
-            (async() => {
-               
-                const {userId} = props
-                
-                const url = `http://localhost:9999/api/user/${userId}`;
-                
-                const promise = await fetch(url);
-               
-                const user = await promise.json();
-    
-                let {likedCars} = user;
-                likedCars = likedCars.reverse();
-                
-                setCars(likedCars);
-    
-            })();
+            getUserLikedCars();
     
         }else {
         
-            (async() => {
-    
-                const url = 'http://localhost:9999/api/car/';
-                const promise = await fetch(url);
-                const response = await promise.json();
-    
-                let cars = response.slice(0);
-    
-                if (page === 'home') {
-                
-                    cars = cars.filter(car => car.isVipOffer === true);
-    
-                };
-                cars = cars.reverse()
-                setCars(cars);
-    
-            })();
+            getAllCars();
     
         };
 
-    } , []);
+    } , [getAllCars , getUserLikedCars]);
 
     
     if (page === 'catalog'  && queryString !== '') {

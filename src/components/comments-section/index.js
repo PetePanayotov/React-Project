@@ -13,7 +13,7 @@ function CommentsSection({commentsArray ,carId}) {
     const history = useHistory();
     const {username} = context.user;
     let array = commentsArray.slice(0);
-    // array = array.reverse();
+    array = array.reverse();
 
     const {comment , removeComment} = detailsPageHandlers;
 
@@ -21,10 +21,10 @@ function CommentsSection({commentsArray ,carId}) {
         <div className={styles.container}>
             <p className={styles.title}>Comments</p>
             {
-                array.map(string => {
+                array.map((string , index) => {
                     const [author , comment , time] = JSON.parse(string);
                     
-                    return <Comment author={author} time={time} comment={comment} 
+                    return <Comment key={index} author={author} time={time} comment={comment} 
                                 handler={(event) => removeComment(event, history , carId ,string)}
                             />
                 })

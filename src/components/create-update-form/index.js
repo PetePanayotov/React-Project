@@ -66,9 +66,10 @@ class Form extends Component {
 
                 <div className={styles.leftDiv}>
 
-                    {inputFieldsArray.map(({label , stateProperty , type}) => {
+                    {inputFieldsArray.map(({label , stateProperty , type} , index) => {
                         return (
                             <Input
+                                key={index}
                                 type={type}
                                 isChecked={this.state.isVipOffer ?true :false}
                                 label={label}
