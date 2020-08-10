@@ -1,4 +1,4 @@
-import React , {useState, useEffect} from 'react';
+import React , {useState, useEffect, useCallback} from 'react';
 import { useLocation } from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
@@ -18,26 +18,26 @@ function DetailsPage() {
     const [car , setCar] = useState(initialState);
     const location = useLocation();
 
+    const getCars = useCallback(async () => {
+
+        const id = getQueryValue(location);
+        const url = `http://localhost:9999/api/car/${id}`
+
+        const promise = await fetch(url);
+        let response = await promise.json();
+        response.specifications = JSON.parse(response.specifications);
+
+        setCar(response);
+    });
+
     useEffect(() => {
 
         document.title = 'Details Page';
+        getCars()
 
-        const id = getQueryValue(location);
+    }, [getCars]);
 
-        (async() => {
-
-            const url = `http://localhost:9999/api/car/${id}`
-
-            const promise = await fetch(url);
-            let response = await promise.json();
-            response.specifications = JSON.parse(response.specifications);
-
-            setCar(response);
-
-        })();
-
-    } , []);
-
+    
     return(
         <PageWrapper>
             <Main layout="forms">

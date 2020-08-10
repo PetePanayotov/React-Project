@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component should render admin routes 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="linkContainer"
+  >
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/profile?userId=1234"
+        onClick={[Function]}
+      >
+        [tigyra]
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/home"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/catalog"
+        onClick={[Function]}
+      >
+        Catalog
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/create"
+        onClick={[Function]}
+      >
+        Create
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/contacts"
+        onClick={[Function]}
+      >
+        Contacts
+      </a>
+    </div>
+    <div
+      className="footer-button-div"
+    >
+      <button
+        className="footer-button"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+  <p
+    className="paragraph"
+  >
+    AUTO CAR
+  </p>
+</footer>
+`;
+
+exports[`Footer Component should render authenticated routes 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="linkContainer"
+  >
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/profile?userId=1234"
+        onClick={[Function]}
+      >
+        [tigyra]
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/home"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/catalog"
+        onClick={[Function]}
+      >
+        Catalog
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/contacts"
+        onClick={[Function]}
+      >
+        Contacts
+      </a>
+    </div>
+    <div
+      className="footer-button-div"
+    >
+      <button
+        className="footer-button"
+        onClick={[Function]}
+      >
+        Logout
+      </button>
+    </div>
+  </div>
+  <p
+    className="paragraph"
+  >
+    AUTO CAR
+  </p>
+</footer>
+`;
+
+exports[`Footer Component should render not authenticated routes 1`] = `
+<footer
+  className="footer"
+>
+  <div
+    className="linkContainer"
+  >
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/contacts"
+        onClick={[Function]}
+      >
+        Contacts
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </div>
+    <div
+      className="footer-list-item"
+    >
+      <a
+        className="footer-link"
+        href="/register"
+        onClick={[Function]}
+      >
+        Register
+      </a>
+    </div>
+  </div>
+  <p
+    className="paragraph"
+  >
+    AUTO CAR
+  </p>
+</footer>
+`;
