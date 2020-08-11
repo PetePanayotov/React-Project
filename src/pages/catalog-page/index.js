@@ -17,7 +17,8 @@ function CatalogPage () {
 
     useEffect(() => {
         document.title = 'Catalog';
-    } , [])
+    } , []);
+
  
     return(
 

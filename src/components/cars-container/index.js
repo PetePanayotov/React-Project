@@ -4,61 +4,39 @@ import UserContext from '../../Context';
 import styles from './index.module.css';
 import Car from '../car';
 import getQueryValue from '../../utils/getQueryValue';
+import handlers from '../../utils/catalog-page-handlers';
 
 
 function Cars(props) {
 
     let [cars , setCars] = useState([]);
     const context = useContext(UserContext);
-    const {page} = props;
+    const {page , userId} = props;
     const {isAdmin} = context;
     const location = useLocation();
     const queryString = location.search;
-    
-    const getUserLikedCars = useCallback(async () => {
-            
-        const {userId} = props
-        const url = `http://localhost:9999/api/user/${userId}`;
-        const promise = await fetch(url);
-        const user = await promise.json();
-           
-        let {likedCars} = user;
-        likedCars = likedCars.reverse();
-        
-        setCars(likedCars);
-    });
-
-    const getAllCars = useCallback(async () => {
-        
-        const url = 'http://localhost:9999/api/car/';
-        const promise = await fetch(url);
-        const response = await promise.json();
-        
-        let cars = response.slice(0);
-        
-        if (page === 'home') {
-        
-            cars = cars.filter(car => car.isVipOffer === true);
-        };
-        cars = cars.reverse()
-        setCars(cars);
-    });
+    const {getUserLikedCars , getAllCars} = handlers;
 
     useEffect(() => {
 
         if (page === 'profile' && !isAdmin) {
             
-            getUserLikedCars();
-    
+            (async () => {
+                const likedCars = await getUserLikedCars(userId);
+                setCars(likedCars);
+            })();
+            
         }else {
         
-            getAllCars();
+            (async () => {
+                const allCars = await getAllCars(page);
+                setCars(allCars);
+            })();
     
         };
 
-    } , [getAllCars , getUserLikedCars]);
+    } , []);
 
-    
     if (page === 'catalog'  && queryString !== '') {
         
         const brand = getQueryValue(location);
@@ -78,7 +56,6 @@ function Cars(props) {
         
     };
 
-    
     return (
         <div className={styles.container}>
             {cars.map((car ) => {

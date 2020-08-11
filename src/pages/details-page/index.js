@@ -18,7 +18,7 @@ function DetailsPage() {
     const [car , setCar] = useState(initialState);
     const location = useLocation();
 
-    const getCars = useCallback(async () => {
+    const getCar = useCallback(async () => {
 
         const id = getQueryValue(location);
         const url = `http://localhost:9999/api/car/${id}`
@@ -33,17 +33,17 @@ function DetailsPage() {
     useEffect(() => {
 
         document.title = 'Details Page';
-        getCars()
+        getCar()
 
-    }, [getCars]);
+    }, []);
 
-    
+
     return(
         <PageWrapper>
             <Main layout="forms">
                 <Title text={`${car.brand} ${car.model}`}/>
                 <CarDetails car={car}/>
-                <CommentsSection commentsArray={car.comments} carId={car._id}/>
+                <CommentsSection car={car} commentsArray={car.comments} carId={car._id}/>
             </Main>
         </PageWrapper>
     );

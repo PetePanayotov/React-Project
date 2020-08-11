@@ -1,4 +1,4 @@
-const getInputFields = (page) => {
+const getInputFields = () => {
 
     const inputFields = {
 

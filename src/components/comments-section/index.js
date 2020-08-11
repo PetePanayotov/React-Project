@@ -24,12 +24,12 @@ function CommentsSection({commentsArray ,carId}) {
                 array.map((string , index) => {
                     const [author , comment , time] = JSON.parse(string);
                     
-                    return <Comment key={index} author={author} time={time} comment={comment} 
-                                handler={(event) => removeComment(event, history , carId ,string)}
+                    return <Comment  key={index} author={author} time={time} comment={comment} 
+                                handler={() => removeComment(history ,carId ,string)}
                             />
                 })
             }
-            <CommentInput handler={(event) => comment(event , history , carId , username)}/>
+            <CommentInput handler={(event) => comment(event , history ,carId , username)}/>
         </div>
     );
 

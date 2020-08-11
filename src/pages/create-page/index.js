@@ -9,7 +9,8 @@ function CreatePage () {
 
     useEffect(() => {
         document.title = 'Create Page'
-    } , [])
+    } , []);
+
 
     return (
         <PageWrapper>

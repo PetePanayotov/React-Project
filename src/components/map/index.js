@@ -54,7 +54,7 @@ class MapContainer extends Component {
                 google={this.props.google}
                 zoom={14}
                 style={mapStyles}
-                initialCenter={{ lat: 42.299807, lng: 23.112225 }}
+                initialCenter={{ lat: 42.291441, lng: 23.1186785 }}
               
             >
               <Marker

@@ -8,17 +8,16 @@ import detailsPageHandlers from '../../utils/details-page-handlers';
 import styles from './index.module.css';
 
 
-function CarDetails(props) {
-
+function CarDetails({car}) {
+    
     const context = useContext(UserContext);
     const history = useHistory();
-    const {car} = props;
     const carId = car._id;
     const {isAdmin , user} = context;
     const {userId} = user;
     const updateLink = `/update?carId=${carId}`;
     const canLike = !car.likes.includes(userId);
-    
+    const {like , dislike , deleteCar} = detailsPageHandlers;
        
         return(
             
@@ -57,18 +56,18 @@ function CarDetails(props) {
                         
                         <LinkComponent title="Update" href={updateLink} type="update"/>
 
-                        <Button type ="delete" text="Delete" handler={(e) => detailsPageHandlers.delete(history , carId)}/>
+                        <Button type ="delete" text="Delete" handler={(e) => deleteCar(history , carId)}/>
 
                     </div>
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => detailsPageHandlers.like(history , carId , userId)}/>
+                    <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(history , carId , userId)}/>
                 }
                 {
 
                     !isAdmin && !canLike &&
-                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => detailsPageHandlers.dislike(history , carId , userId)}/>
+                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(history , carId , userId)}/>
 
                 }
             </div>

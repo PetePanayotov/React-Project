@@ -2,10 +2,10 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../config/config');
-const cookieName = config.cookieName;
+const {cookieName , privateKey} = config;
 
 const generateToken = async data => {
-    const token = await jwt.sign(data , config.privateKey);
+    const token = await jwt.sign(data , privateKey);
     return token;
 };
 
@@ -107,7 +107,7 @@ const verifyUser = async (req , res , next) => {
 
     const {token} = req.body;
 
-    const decodeObj = jwt.verify(token , config.privateKey);
+    const decodeObj = jwt.verify(token , privateKey);
     
     const {username , userId} = decodeObj;
 
@@ -128,10 +128,6 @@ const verifyUser = async (req , res , next) => {
 
 };
 
-const logoutUser = (req , res , next) => {
-  
-    res.clearCookie(cookieName).send('Logout successfully');
-};
 
 const updatedUser = async (req , res , next) => {
 
@@ -207,69 +203,8 @@ module.exports = {
     getUsers,
     registerUser,
     loginUser,
-    logoutUser,
     updatedUser,
     deleteUser,
     verifyUser,
     getUserWithCars
 }
-
-// module.exports = {
-//     get: (req, res, next) => {
-//         models.User.find()
-//             .then((users) => res.send(users))
-//             .catch(next)
-//     },
-
-//     post: {
-//         register: (req, res, next) => {
-//             const { username, password } = req.body;
-//             models.User.create({ username, password })
-//                 .then((createdUser) => res.send(createdUser))
-//                 .catch(next)
-//         },
-
-//         login: (req, res, next) => {
-//             const { username, password } = req.body;
-//             models.User.findOne({ username })
-//                 .then((user) => Promise.all([user, user.matchPassword(password)]))
-//                 .then(([user, match]) => {
-//                     if (!match) {
-//                         res.status(401).send('Invalid password');
-//                         return;
-//                     }
-
-//                     const token = utils.jwt.createToken({ id: user._id });
-//                     res.cookie(config.authCookieName, token).send(user);
-//                 })
-//                 .catch(next);
-//         },
-
-//         logout: (req, res, next) => {
-//             const token = req.cookies[config.authCookieName];
-//             console.log('-'.repeat(100));
-//             console.log(token);
-//             console.log('-'.repeat(100));
-//             models.TokenBlacklist.create({ token })
-//                 .then(() => {
-//                     res.clearCookie(config.authCookieName).send('Logout successfully!');
-//                 })
-//                 .catch(next);
-//         }
-//     },
-
-//     put: (req, res, next) => {
-//         const id = req.params.id;
-//         const { username, password } = req.body;
-//         models.User.update({ _id: id }, { username, password })
-//             .then((updatedUser) => res.send(updatedUser))
-//             .catch(next)
-//     },
-
-//     delete: (req, res, next) => {
-//         const id = req.params.id;
-//         models.User.deleteOne({ _id: id })
-//             .then((removedUser) => res.send(removedUser))
-//             .catch(next)
-//     }
-// };

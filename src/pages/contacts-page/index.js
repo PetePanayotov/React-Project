@@ -8,7 +8,8 @@ function ContactsPage() {
 
     useEffect(() => {
         document.title = 'About'
-    } , [])
+    } , []);
+
 
     return (
           <PageWrapper>
@@ -23,7 +24,7 @@ function ContactsPage() {
                               <span>Phone: </span><span>089*******</span>
                           </li>
                           <li>
-                              <span>Email: </span><span>autocar@abv.bg</span>
+                              <span>Email: </span><span>autocar@gmail.com</span>
                           </li>
                       </ul>
                   </div>

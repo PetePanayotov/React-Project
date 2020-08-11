@@ -22,8 +22,6 @@ router.post('/register' , async (req , res , next) => {
 
 });
 
-
-
 router.post('/login', async (req , res , next) => {
     
     await loginUser(req , res , next);
@@ -34,13 +32,6 @@ router.post('/verify' , async (req , res , next) => {
 
     await verifyUser(req , res , next);
 
-})
-
-router.post('/logout', (req  , res) => {
-    
-    const cookieName = config.cookieName;
-    res.clearCookie(cookieName).send('Logout successfully')
-    
 });
 
 router.put('/:id', async (req , res , next) => {

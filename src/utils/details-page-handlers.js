@@ -1,6 +1,4 @@
-export default {
-
-    like: async (history , carId , userId) => {
+const like = async (history , carId , userId) => {
 
         const url = `http://localhost:9999/api/car/like/${carId}`;
         
@@ -15,22 +13,29 @@ export default {
             },
             body: JSON.stringify(data)
         }
-
-        await fetch(url , headerObj);
-
+    
+        const promise  = await fetch(url , headerObj);
+    
+        if (promise.status === 200) {
+            history.goBack();
+            
+            setTimeout(() => {
+                history.goForward()
+            } , 3)
+        };
+    
         history.replace(`/details?id=${carId}`);
+};
 
-    },
 
-
-    dislike : async (history, carId , userId) => {
+const dislike = async (history, carId , userId) => {
 
         const url = `http://localhost:9999/api/car/dislike/${carId}`;
-        
+
         const data = {
             userId
         }
-        
+
         const headerObj = {
             method: 'POST',
             headers: {
@@ -39,31 +44,35 @@ export default {
             body: JSON.stringify(data)
         }
 
-        await fetch(url , headerObj);
-        
-        history.replace(`/details?id=${carId}`);
-        
-    },
+        const promise = await fetch(url , headerObj);
+
+        if (promise.status === 200) {
+            history.goBack();
+
+            setTimeout(() => {
+                history.goForward()
+            } , 3)
+        };
+    
+};
 
 
-    delete: async (history , carId) => {
-        
+const deleteCar = async (history , carId) => {
+    
         const url = `http://localhost:9999/api/car/${carId}`;
-
         await fetch(url , {method: "DELETE"});
-
         history.push('/home');
-    },
+};
 
 
-    comment: async (event , history , carId , username) => {
+const comment = async (event , history ,carId , username) => {
 
         const parent = event.target.parentNode.parentNode;
         const textArea = parent.querySelector('#textArea');
         const comment = textArea.value;
         const timeString = new Date().toString();
         const [time, ] = timeString.split('G');
-        
+
         const data = {
             carId,
             username,
@@ -83,14 +92,17 @@ export default {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            
-            textArea.value = '';
-            return history.replace(`/details?id=${carId}`);
-        };
-        
-    },
+            history.goBack();
 
-    removeComment: async (event , history , carId , string) => {
+            setTimeout(() => {
+                history.goForward()
+            } , 3)
+        };
+
+}
+
+
+const removeComment = async (history ,carId , string) => {
 
         const url = `http://localhost:9999/api/car/remove-comment/${carId}`;
         const data = {comment: string};
@@ -106,10 +118,20 @@ export default {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            
-            return history.replace(`/details?id=${carId}`);
+
+            history.goBack();
+
+            setTimeout(() => {
+                history.goForward()
+            } , 3)
         };
-        
-        
-    }
+    
+};
+
+export default {
+    like,
+    dislike,
+    deleteCar,
+    comment,
+    removeComment
 };

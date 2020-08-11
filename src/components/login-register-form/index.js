@@ -7,9 +7,8 @@ import styles from './index.module.css';
 import getInputFields from '../../utils/login-register-input-Fields';
 import submitHandlers from '../../utils/submitHandlers';
 
-function Form (props) {
-    
-    const {page} = props;
+function Form ({page}) {
+ 
     const context = useContext(UserContext);
     const history = useHistory();
     const handleSubmit = submitHandlers[page];

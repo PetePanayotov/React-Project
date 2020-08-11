@@ -27,8 +27,7 @@ function ProfilePage() {
 
         setGreeting(newGreeting);
         
-    } , [])
-
+    } , []);
 
     return(
             <PageWrapper>
@@ -39,7 +38,6 @@ function ProfilePage() {
             </PageWrapper>
         )
     
-
 };
 
 export default ProfilePage;

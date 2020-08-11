@@ -52,14 +52,14 @@ class Form extends Component {
 
         };
 
-};
+    };
 
     render() {
         
         const {page} = this.props
         const array = this.state.specifications;
         const inputFieldsArray = getCreateInputFields();
-        const handleSubmit = this.props.page === 'create' ?submitHandlers.create : submitHandlers.update
+        const handleSubmit = submitHandlers[page];
         
         return (
             <form className={styles.form}>

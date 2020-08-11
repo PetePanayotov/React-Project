@@ -9,7 +9,8 @@ function RegisterPage() {
 
     useEffect(() => {
         document.title = 'Register Page';
-    })
+    });
+
 
     return (
         <PageWrapper>

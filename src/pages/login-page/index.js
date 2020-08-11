@@ -11,6 +11,7 @@ function LoginPage(props) {
         document.title = 'Login Page';
     } , [])
 
+
     return (
         <PageWrapper>
             <Main layout="forms">
