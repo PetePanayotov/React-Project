@@ -1,73 +1,65 @@
-<<<<<<< HEAD
-# React-Project
-This is my react-project for softuni
-=======
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my project for the ReactJS Course at The Software University
 
-## Available Scripts
+The Project was inspired by websites like https://vsi4kibri4ki.com/ , https://www.mobile.bg and my passion for sport cars.
+It is a e-catlog for a car dealership which offers new and used cars.
 
-In the project directory, you can run:
+To start the project you have to:
+    1) Open cmd in the folder of the project and enter the following command: npm install.
+    2) Open cmd in the "REST API" folder and enter the following command: npm install
+    3) Open cmd in the "REST API" folder and enter the following command: npm start
+    4) Open cmd in the folder of the project and enter the following command: npm start
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The front-end part of the project was written with the React framework.
+The back-end part was written with the Express framework.
+I used Mongo Atlas to store the data.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+There are three types of users:
 
-### `npm test`
+    1) Guest User (Unauthenticated):
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        This user can access the following pages:
+            - Guest Home Page
+            - Contacts Page
+            - Login Page
+            - Register Page
+    
+    2) Regular User (Authenticated):
 
-### `npm run build`
+        This user can access the following pages:
+            - User Profile Page
+            - User Home Page
+            - Catalog Page
+            - Details Page
+    
+    3) Admin User (Authenticated):
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+        This user can access the following pages:
+            - Admin Profile Page
+            - User Home Page
+            - Catalog Page
+            - Details Page
+            - Create Page
+            - Update Page
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+The Pages are:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Contacts Page -  you can see how you can get in touch with us;
 
-### `npm run eject`
+- Login Page -  registerd users can login
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Register Page -  you can create your account
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- User Profile Page - Regular Users can see the cars that they have liked and are interested in
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- User home Page - Regular Users can see our best offers
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Catalog Page - Users can see all available cars and can filter them by brand
 
-## Learn More
+- Details Page  - Users can find out more about the car. They can 'like' it and the car will apper in their profile page or 'dislike' it if they are not interested in this offer any more. Users can also ask questions or leave comments under the car info.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Admin Profile Page - The Admin User can see the top 10 most liked cars with the likes each car has
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Create Page - The Admin User can create a new car
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
->>>>>>> 7ea5b9e... feat-project init
+- Update Page - The Admin User can update the information for the car
