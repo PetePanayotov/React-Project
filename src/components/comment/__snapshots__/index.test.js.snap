@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Component Should render admin account comment 1`] = `
+<div
+  className="container"
+>
+  <p
+    className="author-paragraph"
+  >
+    amador
+    <label
+      className="label"
+    >
+      12.08.2020
+    </label>
+  </p>
+  <p
+    className="comment-paragraph"
+  >
+    Vyrvi li
+  </p>
+  <div
+    className="remove-button-div"
+  >
+    <button
+      className="remove-button"
+      onClick={[Function]}
+    >
+      Remove
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Comment Component Should render regular user account comment 1`] = `
+<div
+  className="container"
+>
+  <p
+    className="author-paragraph"
+  >
+    amador
+    <label
+      className="label"
+    >
+      12.08.2020
+    </label>
+  </p>
+  <p
+    className="comment-paragraph"
+  >
+    Vyrvi li
+  </p>
+</div>
+`;

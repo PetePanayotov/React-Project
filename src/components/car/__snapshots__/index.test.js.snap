@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Car Component Should render admin user page Car article 1`] = `
+<div
+  className="wrapper"
+>
+  <section
+    className="catalog-imageWrapper"
+  >
+    <img
+      alt="Car Image"
+      className="catalog-image"
+      src="https://google.com/bmw"
+    />
+  </section>
+  <div>
+    <p
+      className="paragraph"
+    >
+      BMW 330 E92
+    </p>
+    <p
+      className="paragraph"
+    >
+      Price: 
+      30 000
+       BGN
+    </p>
+  </div>
+  <div
+    className="like-link-div"
+  >
+    <div
+      className="car-list-item"
+    >
+      <a
+        className="car-link"
+        href="/details?id=1234567"
+        onClick={[Function]}
+      >
+        Findout More
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Car Component Should render catalog page Car article 1`] = `
+<div
+  className="wrapper"
+>
+  <section
+    className="catalog-imageWrapper"
+  >
+    <img
+      alt="Car Image"
+      className="catalog-image"
+      src="https://google.com/bmw"
+    />
+  </section>
+  <div>
+    <p
+      className="paragraph"
+    >
+      BMW 330 E92
+    </p>
+    <p
+      className="paragraph"
+    >
+      Price: 
+      30 000
+       BGN
+    </p>
+  </div>
+  <div
+    className="like-link-div"
+  >
+    <div
+      className="car-list-item"
+    >
+      <a
+        className="car-link"
+        href="/details?id=1234567"
+        onClick={[Function]}
+      >
+        Findout More
+      </a>
+    </div>
+  </div>
+</div>
+`;

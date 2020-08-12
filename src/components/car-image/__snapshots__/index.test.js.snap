@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarImage Component Should render catalog page car image 1`] = `
+<section
+  className="catalog-imageWrapper"
+>
+  <img
+    alt="Car Image"
+    className="catalog-image"
+    src="https://google.com"
+  />
+</section>
+`;
+
+exports[`CarImage Component Should render details page car image 1`] = `
+<section
+  className="details-imageWrapper"
+>
+  <img
+    alt="Car Image"
+    className="details-image"
+    src="https://google.com"
+  />
+</section>
+`;
