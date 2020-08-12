@@ -6,7 +6,7 @@ function CommentInput({handler}) {
 
     return(
         <div className={styles.container}>
-            <textarea id="textArea" className={styles.textArea} placeholder="Enter your comment here..."/>
+            <textarea id="textArea" className={styles.textArea} placeholder="Ask a question or leave a comment here..."/>
             <Button type="comment" text="Comment" handler={handler}/>
         </div>
     );

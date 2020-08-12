@@ -21,7 +21,7 @@ const getAllCars = async (req , res, next) => {
 };
 
 const getCar = async (req , res , next) => {
- 
+    
     const {id} = req.params;
 
     try {
