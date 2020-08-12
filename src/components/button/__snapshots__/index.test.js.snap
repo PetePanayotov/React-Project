@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component Should render Comment button 1`] = `
+<div
+  className="comment-button-div"
+>
+  <button
+    className="comment-button"
+    onClick={[Function]}
+  >
+    Comment
+  </button>
+</div>
+`;
+
+exports[`Button Component Should render Delete button 1`] = `
+<div
+  className="delete-button-div"
+>
+  <button
+    className="delete-button"
+  >
+    Delete
+  </button>
+</div>
+`;
+
+exports[`Button Component Should render Like button 1`] = `
+<div
+  className="like-button-div"
+>
+  <button
+    className="like-button"
+    onClick={[Function]}
+  >
+    Like
+  </button>
+</div>
+`;
+
+exports[`Button Component Should render Remove Comment button 1`] = `
+<div
+  className="remove-button-div"
+>
+  <button
+    className="remove-button"
+  >
+    Remove
+  </button>
+</div>
+`;
+
+exports[`Button Component Should render dislike button 1`] = `
+<div
+  className="like-button-div"
+>
+  <button
+    className="like-button"
+    onClick={[Function]}
+  >
+    Don't Like
+  </button>
+</div>
+`;
