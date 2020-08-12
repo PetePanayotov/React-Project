@@ -6,16 +6,13 @@ const getInputFields = () => {
             {
                 label: 'Username:',
                 type: 'text',
-                value: 'username',
-                key: '1'
-               
+                value: 'username'
             },
 
             {
                 label: 'Password:',
                 type: 'password',
-                value: 'password',
-                key: '2'
+                value: 'password'
             }
         ],
 
@@ -24,22 +21,19 @@ const getInputFields = () => {
             {
                 label: 'Username:',
                 type: 'text',
-                value: 'username',
-                key: '1'
+                value: 'username'
             },
 
             {
                 label: 'Password:',
                 type: 'password',
-                value: 'password',
-                key: '2'
+                value: 'password'
             },
 
             {
                 label: 'Repeat Password:',
                 type: 'password',
-                value: 'rePassword',
-                key: '3'
+                value: 'rePassword'
             }
         ]
 

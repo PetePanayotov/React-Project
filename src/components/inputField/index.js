@@ -2,18 +2,18 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-function Input(props) {
+function Input({labelName , value , handleChange , type}) {
 
     return (
 
-        <div className={styles.div} key={props.keyName}>
+        <div className={styles.div}>
             <label className={styles.label}>
-                {props.labelName}
+                {labelName}
             </label>
             <input 
-                value={props.value} 
-                onChange={props.handleChange} 
-                type={props.type}
+                value={value} 
+                onChange={handleChange} 
+                type={type}
                 className={styles.input} 
             />
         </div>

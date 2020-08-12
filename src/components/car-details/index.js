@@ -100,7 +100,7 @@ function CarDetails({setParentState}) {
                 {
 
                     !isAdmin && !canLike &&
-                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , isLiked ,setIsLiked)}/>
+                    <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , isLiked ,setIsLiked)}/>
 
                 }
             </div>

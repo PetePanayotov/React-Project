@@ -1,4 +1,4 @@
-import React , {useState, useContext, useEffect, useCallback} from 'react';
+import React , {useState, useContext, useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import UserContext from '../../Context';
 import styles from './index.module.css';
@@ -7,11 +7,10 @@ import getQueryValue from '../../utils/getQueryValue';
 import handlers from '../../utils/catalog-page-handlers';
 
 
-function Cars(props) {
+function Cars({page , userId}) {
 
     let [cars , setCars] = useState([]);
     const context = useContext(UserContext);
-    const {page , userId} = props;
     const {isAdmin} = context;
     const location = useLocation();
     const queryString = location.search;

@@ -1,4 +1,4 @@
-import React , {Component} from 'react';
+import React from 'react';
 import LinkComponent from '../link';
 import CarImage from '../car-image';
 import styles from './index.module.css';

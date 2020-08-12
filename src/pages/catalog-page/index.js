@@ -41,7 +41,7 @@ function CatalogPage () {
 
                 </div>
                 <Title text="All offers"/>
-                <Cars queryString={queryString} page='catalog'/>
+                <Cars page='catalog'/>
               </Main>
         </PageWrapper>
 

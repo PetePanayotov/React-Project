@@ -40,17 +40,17 @@ function Form ({page}) {
         
         <form className={styles.form}>
            
-            {getInputFields()[page].map(({label , type , value , key}) => {
+            {getInputFields()[page].map(({label , type , value} , i) => {
                 
                 return (
                 
                     <Input
-
-                        labelName={label}
+                        key = {i}
+                        labelName = {label}
                         handleChange = {(event) => handleChange(event , value)}
                         type = {type}
                         value = {state[value]}
-                        keyName={key.toString()}
+                        
                     />
                 
                 )
