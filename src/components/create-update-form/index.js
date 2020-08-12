@@ -101,9 +101,9 @@ class Form extends Component {
 
                     {page === 'create' && 
                         
-                        array.map(arr => {
+                        array.map((arr , i) => {
                             return (
-                                <SpecificationsBox inputsValue={arr} 
+                                <SpecificationsBox key={i} inputsValue={arr} 
                                 handleBlur={(event) => handlers.handleCharactericsChange(event , this.state , this.updateState)}/>
                             );
                         })

@@ -1,23 +1,56 @@
-import React , {useContext} from 'react';
-import {useHistory} from 'react-router-dom';
+import React , {useContext ,  useState, useEffect, useCallback} from 'react';
+import {useHistory , useLocation} from 'react-router-dom';
 import UserContext from '../../Context';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import detailsPageHandlers from '../../utils/details-page-handlers';
+import getQueryValue from '../../utils/getQueryValue';
 import styles from './index.module.css';
 
 
-function CarDetails({car}) {
+function CarDetails({setParentState}) {
     
-    const context = useContext(UserContext);
     const history = useHistory();
-    const carId = car._id;
+    const location = useLocation();
+    const context = useContext(UserContext);
     const {isAdmin , user} = context;
     const {userId} = user;
+    const {like , dislike , deleteCar} = detailsPageHandlers;
+
+    const initialState = {
+        specifications: [],
+        likes: [],
+    };
+
+    const [car , setCar] = useState(initialState);
+    const [isLiked , setIsLiked] = useState(false);
+
+    const getCar = useCallback(async () => {
+
+        const id = getQueryValue(location);
+        const url = `http://localhost:9999/api/car/${id}`
+
+        const promise = await fetch(url);
+        let response = await promise.json();
+        response.specifications = JSON.parse(response.specifications);
+
+        setCar(response);
+        setParentState(`${response.brand} ${response.model}`);
+
+    } , []);
+
+    useEffect(() => {
+
+        document.title = 'Details Page';
+        getCar()
+
+    }, [isLiked]);
+
+    const carId = car._id;
     const updateLink = `/update?carId=${carId}`;
     const canLike = !car.likes.includes(userId);
-    const {like , dislike , deleteCar} = detailsPageHandlers;
+
        
         return(
             
@@ -62,12 +95,12 @@ function CarDetails({car}) {
                 }
                 {
                     !isAdmin && canLike &&
-                    <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(history , carId , userId)}/>
+                    <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(carId , userId , isLiked ,setIsLiked)}/>
                 }
                 {
 
                     !isAdmin && !canLike &&
-                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(history , carId , userId)}/>
+                    <Button type ="dislike" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , isLiked ,setIsLiked)}/>
 
                 }
             </div>

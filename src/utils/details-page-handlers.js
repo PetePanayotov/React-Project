@@ -1,4 +1,4 @@
-const like = async (history , carId , userId) => {
+const like = async (carId , userId , isLiked ,setIsLiked) => {
 
         const url = `http://localhost:9999/api/car/like/${carId}`;
         
@@ -17,18 +17,13 @@ const like = async (history , carId , userId) => {
         const promise  = await fetch(url , headerObj);
     
         if (promise.status === 200) {
-            history.goBack();
-            
-            setTimeout(() => {
-                history.goForward()
-            } , 3)
+            setIsLiked(!isLiked)
         };
     
-        history.replace(`/details?id=${carId}`);
 };
 
 
-const dislike = async (history, carId , userId) => {
+const dislike = async (carId , userId , isLiked , setIsLiked) => {
 
         const url = `http://localhost:9999/api/car/dislike/${carId}`;
 
@@ -47,11 +42,7 @@ const dislike = async (history, carId , userId) => {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            history.goBack();
-
-            setTimeout(() => {
-                history.goForward()
-            } , 3)
+            setIsLiked(!isLiked)
         };
     
 };
@@ -64,8 +55,24 @@ const deleteCar = async (history , carId) => {
         history.push('/home');
 };
 
+const loadComments = (event, justMount ,setJustMount , setCar) => {
+    
+    let button = event.target
+    
+    if (button.textContent === 'Load') {
+        
+        setJustMount(!justMount);
+        button.textContent = 'Hide';
+        
+    }else {
+        button.textContent = 'Load';
+        setJustMount(!justMount);
+        setCar({ comments: [] })
+    }
 
-const comment = async (event , history ,carId , username) => {
+};
+
+const comment = async (event ,carId , username , btnIsPressed , setBtnIsPressed) => {
 
         const parent = event.target.parentNode.parentNode;
         const textArea = parent.querySelector('#textArea');
@@ -92,17 +99,14 @@ const comment = async (event , history ,carId , username) => {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            history.goBack();
-
-            setTimeout(() => {
-                history.goForward()
-            } , 3)
+            textArea.value = '';
+            setBtnIsPressed(!btnIsPressed)
         };
 
-}
+};
 
 
-const removeComment = async (history ,carId , string) => {
+const removeComment = async (carId , string , btnIsPressed , setBtnIsPressed) => {
 
         const url = `http://localhost:9999/api/car/remove-comment/${carId}`;
         const data = {comment: string};
@@ -118,12 +122,7 @@ const removeComment = async (history ,carId , string) => {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-
-            history.goBack();
-
-            setTimeout(() => {
-                history.goForward()
-            } , 3)
+            setBtnIsPressed(!btnIsPressed)
         };
     
 };
@@ -133,5 +132,6 @@ export default {
     dislike,
     deleteCar,
     comment,
-    removeComment
+    removeComment,
+    loadComments
 };
