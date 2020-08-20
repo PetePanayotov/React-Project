@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Navigation from './navigation';
+import ErrorBoundary from './ErrorBoundaries';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App>
-    
-      <Navigation />
+    <ErrorBoundary>
+      <App>
 
-    </App>
+        <Navigation />
+
+      </App>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 
