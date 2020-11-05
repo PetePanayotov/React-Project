@@ -1,9 +1,22 @@
-.div {
+.div-selected-false,
+.div-selected-true {
     width: 100px;
     height: 70px;
 }
 
-.div:hover{
+.div-selected-true {
+    border-bottom: 2px solid #282C34;
+    padding-bottom: 10px;
+}
+
+.div-selected-false {
+    border-bottom: none;
+    padding-bottom: none;
+}
+
+.div-selected-false:hover , 
+.div-selected-true:hover{
+    cursor: pointer;
     border-bottom: 2px solid #282C34;
     padding-bottom: 10px;
 }
@@ -11,4 +24,14 @@
 .img {
     width: 100%;
     height: 100%;
+}
+
+.div-selected-true {
+    border-bottom: 2px solid #282C34;
+    padding-bottom: 10px;
+}
+
+.div-selected-false {
+    border-bottom: none;
+    padding-bottom: none;
 }

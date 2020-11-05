@@ -1,110 +1,120 @@
-import React , {Component} from 'react';
+import React , {useEffect, useState} from 'react';
 import UserContext from './Context';
+import handlers from './utils/catalog-page-handlers';
+
+const {getAllCars} = handlers;
 
 function getCookie(name) {
     let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
 };
 
-class App extends Component {
 
-    constructor(props) {
-        super(props);
+const App = (props) => {
 
-        this.state = {
-            isLoggedIn: null,
-            user: {},
-            isAdmin: undefined
-        }
-    };
+    const initialState = {
 
-    login = (user , isAdmin) => {
+        isLoggedIn: null,
+        cars: [],
+        user: {},
+        isAdmin: undefined
+    }
+
+    const [state , setState] = useState(initialState);
+    const {isLoggedIn , user, isAdmin , cars} = state;
+
+
+    const login = async (user , isAdmin) => {
+
+        const allCars = await getAllCars();
         
-        this.setState({
+        setState({
             isLoggedIn: true,
             user,
-            isAdmin
+            isAdmin,
+            cars: allCars
         });
+
     };
 
-    logout = () => {
+    const logout = () => {
+
         document.cookie = "oreo= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
         
-        this.setState({
+        setState({
             isLoggedIn: false,
             user: {},
-            isAdmin: undefined
+            isAdmin: undefined,
+            cars: []
         });
 
     };
 
-    componentDidMount() {
+    const verifyWhenRefresh = async () => {
 
+        const cookieValue = getCookie('oreo');
 
-        (async () => {
-
-            const cookieValue = getCookie('oreo');
-
-            if (!cookieValue) {
-                return this.logout()
-                
-            };
+        if (!cookieValue) {
+            return logout()
             
-            const url = 'http://localhost:9999/api/user/verify';
+        };
+        
+        const url = 'http://localhost:9999/api/user/verify';
+        
+        const data = {token: cookieValue};
+  
+        const headersObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        };
+
+        const promise = await fetch(url , headersObj);
+
+        if (promise.status === 200) {
             
-            const data = {token: cookieValue};
-      
-            const headersObj = {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            };
-    
-            const promise = await fetch(url , headersObj);
+            const response = await promise.json();
+            const [isAdmin , user] = response;
+            
+            return login(user , isAdmin);
+        };
 
-            if (promise.status === 200) {
-                
-                const response = await promise.json();
-                const [isAdmin , user] = response;
-                
-                return this.login(user , isAdmin);
-            };
-
-            return this.logout();
-    
-        })();
-
+        return logout();
 
     };
 
-    render() {
+    useEffect(() => {
 
-        const {isLoggedIn , user, isAdmin} = this.state;
+        verifyWhenRefresh();
 
-        if (isLoggedIn === null) {
-            return(<div>Loading...</div>);
-        }
+    } , []);
 
-        return(
-            <UserContext.Provider 
-                value = {{
-                    isLoggedIn,
-                    user,
-                    isAdmin,
-                    login: this.login,
-                    logout: this.logout
+
+    if (isLoggedIn === null) {
+        return(<div>Loading...</div>);
+    };
+
+    return (
+
+        <UserContext.Provider 
+            value = {{
+                isLoggedIn,
+                user,
+                cars,
+                isAdmin,
+                login, 
+                logout,
+
+            }}
+        >
+            
+            {props.children}
+
+        </UserContext.Provider>
     
-                }}
-            >
-                
-                {this.props.children}
-
-            </UserContext.Provider>
-        
-        )
-    }
+    );
 
 };
 

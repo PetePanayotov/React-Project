@@ -7,14 +7,15 @@ const getAllCars = async (req , res, next) => {
     try {
         
         const cars = await Car.find();
-        
+
         if (!cars) {
             throw new Error();
         };
 
-        res.send(cars);
+        res.status(200).send(cars)
 
     } catch (error) {
+        res.status(503);
         next();
     };
 
