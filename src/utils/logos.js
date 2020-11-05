@@ -15,65 +15,56 @@ const getLogos = () => {
         
         [
             {
-                id: '0',
-                qString: "?brand=mercedes",
-                src: mercedesLogo,
+                logoFilter: 'Mercedes',
+                imageURL: mercedesLogo,
                 logoName: "Mercedes"
             },
 
             {
-                id: '1',
-                qString: "?brand=bmw",
-                src: bmwLogo,
+                logoFilter: 'BMW',
+                imageURL: bmwLogo,
                 logoName: "BMW"
             },
 
             {
-                id: '2',
-                qString: "?brand=audi",
-                src: audiLogo,
+                logoFilter: 'Audi',
+                imageURL: audiLogo,
                 logoName: "Audi"
             },
 
             {
-                id: '3',
-                qString: "?brand=porsche",
-                src: porscheLogo,
+                logoFilter: 'Porsche',
+                imageURL: porscheLogo,
                 logoName: "Porsche"
             },
 
             {
-                id: '4',
-                qString: "?brand=honda",
-                src: hondaLogo,
+                logoFilter: 'Honda',
+                imageURL: hondaLogo,
                 logoName: "Honda"
             },
 
             {
-                id: '5',
-                qString: "?brand=chevrolet",
-                src: vetteLogo,
+                logoFilter: 'Chevrolet',
+                imageURL: vetteLogo,
                 logoName: "Chevrolet"
             },
 
             {
-                id: '6',
-                qString: "?brand=maserati",
-                src: maseratiLogo,
+                logoFilter: 'Maserati',
+                imageURL: maseratiLogo,
                 logoName: "Maserati"
             },
 
             {
-                id: '7',
-                qString: "?brand=lamborghini",
-                src: lamboLogo,
+                logoFilter: 'Lamborghini',
+                imageURL: lamboLogo,
                 logoName: "Lamborghini"
             },
 
             {
-                id: '8',
-                qString: "?brand=ferrari",
-                src: ferrariLogo,
+                logoFilter: 'Ferrari',
+                imageURL: ferrariLogo,
                 logoName: "Ferrari"
             },
 

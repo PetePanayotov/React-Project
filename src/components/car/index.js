@@ -4,7 +4,7 @@ import CarImage from '../car-image';
 import styles from './index.module.css';
 
 
-function Car({page , isAdmin , likes , brand , model , id , price , imageUrl}) {
+const Car = ({page , isAdmin , likes , brand , model , id , price , imageUrl}) => {
 
     return (
         <div className={styles.wrapper}>

@@ -1,47 +1,78 @@
-import React , {useState, useEffect} from 'react';
+import React , {useContext , useState, useEffect} from 'react';
+import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
-import Cars from '../../components/cars-container';
+import CarsContainer from '../../components/cars-container';
+import Car from '../../components/car';
 import Title from '../../components/title';
 import Logo from '../../components/logo';
 import getLogos from '../../utils/logos';
 import styles from './index.module.css';
-import { useLocation } from 'react-router-dom';
+import handlers from '../../utils/catalog-page-handlers';
 
 
 function CatalogPage () {
 
-    const location = useLocation();
-    const [queryString , setQueryString] = useState(location.search)
+    const context = useContext(UserContext);
+    const {cars} = context;
+    const [filteredCars , setFilteredCars] = useState([]);
+    const [filters , setFilters] = useState([]);
+
     const logos = getLogos();
+    const {filterCars} = handlers;
 
     useEffect(() => {
-        document.title = 'Catalog';
-    } , []);
 
- 
+        document.title = 'Catalog';
+        filterCars(cars , filters , setFilteredCars);
+
+    } , [filters]);
+
+
+    
     return(
 
         <PageWrapper>
             <Main layout="forms">
                 <div className={styles.logoContainer}>
 
-                    {logos.map((logo ) => {
-                        const {id , qString , src , logoName} = logo;
-                        const newQueryString = qString !== queryString ? qString : ''
+                    {logos.map((logo , i ) => {
+                        const {imageURL , logoFilter ,logoName} = logo;
+ 
                         return (<Logo
-                                    key={id}
-                                    href={`/catalog${newQueryString}`}
-                                    src={src}
+                                    key={i}
+                                    src={imageURL}
                                     logoName={logoName}
-                                    handler={() => setQueryString(newQueryString)}
+                                    logoFilter={logoFilter}
+                                    currentFilters={filters}
+                                    setFilters={setFilters}
                                />
                         )
                     })}
 
                 </div>
                 <Title text="All offers"/>
-                <Cars page='catalog'/>
+
+                <CarsContainer>
+                    {filteredCars.map((car) => {
+                        
+                        const {_id , brand , model , price , imageUrl , likes } = car;
+
+                        return (
+                            
+                            <Car
+                                key={_id}
+                                likes={likes.length}
+                                id={_id}
+                                brand={brand}
+                                model={model}
+                                price={price}
+                                imageUrl={imageUrl}    
+                            />
+                
+                        );
+                    })}
+                </CarsContainer>
               </Main>
         </PageWrapper>
 

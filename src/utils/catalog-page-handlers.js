@@ -10,25 +10,39 @@ const getUserLikedCars = async (userId) => {
     return likedCars;
 };
 
-const getAllCars = async (page) => {
+const getAllCars = async () => {
     
     const url = 'http://localhost:9999/api/car/';
     const promise = await fetch(url);
+
+    if (promise.status !== 200) {
+        return console.error('Something went wrong');
+    };
+    
     const response = await promise.json();
     
     let cars = response.slice(0);
-    
-    if (page === 'home') {
-    
-        cars = cars.filter(car => car.isVipOffer === true);
-    };
+
     cars = cars.reverse()
-    
+
     return cars;
+};
+
+const filterCars = (allCars , filtersArray , setFilteredCars) => {
+
+    if (filtersArray.length === 0) {
+        return setFilteredCars(allCars.slice(0));
+    };
+
+    const filteredCars = allCars.filter(car => filtersArray.indexOf(car.brand) !==-1);
+
+    return setFilteredCars(filteredCars);
+
 };
 
 
 export default {
     getAllCars,
-    getUserLikedCars
+    getUserLikedCars,
+    filterCars
 };
