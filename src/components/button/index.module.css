@@ -1,12 +1,13 @@
 /* Header Button ////////////////////////////////////////////////////// */
 
-.header-button-div {
+/* .header-button-div {
     margin: 0 10px;
-}
+} */
 
 
 .header-button {
     background-color: #282C34;
+    outline: none;
     border: none;
     color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -24,9 +25,9 @@
 
 /* Footer Button /////////////////////////////////////////////////////// */
 
-.footer-button-div {
+/* .footer-button-div {
     margin-right: 10px;
-}
+} */
 
 .footer-button {
     background-color: #282C34;
@@ -45,23 +46,26 @@
 
 /* Delete Button ////////////////////////////////////////////// */
 
-.delete-button-div {
+/* .delete-button-div {
     width: 40%;
     height: 30px;
     text-align: center;
     border: 2px solid #282C34;
     border-radius: 10px;
     background-color: #282C34;
-}
+} */
 
 .delete-button {
-    width: 90%;
+    width: fit-content;
     background-color: #282C34;
+    outline: none;
     border: none;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
 
 }
 
@@ -73,7 +77,7 @@
 
 /* Like Button /////////////////////////////////////////////////// */
 
-.like-button-div {
+/* .like-button-div {
     width: 12%;
     height: 25px;
     text-align: center;
@@ -82,15 +86,19 @@
     background-color: #282C34;
     margin: 0 auto;
     margin-bottom: 20px;
-}
+} */
 
 .like-button {
+    width: fit-content;
     background-color: #282C34;
+    outline: none;
     border: none;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
 }
 
 .like-button:hover {
@@ -127,7 +135,7 @@
 
 /* Comment Button ///////////////////////////////////////////////// */
 
-.comment-button-div {
+/* .comment-button-div {
     width: 15%;
     height: 25px;
     text-align: center;
@@ -136,16 +144,19 @@
     background-color: #282C34;
     align-self: flex-end;
     margin-top: 10px;
-}
+} */
 
 .comment-button {
-    width: 100%;
+    width: fit-content;
     background-color: #282C34;
     border: none;
+    outline: none;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
     text-decoration: none;
+    align-self: flex-end;
+    padding: 3px 10px;
 }
 
 .comment-button:hover {
@@ -156,25 +167,29 @@
 
 /* Remove Button /////////////////////////////////////////////// */
 
-.remove-button-div {
-    width: 10%;
-    height: 25px;
+/* .remove-button-div {
+    width: fit-content;
     text-align: center;
     border: 2px solid #282C34;
     border-radius: 10px;
     background-color: #282C34;
     align-self: flex-end;
     margin: 0 5px 5px 0;
-}
+} */
 
 .remove-button {
-    width: 90%;
+    width: fit-content;
+    align-self: flex-end;
     background-color: #282C34;
     border: none;
+    outline: none;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     text-decoration: none;
+    margin: 0 10px 10px 0;
+    padding: 5px 17px;
+    border-radius: 20px;
 }
 
 .remove-button:hover {
@@ -183,7 +198,7 @@
 }
 
 /* /////////////////////////////////////////////////////////// */
-
+/* 
 .load-button-div {
     width: 7%;
     height: 25px;
@@ -193,16 +208,21 @@
     background-color: #282C34;
     align-self: center;
     margin: 10px 0 0 10px;
-}
+} */
 
 .load-button {
-    width: 90%;
+    width: fit-content;
     background-color: #282C34;
+    align-self: center;
+    outline: none;
     border: none;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    text-decoration: none;
+    font-size: 20px;
+    text-decoration: none;  
+    padding: 5px 30px;
+    border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .load-button:hover {

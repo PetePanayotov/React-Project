@@ -28,7 +28,6 @@ const  ProfilePage = () => {
                 const firstLikes = firstCar.likes.length;
                 const secondLikes = secondCar.likes.length;
 
-
                 return secondLikes - firstLikes;
 
             });
@@ -36,7 +35,7 @@ const  ProfilePage = () => {
             const topTenCars = orderedByLikes.slice(0 , 10);
 
             return setCars(topTenCars);
-        }
+        };
         
         const likedCars = allCars.filter(car => car.likes.indexOf(userId) !== -1);
 
@@ -64,24 +63,33 @@ const  ProfilePage = () => {
                     <Title text={newGreeting}/>
                     <Cars>
 
-                        {cars.map((car) => {
+                        {
+                            cars.length === 0 &&
 
-                            const {_id , brand , model , price , imageUrl , likes } = car;
+                            <p>This section is empty</p>
+                        }
 
-                            return (
-                            
-                                <Car
-                                    key={_id}
-                                    likes={likes.length}
-                                    id={_id}
-                                    brand={brand}
-                                    model={model}
-                                    price={price}
-                                    imageUrl={imageUrl}    
-                                />
-                            
-                            );
-                        })}
+                        {
+                            cars.map((car) => {
+
+                                const {_id , brand , model , price , imageUrl , likes } = car;
+
+                                return (
+                                
+                                    <Car
+                                        key={_id}
+                                        likes={likes.length}
+                                        id={_id}
+                                        brand={brand}
+                                        model={model}
+                                        price={price}
+                                        imageUrl={imageUrl}    
+                                    />
+                                
+                                );
+                            })
+                        
+                        } 
 
                     </Cars>
                 </Main>
