@@ -1,22 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
-import UserContext from '../../Context';
+import React, { useEffect, useState } from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import Cars from '../../components/cars-container';
 import Car from '../../components/car';
 import Title from '../../components/title';
+import handlers from '../../utils/catalog-page-handlers';
+
+const {getAllCars} = handlers;
 
 
-function UserHomePage() {
+const  UserHomePage = () => {
 
-    const context = useContext(UserContext);
-    const {cars} = context;
     const [vipOfferCars , setVipOfferCars] = useState([]);
+
+    const retrieveCars = async () => {
+        
+        const allCars = await getAllCars();
+        
+        setVipOfferCars(allCars.filter(car => car.isVipOffer === true));
+    }
 
     useEffect(() => {
 
         document.title = 'Home';
-        setVipOfferCars(cars.filter(car => car.isVipOffer === true));
+        retrieveCars();
 
     } , []);
 

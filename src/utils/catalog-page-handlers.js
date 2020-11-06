@@ -21,14 +21,16 @@ const getAllCars = async () => {
     
     const response = await promise.json();
     
-    let cars = response.slice(0);
+    let allCars = response.slice(0);
 
-    cars = cars.reverse()
+    allCars = allCars.reverse()
 
-    return cars;
+    return allCars;
 };
 
-const filterCars = (allCars , filtersArray , setFilteredCars) => {
+const filterCars = async (filtersArray , setFilteredCars) => {
+
+    const allCars = await getAllCars();
 
     if (filtersArray.length === 0) {
         return setFilteredCars(allCars.slice(0));

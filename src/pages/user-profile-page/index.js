@@ -11,36 +11,19 @@ import handlers from '../../utils/catalog-page-handlers';
 const {getAllCars} = handlers;
 
 
-function ProfilePage() {
+const  ProfilePage = () => {
 
-    const [greeting , setGreeting] = useState('');
-    const [filteredCars , setFilteredCars] = useState([]);
+    const [cars , setCars] = useState([]);
     const context = useContext(UserContext);
-    const {isAdmin , user: {userId , username} ,  cars , login} = context;
+    const {isAdmin , user: {userId , username}} = context;
 
-    const getUserLikedCars = async () => {
+    const getCars = async () => {
 
         const allCars = await getAllCars();
 
-        const likedCars = allCars.filter(car => car.likes.indexOf(userId) !== -1);
-
-        return setFilteredCars(likedCars)
-      
-    };
-
-    useEffect(() => {
-
-        document.title = "Profile Page";
-        
-        const time = new Date();
-        const hour = time.getHours()
-        const newGreeting = getGreeting(hour , isAdmin , username);
-
-        setGreeting(newGreeting);
-
         if (isAdmin) {
             
-            const orderedByLikes = cars.sort((firstCar , secondCar) => {
+            const orderedByLikes = allCars.sort((firstCar , secondCar) => {
 
                 const firstLikes = firstCar.likes.length;
                 const secondLikes = secondCar.likes.length;
@@ -52,22 +35,36 @@ function ProfilePage() {
 
             const topTenCars = orderedByLikes.slice(0 , 10);
 
-            return setFilteredCars(topTenCars);
-        };
+            return setCars(topTenCars);
+        }
+        
+        const likedCars = allCars.filter(car => car.likes.indexOf(userId) !== -1);
 
-        getUserLikedCars();
+        return setCars(likedCars)
+
+    };
+
+    useEffect(() => {
+
+        document.title = username;
+
+        getCars();
        
     } , []);
 
+
+    const time = new Date();
+    const hour = time.getHours()
+    const newGreeting = getGreeting(hour , isAdmin , username);
 
 
     return(
             <PageWrapper>
                 <Main layout="forms">
-                    <Title text={greeting}/>
+                    <Title text={newGreeting}/>
                     <Cars>
 
-                        {filteredCars.map((car) => {
+                        {cars.map((car) => {
 
                             const {_id , brand , model , price , imageUrl , likes } = car;
 
@@ -89,7 +86,7 @@ function ProfilePage() {
                     </Cars>
                 </Main>
             </PageWrapper>
-        )
+        );
     
 };
 

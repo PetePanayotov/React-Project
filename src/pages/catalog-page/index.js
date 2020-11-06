@@ -1,5 +1,4 @@
-import React , {useContext , useState, useEffect} from 'react';
-import UserContext from '../../Context';
+import React , { useState, useEffect} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import CarsContainer from '../../components/cars-container';
@@ -11,23 +10,19 @@ import styles from './index.module.css';
 import handlers from '../../utils/catalog-page-handlers';
 
 
-function CatalogPage () {
+const CatalogPage = () => {
 
-    const context = useContext(UserContext);
-    const {cars} = context;
     const [filteredCars , setFilteredCars] = useState([]);
     const [filters , setFilters] = useState([]);
-
-    const logos = getLogos();
     const {filterCars} = handlers;
+    const logos = getLogos();
 
     useEffect(() => {
 
         document.title = 'Catalog';
-        filterCars(cars , filters , setFilteredCars);
-
+        filterCars(filters , setFilteredCars);
+        
     } , [filters]);
-
 
     
     return(
@@ -37,6 +32,7 @@ function CatalogPage () {
                 <div className={styles.logoContainer}>
 
                     {logos.map((logo , i ) => {
+                        
                         const {imageURL , logoFilter ,logoName} = logo;
  
                         return (<Logo
