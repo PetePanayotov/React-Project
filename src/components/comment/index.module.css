@@ -3,7 +3,7 @@
     border: 1px solid #282C34;
     width: 70%;
     margin: 10px 0 20px 20px;
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

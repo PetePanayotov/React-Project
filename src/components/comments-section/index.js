@@ -9,64 +9,71 @@ import detailsPageHandlers from '../../utils/details-page-handlers';
 import getQueryValue from '../../utils/getQueryValue';
 
 
-function CommentsSection() {
+const CommentsSection = ({username , carId , comments , pressed , setPressed}) => {
 
-    const location = useLocation();
-    const context = useContext(UserContext);
-    const {user} = context;
-    const {username} = user;
+    // const location = useLocation();
+    // const context = useContext(UserContext);
+    // const {user} = context;
+    // const {username} = user;
 
-    const [car , setCar] = useState( { comments: [] } );
-    const [justMount , setJustMount] = useState(true);
-    const [btnIsPressed , setBtnIsPressed] = useState(false)
+    // const [car , setCar] = useState( { comments: [] } );
+    // const [justMount , setJustMount] = useState(true);
+    // const [btnIsPressed , setBtnIsPressed] = useState(false)
 
-    const getCar = useCallback(async () => {
+    // const getCar = useCallback(async () => {
 
-        const id = getQueryValue(location);
-        const url = `http://localhost:9999/api/car/${id}`
+    //     const id = getQueryValue(location);
+    //     const url = `http://localhost:9999/api/car/${id}`
 
-        const promise = await fetch(url);
-        let response = await promise.json();
-        response.comments = response.comments.reverse();
+    //     const promise = await fetch(url);
+    //     let response = await promise.json();
+    //     response.comments = response.comments.reverse();
 
-        setCar(response);
+    //     setCar(response);
         
-    } , []);
+    // } , []);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!justMount) {
+    //     if (!justMount) {
             
-            getCar()
-        }
+    //         getCar()
+    //     }
 
 
-    }, [justMount , btnIsPressed]);
+    // }, [justMount , btnIsPressed]);
 
-    const carId = car._id;
+    // const carId = car._id;
     const {comment , removeComment , loadComments} = detailsPageHandlers;
-    let {comments} = car;
+    // let {comments} = car;
+    
     
     return (
         <div className={styles.container}>
             
-            <Button type="load" text="Load" handler={(event) => loadComments(event , justMount , setJustMount , setCar)}/>
+            <Button type="load" text="Load" handler={loadComments}/>
+            
             {
-                 comments.map((string , index) => {
+                comments.map((string , index) => {
+
                     const [author , comment , time] = JSON.parse(string);
                     
-                    return <Comment  key={index} author={author} time={time} comment={comment} 
-                                handler={() => removeComment(carId ,string , btnIsPressed , setBtnIsPressed)}
+                    return <Comment  
+                                key={index} 
+                                author={author} 
+                                time={time} 
+                                comment={comment} 
+                                handler={() => removeComment(carId , string , pressed , setPressed)}
                             />
                 })
             }
-            {
-                !justMount &&
-                <CommentInput handler={(event) => comment(event ,carId , username , btnIsPressed , setBtnIsPressed)}/>
-            }
+
+            <CommentInput handler={(event) => comment(event , carId , username , pressed , setPressed)}/>
+
         </div>
     );
 
 };
+
 
 export default CommentsSection;
