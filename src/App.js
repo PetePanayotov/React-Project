@@ -15,24 +15,20 @@ const App = (props) => {
     const initialState = {
 
         isLoggedIn: null,
-        cars: [],
         user: {},
         isAdmin: undefined
     }
 
     const [state , setState] = useState(initialState);
-    const {isLoggedIn , user, isAdmin , cars} = state;
+    const {isLoggedIn , user, isAdmin} = state;
 
 
     const login = async (user , isAdmin) => {
-
-        const allCars = await getAllCars();
         
         setState({
             isLoggedIn: true,
             user,
             isAdmin,
-            cars: allCars
         });
 
     };
@@ -45,7 +41,6 @@ const App = (props) => {
             isLoggedIn: false,
             user: {},
             isAdmin: undefined,
-            cars: []
         });
 
     };
@@ -102,7 +97,6 @@ const App = (props) => {
             value = {{
                 isLoggedIn,
                 user,
-                cars,
                 isAdmin,
                 login, 
                 logout,
