@@ -4,7 +4,7 @@ import Player from '../../components/player';
 import Title from '../../components/title';
 import PageWrapper from '../../components/page-wrapper';
 
-function GuestHomePage() {
+const GuestHomePage = () => {
 
   useEffect(() => {
     document.title = 'Home'

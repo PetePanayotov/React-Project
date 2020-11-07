@@ -55,21 +55,13 @@ const deleteCar = async (history , carId) => {
         history.push('/home');
 };
 
-const loadComments = (event) => {
+const loadComments = (event , displayComments , setDisplayComments) => {
 
     const button = event.target;
-    const commentsSection = event.target.parentNode;
-    const children = Array.from(commentsSection.children).slice(1);
-
-    if (button.textContent === 'Load') {
-        
-        children.map(child => child.style.display = 'flex');
-        return button.textContent = 'Hide';
-    };
-
-    children.map(child => child.style.display = 'none');
     
-    return button.textContent = 'Load';
+    button.textContent !== 'Load' ? button.textContent = 'Load' : button.textContent = 'Hide'
+
+    return setDisplayComments(!displayComments);
 
 };
 

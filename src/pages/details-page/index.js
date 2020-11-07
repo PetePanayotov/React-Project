@@ -1,4 +1,5 @@
 import React , {useContext, useEffect, useState} from 'react';
+import { useLocation } from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
@@ -6,7 +7,6 @@ import CarDetails from '../../components/car-details';
 import Title from '../../components/title';
 import CommentsSection from '../../components/comments-section';
 import getQueryValue from '../../utils/getQueryValue';
-import { useLocation } from 'react-router-dom';
 
 
 const DetailsPage = () => {

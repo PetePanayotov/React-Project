@@ -5,7 +5,7 @@ import Form from '../../components/create-update-form';
 import styles from './index.module.css';
 
 
-function CreatePage () {
+const CreatePage = () => {
 
     useEffect(() => {
         document.title = 'Create Page'

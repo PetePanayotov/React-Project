@@ -1,10 +1,8 @@
 import React , {useEffect, useState} from 'react';
 import UserContext from './Context';
-import handlers from './utils/catalog-page-handlers';
 
-const {getAllCars} = handlers;
 
-function getCookie(name) {
+const getCookie = (name) => {
     let v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
     return v ? v[2] : null;
 };
@@ -100,7 +98,6 @@ const App = (props) => {
                 isAdmin,
                 login, 
                 logout,
-
             }}
         >
             
