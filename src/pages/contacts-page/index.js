@@ -4,7 +4,7 @@ import GoogleApiWrapper from '../../components/map';
 import Main  from '../../components/main';
 import styles from './index.module.css';
 
-function ContactsPage() {
+const ContactsPage = () => {
 
     useEffect(() => {
         document.title = 'About'

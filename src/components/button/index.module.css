@@ -1,10 +1,5 @@
 /* Header Button ////////////////////////////////////////////////////// */
 
-/* .header-button-div {
-    margin: 0 10px;
-} */
-
-
 .header-button {
     background-color: #282C34;
     outline: none;
@@ -25,10 +20,6 @@
 
 /* Footer Button /////////////////////////////////////////////////////// */
 
-/* .footer-button-div {
-    margin-right: 10px;
-} */
-
 .footer-button {
     background-color: #282C34;
     border: none;
@@ -46,15 +37,6 @@
 
 /* Delete Button ////////////////////////////////////////////// */
 
-/* .delete-button-div {
-    width: 40%;
-    height: 30px;
-    text-align: center;
-    border: 2px solid #282C34;
-    border-radius: 10px;
-    background-color: #282C34;
-} */
-
 .delete-button {
     width: fit-content;
     background-color: #282C34;
@@ -66,7 +48,6 @@
     text-decoration: none;
     padding: 5px 20px;
     border-radius: 20px;
-
 }
 
 .delete-button:hover {
@@ -76,17 +57,6 @@
 
 
 /* Like Button /////////////////////////////////////////////////// */
-
-/* .like-button-div {
-    width: 12%;
-    height: 25px;
-    text-align: center;
-    border: 2px solid #282C34;
-    border-radius: 10px;
-    background-color: #282C34;
-    margin: 0 auto;
-    margin-bottom: 20px;
-} */
 
 .like-button {
     width: fit-content;
@@ -135,17 +105,6 @@
 
 /* Comment Button ///////////////////////////////////////////////// */
 
-/* .comment-button-div {
-    width: 15%;
-    height: 25px;
-    text-align: center;
-    border: 2px solid #282C34;
-    border-radius: 10px;
-    background-color: #282C34;
-    align-self: flex-end;
-    margin-top: 10px;
-} */
-
 .comment-button {
     width: fit-content;
     background-color: #282C34;
@@ -166,16 +125,6 @@
 
 
 /* Remove Button /////////////////////////////////////////////// */
-
-/* .remove-button-div {
-    width: fit-content;
-    text-align: center;
-    border: 2px solid #282C34;
-    border-radius: 10px;
-    background-color: #282C34;
-    align-self: flex-end;
-    margin: 0 5px 5px 0;
-} */
 
 .remove-button {
     width: fit-content;
@@ -198,17 +147,6 @@
 }
 
 /* /////////////////////////////////////////////////////////// */
-/* 
-.load-button-div {
-    width: 7%;
-    height: 25px;
-    text-align: center;
-    border: 2px solid #282C34;
-    border-radius: 10px;
-    background-color: #282C34;
-    align-self: center;
-    margin: 10px 0 0 10px;
-} */
 
 .load-button {
     width: fit-content;

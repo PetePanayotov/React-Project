@@ -1,14 +1,17 @@
 .container {
     width: 50%;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-self: flex-end;
-    margin: 20px 15px 10px 0;
+    margin: 20px 0 10px 0;
 }
 
 .textArea {
-    width: 99%;
     height: 100px;
+    font-size: 16px;
+    padding: 10px 0 0 10px;
+    outline: none;
+    font-family: Helvetica, sans-serif;
 }
 
 .comment-button {

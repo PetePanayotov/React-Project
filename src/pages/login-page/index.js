@@ -5,7 +5,7 @@ import Form from '../../components/login-register-form';
 import styles from './index.module.css';
 
 
-function LoginPage(props) {
+const LoginPage = (props) => {
 
     useEffect(() => {
         document.title = 'Login Page';
