@@ -24,7 +24,6 @@
 }
 
 .rightDiv{
-
     width: 30%;
     height: 90%;
     margin: 0 auto;
@@ -44,6 +43,5 @@
     display: flex;
     width: 20%;
     margin: 0 auto;
-    margin-bottom: 20px;
     justify-content: space-between;
 }

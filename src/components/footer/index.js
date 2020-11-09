@@ -21,17 +21,22 @@ function Footer() {
  
     return (
         <footer className={styles.footer}>
-            <div className={styles.linkContainer}>
+            <nav className={styles.navigation}>
 
-                {linksArray.map( ({title , link}) => {
-                    return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
-                })}
-                {isLoggedIn && 
-                    
-                    <Button type="footer" text="Logout" handler={logout}/>
-                }
+                <ul className={styles.list}>
 
-            </div>
+                    {linksArray.map( ({title , link}) => {
+                        return (<LinkComponent href={link} title={title} type="footer" key={title}/>)
+                    })}
+
+                    {isLoggedIn && 
+
+                        <Button type="footer" text="Logout" handler={logout}/>
+                    }
+
+                </ul>
+
+            </nav>
             <p className={styles.paragraph}>AUTO CAR</p>
         </footer>
     );

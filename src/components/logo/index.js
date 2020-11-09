@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './index.module.css';
 
 
-function Logo ({src , logoName , logoFilter , currentFilters , setFilters}) {
+const Logo = ({src , logoName , logoFilter , currentFilters , setFilters}) => {
 
     const [selectedState , setSelectedState] = useState(false);
 
@@ -23,7 +23,7 @@ function Logo ({src , logoName , logoFilter , currentFilters , setFilters}) {
     const handleClick = () => {
         setSelectedState(!selectedState);
         setFilters(newFilters);
-    }
+    };
 
     return(
             <div onClick={handleClick} className={styles[`div-selected-${selectedState}`]}>
