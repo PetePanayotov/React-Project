@@ -1,15 +1,13 @@
-import React , {useContext ,  useState, useEffect, useCallback} from 'react';
-import {useHistory , useLocation} from 'react-router-dom';
-import UserContext from '../../Context';
+import React from 'react';
+import {useHistory} from 'react-router-dom';
 import CarImage from '../car-image';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import detailsPageHandlers from '../../utils/details-page-handlers';
-import getQueryValue from '../../utils/getQueryValue';
 import styles from './index.module.css';
 
 
-function CarDetails({isAdmin , userId , car ,pressed , setPressed}) {
+const CarDetails = ({isAdmin , userId , car ,pressed , setPressed}) => {
     
     const history = useHistory();
     const {like , dislike , deleteCar} = detailsPageHandlers;

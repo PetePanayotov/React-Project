@@ -1,23 +1,30 @@
-.navigation {
-    max-width: 100%;
-    max-height: 15%;
+.header {
+    padding: 20px 40px;
     background-color: #282C34;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.linkContainer {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: flex-end;
-    width: 50%;
-    margin-right: 20px;
-   
+.logo-wrapper {
+    width: 130px;
+    height: 120px;
 }
 
 .logo {
-    width: 100px;
-    margin: 5px 0 5px 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
 
+.navigation {
+    width: 50%;  
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

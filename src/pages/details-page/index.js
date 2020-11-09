@@ -38,22 +38,17 @@ const DetailsPage = () => {
         });
 
     };
-
-    useEffect(() => {
-    
-        getCar();
-
-    }, [pressed]);
     
     const {_id , brand , model , comments} = car;
     const title = `${brand} ${model}`;
 
     
     useEffect(() => {
-    
-        document.title = title;
 
-    }, [car]);
+        getCar();
+        document.title = `Catalog - ${title}`;
+    
+    }, [pressed , title]);
 
     return(
         <PageWrapper>

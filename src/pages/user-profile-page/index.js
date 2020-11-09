@@ -78,6 +78,8 @@ const  ProfilePage = () => {
                                 
                                     <Car
                                         key={_id}
+                                        isAdmin={isAdmin}
+                                        page="profile"
                                         likes={likes.length}
                                         id={_id}
                                         brand={brand}

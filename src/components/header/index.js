@@ -22,18 +22,29 @@ function Header() {
     };
 
     return (
-        <header className={styles.navigation}>
-            <img alt="" className={styles.logo} src={logo}></img>
-            <div className={styles.linkContainer}>
+        <header className={styles.header}>
+            <article className={styles['logo-wrapper']}>
+                
+                <img alt="" className={styles.logo} src={logo}></img>
 
-                {linksArray.map( ({title , link}) => {
-                    return (<LinkComponent href={link} title={title} type="header" key={title}/>)
-                })}
-                {isLoggedIn && 
-                    <Button type="header" text="Logout" handler={logout}/>
-                }
+            </article>
 
-            </div>
+            <nav className={styles.navigation}>
+
+                <ul className={styles.list}>
+
+                    {linksArray.map( ({title , link} , i) => {
+
+                        return (<LinkComponent href={link} title={title} type="header" key={i}/>);
+
+                    })}
+
+                    {isLoggedIn && 
+                        <Button type="header" text="Logout" handler={logout}/>
+                    }
+
+                </ul>
+            </nav>
         </header>
     );
    

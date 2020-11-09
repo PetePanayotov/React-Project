@@ -1,57 +1,29 @@
 /* Header //////////////////////////////////////////////////// */
 
-.header-list-item {
-    margin: 0 10px;
+.header-li {
+    padding-bottom: 5px;
+    /* border-bottom: 2px solid #ffffff; */
 }
 
+.header-li:hover {
+    border-bottom: 2px solid #00D8FF;
+}
+
+.header-li:hover .header-link {
+    color: #00D8FF;
+}
 
 .header-link {
     color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 22px;
+    font-size: 26px;
     text-decoration: none;
-    margin: 0 10px;
-}
-
-.header-link:hover {
-    color: #00D8FF;
-    border-bottom: 2px solid #00D8FF;
-    padding-bottom: 5px;
-}
-/* Aside ///////////////////////////////////////////////////////////////////////////// */
-
-.aside-list-item {
-    display: block;
-    width: 98%;
-    border-left: 2px solid #234465;
-    border-right: 2px solid #234465;
-    margin-bottom: 11%;
-    height: 5vh;
-    text-align: center;
-}
-
-.aside-link {
-    color: #234465;
-    text-align: center;
-    text-decoration: none;
-    padding-top: 5%;
-    height: 60%;
-    display: block;
-}
-
-.aside-list-item:hover {
-    border-left: none;
-    border-right: none;
-    font-weight: bold;
-    border-top: 2px solid #234465;
-    border-bottom: 2px solid #234465;
-    color: #ffa000;
 }
 
 /* Footer////////////////////////////////////////////////////////////////////////////////////// */
 
-.footer-list-item {
-    margin-right: 10px
+.footer-li {
+    margin-bottom: 10px
 }
 
 .footer-link {
@@ -59,63 +31,50 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
     text-decoration: none;
-   
 }
 
 .footer-link:hover {
     color: #00D8FF;
-
-
 }
 
 /* CAR ////////////////////////////////////////////////////////////////////////////////////////// */
 
-.car-list-item{
-    width: 40%;
-    height: 25px;
-    border: 2px solid #282C34;
-    border-radius: 10px;
+.car-li{
+    list-style: none;
     background-color: #282C34;
     text-align: center;
+    padding: 5px 20px;
+    border-radius: 20px;
 }
 
 .car-link {
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    text-decoration: none;
-   
+    text-decoration: none;   
 }
 
 .car-link:hover {
     color: #00D8FF;
 }
 
-
 /* UPDATA //////////////////////////////////////////////////////////////////////////////////////// */
 
-
-
-.update-list-item{
-    width: 40%;
-    height: 30px;
+.update-li{
     text-align: center;
-    border-radius: 10px;
     background-color: #282C34;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 4px 10px;
+    padding: 4px 20px;
     border-radius: 20px;
-
 }
 
 .update-link {
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-decoration: none;
-   
+    text-decoration: none;  
 }
 
 .update-link:hover {

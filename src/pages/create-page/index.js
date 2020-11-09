@@ -1,4 +1,4 @@
-import React , {Component, useEffect} from 'react';
+import React , {useEffect} from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
 import Form from '../../components/create-update-form';

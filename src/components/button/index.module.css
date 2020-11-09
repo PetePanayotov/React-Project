@@ -4,24 +4,25 @@
     background-color: #282C34;
     outline: none;
     border: none;
+    border-bottom: 2px solid #282C34;
     color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 22px;
+    font-size: 26px;
     text-decoration: none;
-    margin: 0 10px;
+    padding-bottom: 5px;
 }
 
 .header-button:hover {
     cursor: pointer;
     color: #00D8FF;
     border-bottom: 2px solid #00D8FF;
-    padding-bottom: 5px;
 }
 
 /* Footer Button /////////////////////////////////////////////////////// */
 
 .footer-button {
     background-color: #282C34;
+    outline: none;
     border: none;
     color: #ffffff;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -46,7 +47,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-decoration: none;
-    padding: 5px 20px;
+    padding: 5px 24px;
     border-radius: 20px;
 }
 
@@ -54,7 +55,6 @@
     cursor: pointer;
     color: #00D8FF;
 }
-
 
 /* Like Button /////////////////////////////////////////////////// */
 
@@ -75,7 +75,6 @@
     cursor: pointer;
     color: #00D8FF;
 }
-
 
 /* Plus Button //////////////////////////////////////////////////// */
 
@@ -102,7 +101,6 @@
     cursor: pointer;
 }
 
-
 /* Comment Button ///////////////////////////////////////////////// */
 
 .comment-button {
@@ -118,13 +116,14 @@
     padding: 3px 10px;
 }
 
+
 .comment-button:hover {
     cursor: pointer;
     color: #00D8FF;
 }
 
-
 /* Remove Button /////////////////////////////////////////////// */
+
 
 .remove-button {
     width: fit-content;
@@ -147,6 +146,7 @@
 }
 
 /* /////////////////////////////////////////////////////////// */
+
 
 .load-button {
     width: fit-content;
