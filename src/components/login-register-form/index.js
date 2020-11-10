@@ -1,64 +1,16 @@
-import React , {useState, useContext} from 'react';
-import {withRouter, useHistory} from 'react-router-dom';
-import UserContext from '../../Context';
-import Input from '../inputField';
-import SubmitButton from '../submit-button';
+import React from 'react';
+import {withRouter} from 'react-router-dom';
 import styles from './index.module.css';
-import getInputFields from '../../utils/login-register-input-Fields';
-import submitHandlers from '../../utils/submitHandlers';
 
-function Form ({page}) {
- 
-    const context = useContext(UserContext);
-    const history = useHistory();
-    const handleSubmit = submitHandlers[page];
 
-    const loginPageState = {
-        username: '',
-        password: '',
-    };
-
-    const registerPageState = {
-        username: '',
-        password: '',
-        rePassword: ''
-    };
-    
-    const [state , setState] = useState(page === 'login' ? loginPageState : registerPageState)
-
-    const handleChange = (event , type) => {
-
-        const newState = {};
-
-        newState[type] = event.target.value;
-
-        setState({...state , ...newState});
-
-    };
+const Form = (props) => {
 
     return(
         
         <form className={styles.form}>
-           
-            {getInputFields()[page].map(({label , type , value} , i) => {
-                
-                return (
-                
-                    <Input
-                        key = {i}
-                        labelName = {label}
-                        handleChange = {(event) => handleChange(event , value)}
-                        type = {type}
-                        value = {state[value]}
-                        
-                    />
-                
-                )
-            })}
-            <SubmitButton type="loginRegister" 
-                          text={page === 'login' ? 'Login' : 'Register'} 
-                          handler={(event) => handleSubmit(event , history , state , context)}
-            />
+           {
+               props.children
+           }
         </form>
     );
      

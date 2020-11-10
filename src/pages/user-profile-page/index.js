@@ -17,39 +17,39 @@ const  ProfilePage = () => {
     const context = useContext(UserContext);
     const {isAdmin , user: {userId , username}} = context;
 
-    const getCars = async () => {
-
-        const allCars = await getAllCars();
-
-        if (isAdmin) {
-            
-            const orderedByLikes = allCars.sort((firstCar , secondCar) => {
-
-                const firstLikes = firstCar.likes.length;
-                const secondLikes = secondCar.likes.length;
-
-                return secondLikes - firstLikes;
-
-            });
-
-            const topTenCars = orderedByLikes.slice(0 , 10);
-
-            return setCars(topTenCars);
-        };
-        
-        const likedCars = allCars.filter(car => car.likes.indexOf(userId) !== -1);
-
-        return setCars(likedCars)
-
-    };
-
     useEffect(() => {
 
-        document.title = username;
+        const getCars = async () => {
 
+            const allCars = await getAllCars();
+    
+            if (isAdmin) {
+                
+                const orderedByLikes = allCars.sort((firstCar , secondCar) => {
+    
+                    const firstLikes = firstCar.likes.length;
+                    const secondLikes = secondCar.likes.length;
+    
+                    return secondLikes - firstLikes;
+    
+                });
+    
+                const topTenCars = orderedByLikes.slice(0 , 10);
+    
+                return setCars(topTenCars);
+            };
+            
+            const likedCars = allCars.filter(car => car.likes.indexOf(userId) !== -1);
+    
+            return setCars(likedCars)
+    
+        };
+
+        document.title = username;
+        console.log('profile page')
         getCars();
        
-    } , []);
+    } , [username , isAdmin , userId]);
 
 
     const time = new Date();

@@ -1,13 +1,11 @@
 .loginRegister{
-    
-    height: 30px;
-    width: 100px;
+    outline: none;
+    padding: 5px 20px;
     font-size: 18px;
     font-family: impact;
     border: 1px solid #282C34;
     border-radius: 5px;
     margin: 0 auto;
-    margin-bottom: 20px;
 }
 
 .loginRegister:hover{
