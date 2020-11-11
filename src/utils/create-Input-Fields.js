@@ -26,12 +26,6 @@ export default () => {
             type: 'text'
         },
 
-        {
-            label: 'Vip Offer',
-            stateProperty: 'isVipOffer',
-            type: 'checkBox'
-        }
-
     ]
 
 };

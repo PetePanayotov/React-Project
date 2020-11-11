@@ -18,13 +18,13 @@
 
 
 .createUpdate {
-    margin: 50px auto;
-    height: 40px;
-    width: 150px;
+    margin: 0 auto;
+    border: 2px solid #282C34;
+    padding: 5px 30px;
     font-size: 22px;
     font-family: impact;
-    border: 1px solid #282C34;
-    border-radius: 5px;
+    border-radius: 10px;
+    outline: none;
 }
 
 .createUpdate:hover{

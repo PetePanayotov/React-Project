@@ -1,17 +1,17 @@
 import React from 'react';
 import styles from './index.module.css';
 
-function Input ({type, isChecked , label , stateValue , handler}) {
+const Input = ({type, isChecked , label , value , handler}) => {
 
     return (
-        <div className={styles.div} key='1'>
+        <div className={styles.div}>
             <label className={styles.label}>
                 {label}
             </label>
             <input 
                 type={type}
                 checked={isChecked}
-                value={stateValue} 
+                value={value} 
                 className={styles.input}
                 onChange={handler} 
             />

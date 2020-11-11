@@ -79,40 +79,6 @@ const register = async (event , history , state , context) => {
 };
 
 
-const create = async (event , state , props) => {
-
-        event.preventDefault();
-        const url = 'http://localhost:9999/api/car/';
-        const {brand ,model , price , imageUrl , description , isVipOffer , specifications} = state;
-        
-        const data = { 
-                       brand,
-                       model,
-                       price,
-                       imageUrl, 
-                       description, 
-                       isVipOffer, 
-                       specifications
-    
-        };
-    
-        const headerObj = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        };
-    
-        const promise = await fetch(url , headerObj);
-        
-        if (promise.status === 200) {
-            props.history.push('/home')
-        };
-        
-};
-
-
 const update = async (event , state , props) => {
         
         event.preventDefault();
@@ -151,6 +117,5 @@ const update = async (event , state , props) => {
 export default {
     login,
     register,
-    create,
     update
 }
