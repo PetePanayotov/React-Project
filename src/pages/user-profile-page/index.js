@@ -18,9 +18,8 @@ const  ProfilePage = () => {
     const {isAdmin , user: {userId , username}} = context;
     document.title = username;
 
-
     useEffect(() => {
-
+      
         const getCars = async () => {
 
             const allCars = await getAllCars();
@@ -48,9 +47,12 @@ const  ProfilePage = () => {
         };
 
         getCars();
-       
-    } , [isAdmin , userId]);
 
+        document.title = username;
+        console.log('profile page')
+        getCars();
+       
+    } , [username , isAdmin , userId]);
 
     const time = new Date();
     const hour = time.getHours()

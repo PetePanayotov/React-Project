@@ -18,11 +18,11 @@ const CatalogPage = () => {
     const logos = getLogos();
 
     useEffect(() => {
-        
+        console.log('catalog Page')
         document.title = 'Catalog';
         filterCars(filters , setFilteredCars);
         
-    } , [filters , filterCars]);
+    } , [filters , setFilters , filterCars]);
 
     
     return(

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './index.module.css';
 import Player from '../../components/player';
 import Title from '../../components/title';
@@ -6,10 +6,7 @@ import PageWrapper from '../../components/page-wrapper';
 
 const GuestHomePage = () => {
 
-  useEffect(() => {
-    document.title = 'Home'
-  } , []);
-
+  document.title = 'Home'
 
   return (
       <PageWrapper>

@@ -22,10 +22,28 @@ const DetailsPage = () => {
     const {isAdmin , user: {userId , username}} = context;
     const [car , setCar] = useState(initialState);
     const [pressed , setPressed] = useState(false);
+
     const {_id , brand , model , comments} = car;
     const title = `${brand} ${model}`;
 
     useEffect(() => {
+
+        const getCar = async () => {
+
+            const id = getQueryValue(location);
+            const url = `http://localhost:9999/api/car/${id}`
+            const promise = await fetch(url);
+            const response = await promise.json();
+            const parsedSpecs = JSON.parse(response.specifications);
+            
+            setCar({
+                ...response,
+                specifications: parsedSpecs
+            });
+    
+
+    useEffect(() => {
+        console.log('details page')
 
         const getCar = async () => {
 
@@ -40,13 +58,14 @@ const DetailsPage = () => {
                 ...response,
                 specifications: parsedSpecs
             });
-    
+
         };
 
         getCar();
         
         document.title = `Catalog - ${title}`;
     
+
     }, [pressed , title , location]);
 
     return(
