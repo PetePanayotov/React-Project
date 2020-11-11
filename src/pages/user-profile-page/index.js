@@ -16,7 +16,7 @@ const  ProfilePage = () => {
     const [cars , setCars] = useState([]);
     const context = useContext(UserContext);
     const {isAdmin , user: {userId , username}} = context;
-    document.title = username;
+
 
     useEffect(() => {
       
@@ -49,8 +49,6 @@ const  ProfilePage = () => {
         getCars();
 
         document.title = username;
-        console.log('profile page')
-        getCars();
        
     } , [username , isAdmin , userId]);
 

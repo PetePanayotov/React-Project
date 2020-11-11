@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import GoogleApiWrapper from '../../components/map';
 import Main  from '../../components/main';
@@ -6,10 +6,7 @@ import styles from './index.module.css';
 
 const ContactsPage = () => {
 
-    useEffect(() => {
-        document.title = 'About'
-    } , []);
-
+    document.title = 'About';
 
     return (
           <PageWrapper>
