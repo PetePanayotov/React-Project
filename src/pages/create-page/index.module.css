@@ -1,13 +1,5 @@
-.formDiv {
-
-    width: 71vw;
-    min-height: 60vh;
-    border: 2px solid #282C34;
- 
-}
-
 .firstDiv{
-    width: 71vw;
+    width: 72%;
     height: 50px;
     border: 2px solid #282C34;
     border-radius: 20px 20px 0 0;
@@ -18,8 +10,7 @@
 }
 
 .secondDiv {
-
-    width: 71vw;
+    width: 72%;
     height: 50px;
     border: 2px solid #282C34;
     border-radius: 0 0 20px 20px;
@@ -27,3 +18,55 @@
     margin-top: 0;
     margin-bottom: 50px;
 }
+
+.leftSide,
+.rightSide {
+    width: 50%;
+    height: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plus-btn-wrapper {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.label {
+    color: #282C34;
+    font-size: 30px;
+    font-family: impact;
+}
+
+
+/* ////////////////////////////////////// */
+
+.spec-input-wrapper {
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.specName {
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.specValue {
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+

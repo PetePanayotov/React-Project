@@ -1,11 +1,9 @@
-
 .div{
     width: 50%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .input{
