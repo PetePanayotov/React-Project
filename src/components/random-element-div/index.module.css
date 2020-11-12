@@ -1,0 +1,30 @@
+.crt-upd-first-div{
+    width: 72%;
+    height: 50px;
+    border: 2px solid #282C34;
+    border-radius: 20px 20px 0 0;
+    background-color: #282C34;
+    margin: 0 auto;
+    margin-bottom: 0;
+    margin-top: 50px;
+}
+
+.crt-upd-second-div {
+    width: 72%;
+    height: 50px;
+    border: 2px solid #282C34;
+    border-radius: 0 0 20px 20px;
+    background-color: #282C34;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.leftSide,
+.rightSide {
+    width: 50%;
+    height: 100%;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

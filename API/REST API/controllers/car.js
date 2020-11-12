@@ -70,21 +70,23 @@ const createCar = async (req , res , next) => {
 
 const updateCar = async (req , res , next) => {
 
-    const {id} = req.params;
-    const {model , price , imageUrl , description , isVipOffer} = req.body;
-    const newData = {model , price , imageUrl , description , isVipOffer};
-
+    const {_id , specifications} = req.body;
+    const stringifiedSpecs = JSON.stringify(specifications);
+    const newData = {...req.body , specifications: stringifiedSpecs};
+    
     try {
         
-        const updatedCar = await Car.update({ _id: id } , newData);
+        const filter = {_id}
+        const updatedCar = await Car.updateOne(filter , newData);
         
         if (!updatedCar) {
             throw new Error();
         };
 
-        res.send(updatedCar)
+        res.status(200).send(updatedCar)
         
     } catch (error) {
+        res.status(404).send({})
         next()
     };
 

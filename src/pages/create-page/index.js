@@ -2,28 +2,27 @@ import React , {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
-import Form from '../../components/create-update-form';
+import Form from '../../components/form';
 import Input from '../../components/create-Input-Fields';
 import DescriptionInput from '../../components/description-Input';
 import SubmitButton from '../../components/submit-button';
 import Button from '../../components/button';
+import Element from '../../components/random-element-div';
 import getCreateInputFields from '../../utils/create-Input-Fields';
 import handlers from '../../utils/create-page-handlers';
-import styles from './index.module.css';
+import types from './index.module.css';
 
 
-const {handlePlusClick , handleSpecChange , handleSubmit} = handlers;
+const {handlePlusClick , handleSpecChange , create} = handlers;
 
 const initialState =  {
     brand: '',
-    _id: '',
     model: '',
     price: '',
     imageUrl: '',
     description: '',
     specifications: [],
     isVipOffer: false,
-
 };
 
 
@@ -41,10 +40,10 @@ const CreatePage = () => {
 
         <PageWrapper>
             <Main layout="forms">
-                <div className={styles.firstDiv}></div>
+                <Element type="crt-upd-first-div"/>
                 <Form page="create">
 
-                        <div className={styles.leftSide}>
+                        <Element type="leftSide">
 
                             {inputFieldsArray.map(({label , stateProperty , type} , index) => {
                                 return (
@@ -60,9 +59,9 @@ const CreatePage = () => {
 
                             <Input
                                 type="checkBox"
-                                isChecked={state.isVipOffer}
+                                isChecked={isVipOffer}
                                 label="Vip Offer"
-                                stateValue={state.isVipOffer}
+                                stateValue={isVipOffer}
                                 handler={() => setState({...state , isVipOffer: !isVipOffer})}
                             />
 
@@ -71,12 +70,12 @@ const CreatePage = () => {
                                 handler={(event) => setState({...state , description: event.target.value})}
                             />
 
-                        </div>
+                        </Element>
 
-                        <div className={styles.rightSide}>
+                        <Element type="rightSide">
 
-                            <div className={styles['plus-btn-wrapper']}>
-                                <label className={styles.label}>
+                            <div className={types['plus-btn-wrapper']}>
+                                <label className={types.label}>
                                     Specifications:
                                 </label>
                                 <Button text="+" type="plus" handler={(event) => handlePlusClick(event , setState , specifications)}/>
@@ -90,24 +89,24 @@ const CreatePage = () => {
 
                                     return (
 
-                                        <div className={styles['spec-input-wrapper']} key={index}>
-                                            <input value={spec} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
-                                            <input value={value} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>
+                                        <div className={types['spec-input-wrapper']} key={index}>
+                                            <input value={spec} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
+                                            <input value={value} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>
                                         </div>
                                     );
                                 })
                             } 
 
-                        </div>
+                        </Element>
 
                         <SubmitButton
                             type="createUpdate"
                             text="Create"
-                            handler={(event) => handleSubmit(event , state , history)}
+                            handler={(event) => create(event , state , history)}
                         /> 
 
                 </Form>
-                <div className={styles.secondDiv}></div>
+                <Element type="crt-upd-second-div"/>
             </Main>
         </PageWrapper>
     );
