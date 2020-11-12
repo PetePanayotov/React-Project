@@ -16,14 +16,13 @@ const handlePlusClick = (event , setState ,  specifications) => {
 
 };
 
-const handleSpecChange = (event , setState , specifications , index) => {
+const handleSpecChange = (event , setState , specifications , indexOfSpec  , indexOfString) => {
 
     const {value} = event.target;
     const currentSpecs = specifications.slice(0);
-    const lastIndex = currentSpecs.length - 1;
-
-    const lastArrayOfSpecs = currentSpecs[lastIndex];
-    lastArrayOfSpecs[index] = value;
+    const currentArrayOfSpecs = currentSpecs[indexOfSpec];
+    
+    currentArrayOfSpecs[indexOfString] = value;
 
     return setState(state => {
         

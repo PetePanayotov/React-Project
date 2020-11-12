@@ -84,14 +84,14 @@ const CreatePage = () => {
 
                             {
 
-                                specifications.map((arr , i) => {
+                                specifications.map((arr , index) => {
 
                                     const [spec , value] = arr;
 
                                     return (
-                                        <div className={styles['spec-input-wrapper']} key={i}>
-                                            <input value={spec} className={styles.specName} onChange={(event) => handleSpecChange(event , setState ,specifications , 0)}/>
-                                            <input value={value} className={styles.specValue} onChange={(event) => handleSpecChange(event , setState ,specifications , 1)}/>
+                                        <div className={styles['spec-input-wrapper']} key={index}>
+                                            <input value={spec} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
+                                            <input value={value} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>
                                         </div>
                                     );
                                 })
