@@ -90,10 +90,9 @@
     border: none;
     color: white;
     font-size: 35px;
-    border: 1px solid #282C34;
-    border-radius: 100px;
+    border-radius: 50%;
     text-align: center;
-    width: 45px;
+    padding: 4px 15px;
 }
 
 .plus-button:hover {

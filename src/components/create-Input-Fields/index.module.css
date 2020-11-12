@@ -8,11 +8,12 @@
 
 .input{
     height: 30px;
+    text-align: center;
     width: 80%;
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 18px;
     border: 1px solid #282C34;
-    border-radius: 5px;
+    border-radius: 7px;
 }
 
 .label {
