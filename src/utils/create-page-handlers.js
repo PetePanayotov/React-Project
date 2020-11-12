@@ -34,7 +34,7 @@ const handleSpecChange = (event , setState , specifications , indexOfSpec  , ind
 
 };
 
-const handleSubmit = async (event , state , history) => {
+const create = async (event , state , history) => {
 
     event.preventDefault();
 
@@ -57,4 +57,30 @@ const handleSubmit = async (event , state , history) => {
 
 };
 
-export default {handlePlusClick , handleSpecChange , handleSubmit}
+const update = async (event , state , history) => {
+        
+    event.preventDefault();
+    const {_id} = state;
+    const url = `http://localhost:9999/api/car/${_id}`;
+
+    const data = {...state}
+
+    const headerObj = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    const promise = await fetch(url , headerObj);
+    
+    if (promise.status === 200) {
+        return history.push('/home')
+    };
+
+    return console.error('Something went wrong!')
+    
+};
+
+export default {handlePlusClick , handleSpecChange , create , update}

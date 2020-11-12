@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
 import Main from '../../components/main';
-import Form from '../../components/login-register-form';
+import Form from '../../components/form';
 import Input from '../../components/inputField';
 import SubmitButton from '../../components/submit-button';
 import submitHandlers from '../../utils/submitHandlers';
@@ -40,7 +40,7 @@ const RegisterPage = () => {
             <Main layout="forms">
                 <div className={styles.firstDiv}></div>
  
-                <Form>
+                <Form page="register">
 
                     <Input
                         type="text"

@@ -1,4 +1,15 @@
-.form {
+.create,
+.update {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FFFFF0;
+    width: 72%;
+    border: 2px solid #282C34;
+    padding: 30px 0;
+}
+
+.login,
+.register {
     width: 370px;
     height: 400px;
     border: 2px solid #282C34;
@@ -8,4 +19,5 @@
     justify-content: space-evenly;
     padding: 20px 0;
 }
+
 
