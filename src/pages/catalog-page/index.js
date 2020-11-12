@@ -22,7 +22,7 @@ const CatalogPage = () => {
         document.title = 'Catalog';
         filterCars(filters , setFilteredCars);
         
-    } , [filters , filterCars]);
+    } , [filters , setFilters , filterCars]);
 
     
     return(

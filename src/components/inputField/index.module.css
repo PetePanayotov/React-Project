@@ -4,19 +4,20 @@
     justify-content: center;
     flex-wrap: wrap;
     margin: 0 auto;
-    margin-top: 20px;
-}
-
-.input{
-    height: 30px;
-    margin-top: 10px;
-    font-size: 16px;
-    border: 1px solid #282C34;
-    border-radius: 5px;
+    margin-bottom: 30px;
 }
 
 .label {
     color: #282C34;
     font-size: 30px;
     font-family: impact;
+}
+
+.input{
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #282C34;
+    outline: none;
+    border-radius: 5px;
+    padding: 7px 10px;
 }

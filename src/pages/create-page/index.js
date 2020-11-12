@@ -89,6 +89,7 @@ const CreatePage = () => {
                                     const [spec , value] = arr;
 
                                     return (
+
                                         <div className={styles['spec-input-wrapper']} key={index}>
                                             <input value={spec} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
                                             <input value={value} className={styles.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>

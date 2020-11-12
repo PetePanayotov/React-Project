@@ -12,17 +12,18 @@ const {getAllCars} = handlers;
 const  UserHomePage = () => {
 
     const [vipOfferCars , setVipOfferCars] = useState([]);
-
-    const retrieveCars = async () => {
-        
-        const allCars = await getAllCars();
-        
-        setVipOfferCars(allCars.filter(car => car.isVipOffer === true));
-    }
-
+    
+    document.title = 'Home';
+    
     useEffect(() => {
 
-        document.title = 'Home';
+        const retrieveCars = async () => {
+        
+            const allCars = await getAllCars();
+            
+            setVipOfferCars(allCars.filter(car => car.isVipOffer === true));
+        }
+
         retrieveCars();
 
     } , []);

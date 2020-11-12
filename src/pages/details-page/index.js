@@ -25,7 +25,10 @@ const DetailsPage = () => {
     const {_id , brand , model , comments} = car;
     const title = `${brand} ${model}`;
 
+    
     useEffect(() => {
+
+        console.log('details page')
 
         const getCar = async () => {
 
@@ -40,13 +43,13 @@ const DetailsPage = () => {
                 ...response,
                 specifications: parsedSpecs
             });
-    
+
         };
 
         getCar();
         
         document.title = `Catalog - ${title}`;
-    
+
     }, [pressed , title , location]);
 
     return(

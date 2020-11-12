@@ -79,7 +79,7 @@ const App = (props) => {
             return logout();
     
         };
-
+      
         verifyWhenRefresh();
 
     } , []);
