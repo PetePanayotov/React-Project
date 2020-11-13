@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
 import Form from '../../components/form';
-import Input from '../../components/inputField';
+import Wrapper from '../../components/wrapper';
+import Label from '../../components/label';
+import Input from '../../components/input-field';
 import SubmitButton from '../../components/submit-button';
 import submitHandlers from '../../utils/submitHandlers';
-import styles from './index.module.css';
-import { useHistory } from 'react-router-dom';
 
 
 const initialState = {
@@ -15,6 +15,7 @@ const initialState = {
     password: '',
     rePassword: ''
 };
+
 
 const {login} = submitHandlers;
 
@@ -37,24 +38,27 @@ const LoginPage = () => {
 
     return (
         <PageWrapper>
-            <Main layout="forms">
-                <div className={styles.firstDiv}></div>
- 
                 <Form page='login'>
 
-                    <Input
-                        type="text"
-                        value={username}
-                        labelName="Username"
-                        handleChange={(event) => handleChange(event , 'username')}
-                    />
+                    <Wrapper styling="login-input-wrapper">
+                        <Label styling="login-label" text="Username"/>
+                        <Input 
+                            styling="login-input"
+                            type="text"
+                            value={username}
+                            handler={(event) => handleChange(event , 'username')}
+                        />
+                    </Wrapper>
 
-                    <Input
-                        type="password"
-                        value={password}
-                        labelName="Password"
-                        handleChange={(event) => handleChange(event , 'password')}
-                    />
+                    <Wrapper styling="login-input-wrapper">
+                        <Label styling="login-label" text="Password"/>
+                        <Input 
+                            styling="login-input"
+                            type="password"
+                            value={password}
+                            handler={(event) => handleChange(event , 'password')}
+                        />
+                    </Wrapper>
 
                     <SubmitButton 
                         type="loginRegister" 
@@ -63,11 +67,8 @@ const LoginPage = () => {
                     />
 
                 </Form>
-
-                <div className={styles.secondDiv}></div>
-            </Main>
         </PageWrapper>
-    )
-}
+    );
+};
 
 export default LoginPage

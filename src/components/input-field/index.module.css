@@ -1,0 +1,26 @@
+.login-input,
+.create-input,
+.spec-input {
+    border: 1px solid #282C34;
+    border-radius: 7px;
+    font-size: 18px;
+    padding: 7px 10px;
+}
+
+.login-input {
+    margin-top: 10px;
+}
+
+.spec-input,
+.create-input {
+    text-align: center;
+}
+
+.create-input{
+    width: 80%;
+    margin-top: 10px;
+}
+
+.spec-input {
+    width: 40%;
+}

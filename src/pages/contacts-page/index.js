@@ -1,7 +1,6 @@
 import React from 'react';
 import PageWrapper from '../../components/page-wrapper';
 import GoogleApiWrapper from '../../components/map';
-import Main  from '../../components/main';
 import styles from './index.module.css';
 
 const ContactsPage = () => {
@@ -9,8 +8,7 @@ const ContactsPage = () => {
     document.title = 'About';
 
     return (
-          <PageWrapper>
-              <Main layout="about">
+          <PageWrapper layout="about">
                   <GoogleApiWrapper/>
                   <div className={styles.infoBox}>
                       <ul className={styles.info}>
@@ -25,7 +23,6 @@ const ContactsPage = () => {
                           </li>
                       </ul>
                   </div>
-              </Main>
           </PageWrapper>
     );
 

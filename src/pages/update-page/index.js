@@ -1,17 +1,17 @@
 import React , {useState , useEffect} from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
+import {useHistory , useLocation} from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
 import Form from '../../components/form';
-import Input from '../../components/create-Input-Fields';
+import Wrapper from '../../components/wrapper';
+import Label from '../../components/label';
+import Input from '../../components/input-field';
+import CheckBox from '../../components/checkbox';
 import DescriptionInput from '../../components/description-Input';
 import SubmitButton from '../../components/submit-button';
 import Button from '../../components/button';
 import getCreateInputFields from '../../utils/create-Input-Fields';
-import Element from '../../components/random-element-div';
 import handlers from '../../utils/create-page-handlers';
 import getQueryValue from '../../utils/getQueryValue';
-import types from './index.module.css';
 
 
 const initialState =  {
@@ -37,7 +37,7 @@ const UpdatePage = () => {
     const history = useHistory();
     const location = useLocation();
     const [state , setState] = useState(initialState);
-    const {specifications , isVipOffer} = state;
+    const {specifications , isVipOffer , description} = state;
     const inputFieldsArray = getCreateInputFields();
 
     useEffect(() => {
@@ -65,73 +65,90 @@ const UpdatePage = () => {
 
     return (
         <PageWrapper>
-            <Main layout="forms">
-                <Element type="crt-upd-first-div"/>
-                    <Form page="update">                  
-                        <Element type="leftSide">
+            <Form page="update">                  
+                <Wrapper styling="leftSide">
 
-                            {inputFieldsArray.map(({label , stateProperty , type} , index) => {
-                                return (
+                    {
+                        inputFieldsArray.map(({label , stateProperty , type} , index) => {
+                            
+                            return (
+                         
+                                <Wrapper styling="create-input-wrapper" key={index}>
+                                    <Label styling="create-label" text={label}/>
                                     <Input
-                                        key={index}
                                         type={type}
-                                        label={label}
+                                        styling="create-input"
                                         value={state[stateProperty]}
                                         handler={(event) => setState({...state , [stateProperty]: event.target.value})}
                                     />
-                                )
-                            })}
+                                </Wrapper>
+                            );
+                        })
+                    }
 
-                            <Input
-                                type="checkBox"
-                                isChecked={isVipOffer}
-                                label="Vip Offer"
-                                stateValue={isVipOffer}
-                                handler={() => setState({...state , isVipOffer: !isVipOffer})}
-                            />
+                    <Wrapper styling="create-input-wrapper">
+                        <Label styling="create-label" text="Vip Offer"/>
+                        <CheckBox
+                            type="checkBox"
+                            isChecked={isVipOffer}
+                            label="Vip Offer"
+                            handler={() => setState({...state , isVipOffer: !isVipOffer})}
+                        />
+                    </Wrapper>
 
-                            <DescriptionInput
-                                description={state.description}
-                                handler={(event) => setState({...state , description: event.target.value})}
-                            />
+                    <Wrapper styling="description-wrapper">
+                        <Label styling="create-label" text="Description"/>
+                        <DescriptionInput
+                            description={description}
+                            handler={(event) => setState({...state , description: event.target.value})}
+                        />
+                    </Wrapper>
 
-                        </Element>
+                </Wrapper>
 
-                        <Element type="rightSide">
+                <Wrapper styling="rightSide">
 
-                            <div className={types['plus-btn-wrapper']}>
-                                <label className={types.label}>
-                                    Specifications:
-                                </label>
-                                <Button text="+" type="plus" handler={(event) => handlePlusClick(event , setState , specifications)}/>
-                            </div>
+                    <Wrapper styling="plus-btn-wrapper">
+                        <Label styling="create-label" text="Specifications:"/>
+                        <Button 
+                            text="+" 
+                            type="plus" 
+                            handler={(event) => handlePlusClick(event , setState , specifications)}
+                        />
+                    </Wrapper>
 
-                            {
-                            
-                                specifications.map((arr , index) => {
-                                
-                                    const [spec , value] = arr;
-                                
-                                    return (
-                                    
-                                        <div className={types['spec-input-wrapper']} key={index}>
-                                            <input value={spec} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
-                                            <input value={value} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>
-                                        </div>
-                                    );
-                                })
-                            } 
+                    {                           
+                        specifications.map((arr , index) => {
+                        
+                            const [specName , specValue] = arr;
 
-                        </Element>
+                            return (
+                                <Wrapper styling="spec-input-wrapper" key={index}>
+                                    <Input 
+                                        type="text" 
+                                        styling="spec-input" 
+                                        value={specName} 
+                                        handler={(event) => handleSpecChange(event , setState , specifications, index , 0)}
+                                    />
+                                    <Input 
+                                        type="text"
+                                        styling="spec-input"  
+                                        value={specValue} 
+                                        handler={(event) => handleSpecChange(event , setState , specifications , index , 1)}
+                                    />
+                                </Wrapper>
+                            );
+                        })
+                    }
+                    
+                    </Wrapper>
 
-                        <SubmitButton
-                            type="createUpdate"
-                            text="Update"
-                            handler={(event) => update(event , state , history)}
-                        /> 
-                   </Form>
-                <Element type="crt-upd-second-div"/>
-            </Main>
+                    <SubmitButton
+                        type="createUpdate"
+                        text="Update"
+                        handler={(event) => update(event , state , history)}
+                    /> 
+            </Form>
         </PageWrapper>
     );
 

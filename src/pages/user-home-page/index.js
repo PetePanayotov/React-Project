@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
-import Cars from '../../components/cars-container';
+import CarsContainer from '../../components/wrapper'
 import Car from '../../components/car';
 import Title from '../../components/title';
 import handlers from '../../utils/catalog-page-handlers';
@@ -31,9 +30,8 @@ const  UserHomePage = () => {
 
     return(
         <PageWrapper>
-            <Main layout="forms">
                 <Title text="Our best offers"/>
-                <Cars>
+                <CarsContainer styling="cars-container">
 
                     {vipOfferCars.map((car) => {
 
@@ -54,8 +52,7 @@ const  UserHomePage = () => {
                             );
                     })}
 
-                </Cars>
-            </Main>
+                </CarsContainer>
         </PageWrapper>
     );
    

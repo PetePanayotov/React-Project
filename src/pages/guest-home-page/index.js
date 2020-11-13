@@ -9,7 +9,7 @@ const GuestHomePage = () => {
   document.title = 'Home'
 
   return (
-      <PageWrapper>
+      <PageWrapper layout="guest-home">
           <div className={styles.container}>
             <Title text="Fast Cars are your passion?"/>
           </div>

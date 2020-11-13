@@ -1,11 +1,11 @@
 import React , {useContext} from 'react';
 import {useHistory} from 'react-router-dom';
-import styles from './index.module.css'
+import UserContext from '../../Context';
 import LinkComponent  from '../link';
 import Button from '../button';
 import logo from '../../images/logo.jpg';
 import getLinks from '../../utils/navigation';
-import UserContext from '../../Context';
+import styles from './index.module.css'
 
 
 function Header() {

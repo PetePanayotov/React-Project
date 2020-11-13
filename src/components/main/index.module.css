@@ -5,12 +5,9 @@
    
 }
 
-.forms {
-    max-width: 100%;
-    min-height: 72vh;
+.vertical-centered {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 50px 0; 
 }

@@ -1,12 +1,10 @@
 import React , { useState, useEffect} from 'react';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
-import CarsContainer from '../../components/cars-container';
+import Wrapper from '../../components/wrapper';
 import Car from '../../components/car';
 import Title from '../../components/title';
 import Logo from '../../components/logo';
 import getLogos from '../../utils/logos';
-import styles from './index.module.css';
 import handlers from '../../utils/catalog-page-handlers';
 
 
@@ -28,8 +26,7 @@ const CatalogPage = () => {
     return(
 
         <PageWrapper>
-            <Main layout="forms">
-                <div className={styles.logoContainer}>
+                <Wrapper styling="logoContainer">
 
                     {logos.map((logo , i ) => {
                         
@@ -46,10 +43,10 @@ const CatalogPage = () => {
                         )
                     })}
 
-                </div>
+                </Wrapper>
                 <Title text="All offers"/>
 
-                <CarsContainer>
+                <Wrapper styling="cars-container">
                     {filteredCars.map((car) => {
                         
                         const {_id , brand , model , price , imageUrl , likes } = car;
@@ -68,8 +65,7 @@ const CatalogPage = () => {
                 
                         );
                     })}
-                </CarsContainer>
-              </Main>
+                </Wrapper>
         </PageWrapper>
 
     );

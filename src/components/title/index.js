@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './index.module.css'
 
-function Title({text}) {
+const Title = ({text}) => {
     return (
-    <p className={styles.paragraph}>{text}</p>
+        <p className={styles.paragraph}>{text}</p>
     )
 }
 

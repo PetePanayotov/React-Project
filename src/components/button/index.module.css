@@ -1,169 +1,94 @@
-/* Header Button ////////////////////////////////////////////////////// */
-
-.header-button {
-    background-color: #282C34;
+.header-button ,
+.footer-button ,
+.delete-button ,
+.load-button ,
+.like-button ,
+.plus-button ,
+.comment-button ,
+.remove-button {
     outline: none;
     border: none;
-    border-bottom: 2px solid #282C34;
     color: #ffffff;
+}
+
+.delete-button ,
+.load-button ,
+.like-button ,
+.plus-button ,
+.comment-button ,
+.remove-button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #282C34;
+}
+
+.header-button {
+    background-color: transparent;
+    border-bottom: 2px solid #282C34;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 26px;
-    text-decoration: none;
     padding-bottom: 5px;
 }
 
 .header-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-    border-bottom: 2px solid #00D8FF;
+    border-color: #00D8FF;
 }
 
-/* Footer Button /////////////////////////////////////////////////////// */
-
 .footer-button {
-    background-color: #282C34;
-    outline: none;
-    border: none;
-    color: #ffffff;
+    background-color: transparent;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
-    text-decoration: none;
     padding: 0;
 }
 
-.footer-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-}
-
-/* Delete Button ////////////////////////////////////////////// */
-
 .delete-button {
     width: fit-content;
-    background-color: #282C34;
-    outline: none;
-    border: none;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-decoration: none;
     padding: 5px 24px;
     border-radius: 20px;
 }
 
-.delete-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-}
-
-/* Like Button /////////////////////////////////////////////////// */
-
 .like-button {
-    width: fit-content;
-    background-color: #282C34;
-    outline: none;
-    border: none;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    text-decoration: none;
     padding: 5px 20px;
     border-radius: 20px;
 }
 
-.like-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-}
-
-/* Plus Button //////////////////////////////////////////////////// */
-
-.plus-button-div {
-    border: none;
-    display: flex;
-    justify-content: center;
-}
-
 .plus-button {
-    background-color: #282C34;
-    outline: none;
-    border: none;
-    color: white;
     font-size: 35px;
     border-radius: 50%;
-    text-align: center;
     padding: 4px 15px;
 }
 
-.plus-button:hover {
-    
-    color: #00D8FF;
-    cursor: pointer;
-}
-
-/* Comment Button ///////////////////////////////////////////////// */
-
 .comment-button {
-    width: fit-content;
-    background-color: #282C34;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
-    text-decoration: none;
     align-self: flex-end;
     padding: 3px 10px;
 }
 
-
-.comment-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-}
-
-/* Remove Button /////////////////////////////////////////////// */
-
-
 .remove-button {
-    width: fit-content;
     align-self: flex-end;
-    background-color: #282C34;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    text-decoration: none;
     margin: 0 10px 10px 0;
     padding: 5px 17px;
     border-radius: 20px;
 }
 
-.remove-button:hover {
-    cursor: pointer;
-    color: #00D8FF;
-}
-
-/* /////////////////////////////////////////////////////////// */
-
-
 .load-button {
-    width: fit-content;
-    background-color: #282C34;
     align-self: center;
-    outline: none;
-    border: none;
-    color: #ffffff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    text-decoration: none;  
+    font-size: 20px; 
     padding: 5px 30px;
     border-radius: 20px;
     margin-bottom: 10px;
 }
 
-.load-button:hover {
+.header-button:hover ,
+.footer-button:hover ,
+.delete-button:hover,
+.load-button:hover ,
+.like-button:hover ,
+.plus-button:hover ,
+.comment-button:hover ,
+.remove-button:hover {
     cursor: pointer;
     color: #00D8FF;
 }

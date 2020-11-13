@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-function Main(props) {
+const Main = ({children , layout}) => {
 
     return (
-        <div className={styles[props.layout]}>
-            {props.children}
-        </div>
+        <main className={styles[layout]}>
+            {children}
+        </main>
     );
 
 };

@@ -2,11 +2,11 @@
 
 .header-li {
     padding-bottom: 5px;
-    /* border-bottom: 2px solid #ffffff; */
+    border-bottom: 2px solid  #282C34;
 }
 
 .header-li:hover {
-    border-bottom: 2px solid #00D8FF;
+    border-color: #00D8FF;
 }
 
 .header-li:hover .header-link {

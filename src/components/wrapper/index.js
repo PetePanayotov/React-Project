@@ -2,14 +2,14 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-const Element = ({children , type}) => {
+const Wrapper = ({children , styling}) => {
 
     return (
-        <div className={styles[type]}>
+        <div className={styles[styling]}>
             {children}
         </div>
     )
 
 };
 
-export default Element
+export default Wrapper

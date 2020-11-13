@@ -2,7 +2,6 @@ import React , {useContext, useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
 import CarDetails from '../../components/car-details';
 import Title from '../../components/title';
 import CommentsSection from '../../components/comments-section';
@@ -28,8 +27,6 @@ const DetailsPage = () => {
     
     useEffect(() => {
 
-        console.log('details page')
-
         const getCar = async () => {
 
             const id = getQueryValue(location);
@@ -54,7 +51,6 @@ const DetailsPage = () => {
 
     return(
         <PageWrapper>
-            <Main layout="forms">
                 <Title text={title}/>
                 <CarDetails
                     isAdmin={isAdmin}
@@ -71,7 +67,6 @@ const DetailsPage = () => {
                     pressed={pressed}
                     setPressed={setPressed}
                 />
-            </Main>
         </PageWrapper>
     );
 

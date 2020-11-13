@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import UserContext from '../../Context';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
-import Cars from '../../components/cars-container';
+import CarsContainer from '../../components/wrapper';
 import Car from '../../components/car';
 import Title from '../../components/title';
 import getGreeting from '../../utils/getGreeting';
@@ -57,44 +56,41 @@ const  ProfilePage = () => {
     const newGreeting = getGreeting(hour , isAdmin , username);
 
 
-    return(
+    return (
             <PageWrapper>
-                <Main layout="forms">
-                    <Title text={newGreeting}/>
-                    <Cars>
+                <Title text={newGreeting}/>
+                <CarsContainer styling="cars-container">
+                    
+                    {
+                        cars.length === 0 &&
+                        <p>This section is empty</p>
+                    }
 
-                        {
-                            cars.length === 0 &&
+                    {
+                        cars.map((car) => {
 
-                            <p>This section is empty</p>
-                        }
+                            const {_id , brand , model , price , imageUrl , likes } = car;
 
-                        {
-                            cars.map((car) => {
+                            return (
+                            
+                                <Car
+                                    key={_id}
+                                    isAdmin={isAdmin}
+                                    page="profile"
+                                    likes={likes.length}
+                                    id={_id}
+                                    brand={brand}
+                                    model={model}
+                                    price={price}
+                                    imageUrl={imageUrl}    
+                                />
+                            
+                            );
+                        })
+                    
+                    }
 
-                                const {_id , brand , model , price , imageUrl , likes } = car;
-
-                                return (
-                                
-                                    <Car
-                                        key={_id}
-                                        isAdmin={isAdmin}
-                                        page="profile"
-                                        likes={likes.length}
-                                        id={_id}
-                                        brand={brand}
-                                        model={model}
-                                        price={price}
-                                        imageUrl={imageUrl}    
-                                    />
-                                
-                                );
-                            })
-                        
-                        } 
-
-                    </Cars>
-                </Main>
+                </CarsContainer>
             </PageWrapper>
         );
     

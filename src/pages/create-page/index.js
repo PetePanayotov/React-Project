@@ -1,16 +1,16 @@
 import React , {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import PageWrapper from '../../components/page-wrapper';
-import Main from '../../components/main';
 import Form from '../../components/form';
-import Input from '../../components/create-Input-Fields';
+import Wrapper from '../../components/wrapper';
+import Label from '../../components/label';
+import Input from '../../components/input-field';
+import CheckBox from '../../components/checkbox';
 import DescriptionInput from '../../components/description-Input';
 import SubmitButton from '../../components/submit-button';
 import Button from '../../components/button';
-import Element from '../../components/random-element-div';
 import getCreateInputFields from '../../utils/create-Input-Fields';
 import handlers from '../../utils/create-page-handlers';
-import types from './index.module.css';
 
 
 const {handlePlusClick , handleSpecChange , create} = handlers;
@@ -32,82 +32,93 @@ const CreatePage = () => {
 
     const history = useHistory();
     const [state , setState] = useState(initialState);
-    const {specifications , isVipOffer} = state;
+    const {specifications , isVipOffer , description} = state;
     const inputFieldsArray = getCreateInputFields();
 
 
     return (
 
         <PageWrapper>
-            <Main layout="forms">
-                <Element type="crt-upd-first-div"/>
                 <Form page="create">
+                    <Wrapper styling="leftSide">
 
-                        <Element type="leftSide">
-
-                            {inputFieldsArray.map(({label , stateProperty , type} , index) => {
-                                return (
+                        {inputFieldsArray.map(({label , stateProperty , type} , index) => {
+                            return (
+                                <Wrapper styling="create-input-wrapper" key={index}>
+                                    <Label styling="create-label" text={label}/>
                                     <Input
-                                        key={index}
                                         type={type}
-                                        label={label}
+                                        styling="create-input"
                                         value={state[stateProperty]}
                                         handler={(event) => setState({...state , [stateProperty]: event.target.value})}
                                     />
-                                )
-                            })}
+                                </Wrapper>
+                            );
+                        })}
 
-                            <Input
+                        <Wrapper styling="create-input-wrapper">
+                            <Label styling="create-label" text="Vip Offer"/>
+                            <CheckBox
                                 type="checkBox"
                                 isChecked={isVipOffer}
                                 label="Vip Offer"
-                                stateValue={isVipOffer}
                                 handler={() => setState({...state , isVipOffer: !isVipOffer})}
                             />
+                        </Wrapper>
 
+                        <Wrapper styling="description-wrapper">
+                            <Label styling="create-label" text="Description"/>
                             <DescriptionInput
-                                description={state.description}
+                                description={description}
                                 handler={(event) => setState({...state , description: event.target.value})}
                             />
+                        </Wrapper>
 
-                        </Element>
+                    </Wrapper>
 
-                        <Element type="rightSide">
+                    <Wrapper styling="rightSide">
 
-                            <div className={types['plus-btn-wrapper']}>
-                                <label className={types.label}>
-                                    Specifications:
-                                </label>
-                                <Button text="+" type="plus" handler={(event) => handlePlusClick(event , setState , specifications)}/>
-                            </div>
+                        <Wrapper styling="plus-btn-wrapper">
+                            <Label styling="create-label" text="Specifications:"/>
+                            <Button 
+                                text="+" 
+                                type="plus" 
+                                handler={(event) => handlePlusClick(event , setState , specifications)}
+                            />
+                        </Wrapper>
 
-                            {
+                        {
+                            specifications.map((arr , index) => {
 
-                                specifications.map((arr , index) => {
+                                const [specName , specValue] = arr;
 
-                                    const [spec , value] = arr;
+                                return (
+                                    <Wrapper styling="spec-input-wrapper" key={index}>
+                                        <Input 
+                                            type="text" 
+                                            styling="spec-input" 
+                                            value={specName} 
+                                            handler={(event) => handleSpecChange(event , setState , specifications, index , 0)}
+                                        />
+                                        <Input 
+                                            type="text"
+                                            styling="spec-input"  
+                                            value={specValue} 
+                                            handler={(event) => handleSpecChange(event , setState , specifications , index , 1)}
+                                        />
+                                    </Wrapper>
+                                );
+                            })
+                        } 
 
-                                    return (
+                    </Wrapper>
 
-                                        <div className={types['spec-input-wrapper']} key={index}>
-                                            <input value={spec} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications, index , 0)}/>
-                                            <input value={value} className={types.specInput} onChange={(event) => handleSpecChange(event , setState ,specifications , index , 1)}/>
-                                        </div>
-                                    );
-                                })
-                            } 
-
-                        </Element>
-
-                        <SubmitButton
-                            type="createUpdate"
-                            text="Create"
-                            handler={(event) => create(event , state , history)}
-                        /> 
-
+                    <SubmitButton
+                        type="createUpdate"
+                        text="Create"
+                        handler={(event) => create(event , state , history)}
+                    /> 
                 </Form>
-                <Element type="crt-upd-second-div"/>
-            </Main>
         </PageWrapper>
     );
 
