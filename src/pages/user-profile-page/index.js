@@ -69,7 +69,7 @@ const  ProfilePage = () => {
                     {
                         cars.map((car) => {
 
-                            const {_id , brand , model , price , imageUrl , likes } = car;
+                            const {_id , brand , model , price , likes} = car;
 
                             return (
                             
@@ -82,7 +82,7 @@ const  ProfilePage = () => {
                                     brand={brand}
                                     model={model}
                                     price={price}
-                                    imageUrl={imageUrl}    
+                                    imageUrl={car.imageUrl || car.images[0]}    
                                 />
                             
                             );

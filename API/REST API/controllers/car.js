@@ -44,27 +44,27 @@ const getCar = async (req , res , next) => {
 
 const createCar = async (req , res , next) => {
 
-    let {brand , model , price , imageUrl , description , isVipOffer , specifications} = req.body;
+    const data = {
+        ...req.body,
+        specifications: JSON.stringify(req.body.specifications)
+    };
     
-    specifications = JSON.stringify(specifications);
-    
-    const newCar = new Car({brand , model , price , imageUrl , description , isVipOffer , specifications});
+    const newCar = new Car(data);
     
     try {
         
         const carObj = await newCar.save();
+
         if (!carObj) {
             throw new Error();
-        }
+        };
 
-
-        res.send(newCar)
+        res.status(200).send(newCar)
         
     } catch (error) {
-        console.log('Something is wrong' , error)
+        res.status(500).send({})
         next()
-    }
-
+    };
 
 };
 

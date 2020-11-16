@@ -49,7 +49,7 @@ const CatalogPage = () => {
                 <Wrapper styling="cars-container">
                     {filteredCars.map((car) => {
                         
-                        const {_id , brand , model , price , imageUrl , likes } = car;
+                        const {_id , brand , model , price , likes } = car;
 
                         return (
                             
@@ -60,7 +60,7 @@ const CatalogPage = () => {
                                 brand={brand}
                                 model={model}
                                 price={price}
-                                imageUrl={imageUrl}    
+                                imageUrl={car.hasOwnProperty('imageUrl') ? car.imageUrl : car.images[0]}    
                             />
                 
                         );

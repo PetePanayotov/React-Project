@@ -13,7 +13,8 @@ const DetailsPage = () => {
     const initialState = {
         specifications: [],
         likes: [],
-        comments: []
+        comments: [],
+        images: []
     };
 
     const location = useLocation();

@@ -20,11 +20,11 @@ export default () => {
             type: 'text'
         },
 
-        {
-            label: 'Image',
-            stateProperty: 'imageUrl',
-            type: 'text'
-        },
+        // {
+        //     label: 'Image',
+        //     stateProperty: 'imageUrl',
+        //     type: 'text'
+        // },
 
     ]
 

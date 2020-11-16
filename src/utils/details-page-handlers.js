@@ -122,11 +122,43 @@ const removeComment = async (carId , string , pressed , setPressed) => {
     
 };
 
+const leftArrowHandler = (event , index , imagesArray , setIndex) => {
+
+    event.preventDefault();
+
+    let newIndex = null;
+    
+    if (index === 0) {
+        newIndex = imagesArray.length - 1;
+    }else {
+        newIndex = index - 1;
+    };
+
+    setIndex(newIndex)
+};
+
+const rightArrowHandler = (event , index , imagesArray , setIndex) => {
+
+    event.preventDefault();
+
+    let newIndex = null;
+    
+    if (index === imagesArray.length - 1) {
+        newIndex = 0;
+    }else {
+        newIndex = index + 1;
+    };
+
+    setIndex(newIndex);
+};
+
 export default {
     like,
     dislike,
     deleteCar,
     comment,
     removeComment,
-    loadComments
+    loadComments,
+    leftArrowHandler,
+    rightArrowHandler
 };

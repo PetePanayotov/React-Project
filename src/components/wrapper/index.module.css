@@ -65,3 +65,47 @@
     margin-bottom: 100px;
 }
 
+.car-details-wrapper {
+    width: 80%;
+    min-height: 100vh;
+    border: 1px solid;
+    margin: 70px 0;
+    background-color: #FFFFF0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.small-images-wrapper {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.details-content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.details-spec-wrapper {
+    width: 20%;
+    height: 100%;
+}
+
+.details-description-wrapper {
+    width: 30%;
+    height: 90%;
+    text-align: center;
+}
+
+.update-delete-wrapper {
+    display: flex;
+    width: 20%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
