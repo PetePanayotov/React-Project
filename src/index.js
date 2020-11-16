@@ -9,13 +9,13 @@ import ErrorBoundary from './ErrorBoundaries';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ErrorBoundary>
+    {/* <ErrorBoundary> */}
       <App>
 
         <Navigation />
 
       </App>
-    </ErrorBoundary>
+    {/* </ErrorBoundary> */}
   </React.StrictMode>,
   document.getElementById('root')
 

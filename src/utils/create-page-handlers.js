@@ -1,4 +1,35 @@
-const handlePlusClick = (event , setState ,  specifications) => {
+const addNewImages = (event , setState , images) => {
+
+    event.preventDefault();
+    const currentImages = images.slice(0);
+
+    currentImages.push('');
+
+    return setState(state => {
+
+        return {
+            ...state,
+            images: currentImages
+        };
+    });
+};
+
+const handleImageChange = (event, setState , currentImages , indexOfImage) => {
+
+    const {value} = event.target;
+    const newImages = currentImages.slice(0);
+    newImages[indexOfImage] = value;
+
+    return setState(state => {
+        return {
+            ...state,
+            images: newImages
+        };
+    });
+
+};
+
+const addNewSpecs = (event , setState ,  specifications) => {
     
     event.preventDefault();
 
@@ -83,4 +114,4 @@ const update = async (event , state , history) => {
     
 };
 
-export default {handlePlusClick , handleSpecChange , create , update}
+export default {addNewImages , handleImageChange , addNewSpecs , handleSpecChange , create , update}

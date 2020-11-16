@@ -1,6 +1,11 @@
 .create-label,
-.login-label {
+.login-label,
+.details-label {
     color: #282C34;
     font-size: 30px;
     font-family: impact;
+}
+
+.details-label {
+    font-size: 20px;
 }

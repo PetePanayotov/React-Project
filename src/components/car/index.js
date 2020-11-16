@@ -9,7 +9,7 @@ const Car = ({page , isAdmin , likes , brand , model , id , price , imageUrl}) =
     return (
         <div className={styles.wrapper}>
 
-            <CarImage imageUrl={imageUrl} page="catalog"/>
+            <CarImage imageUrl={imageUrl} styling="medium"/>
 
             <article className={styles['content-wrapper']}> 
 

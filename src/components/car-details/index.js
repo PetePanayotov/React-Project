@@ -1,31 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import CarImage from '../car-image';
+import Wrapper from '../../components/wrapper';
 import LinkComponent from '../link';
 import Button from '../../components/button';
+import Label from '../../components/label';
 import detailsPageHandlers from '../../utils/details-page-handlers';
-import styles from './index.module.css';
 
 
 const CarDetails = ({isAdmin , userId , car ,pressed , setPressed}) => {
     
     const history = useHistory();
+    const [index , setIndex] = useState(0);
+    const mainImageURL = car.images[index] || car.imageUrl;
     const {like , dislike , deleteCar} = detailsPageHandlers;
-    const {imageUrl , price , specifications , description , likes} = car;
+    const {price , specifications, images , description , likes} = car;
     const carId = car._id
     const updateLink = `/update?carId=${carId}`;
-    const canLike = !likes.includes(userId); 
+    const canLike = !likes.includes(userId);
 
 
     return(
         
-        <div className={styles.wrapper}>
-            <CarImage imageUrl={imageUrl} page="details"/>
+        <Wrapper styling="car-details-wrapper">
+            <CarImage 
+                imageUrl={mainImageURL} 
+                styling="big"
+                imagesArray={images}
+                index={index}
+                setIndex={setIndex} 
+                canSlide={images.length > 1} 
+            />
+
+            {
+                car.images.length > 0 &&
+
+                <Wrapper styling="small-images-wrapper">
+                    {
+                        car.images.map((imageURL , i) => {
+                            
+                            return (
+                                <CarImage 
+                                    key={i} 
+                                    imageUrl={imageURL} 
+                                    styling="small" 
+                                    handler={() => setIndex(i)}
+                                />
+                            );
+                        })
+                    }
+                </Wrapper>
+            }
             
-            <div className={styles.descriptionWrapper}>
-                <div className={styles.leftDiv}>
-                    <p><label className={styles.label}>Price: </label>{price} BGN</p>
-                    <label className={styles.label}>Specifications:</label>
+            <Wrapper styling="details-content-wrapper">
+                
+                <Wrapper styling="details-spec-wrapper">
+                    
+                    <p>
+                        <Label styling="details-label" text={`Price: `}/>
+                        {price} BGN
+                    </p>
+
+                    <Label styling="details-label" text="Specifications:"/>
                     {
                         specifications.map(([property , value] , index) => {
                             const text = `${property} : ${value}`
@@ -34,19 +70,24 @@ const CarDetails = ({isAdmin , userId , car ,pressed , setPressed}) => {
                             )
                         })
                     }
-                </div>
-                <div className={styles.rightDiv}>
-                    <p><label className={styles.label}>Description:</label></p>
+
+                </Wrapper>
+
+                <Wrapper styling="details-description-wrapper">
+                    <p>
+                        <Label styling="details-label" text="Description:"/>
+                    </p>
                     <p>{description}</p>
-                </div>
-            </div>
+                </Wrapper>
+
+            </Wrapper>
+
             {
                 isAdmin &&
-                <div className={styles["buttons-div"]}>
-                    
+                <Wrapper styling="update-delete-wrapper">                   
                     <LinkComponent title="Update" href={updateLink} type="update"/>
                     <Button type ="delete" text="Delete" handler={(e) => deleteCar(history , carId)}/>
-                </div>
+                </Wrapper>
             }
             {
                 !isAdmin && canLike &&
@@ -56,7 +97,7 @@ const CarDetails = ({isAdmin , userId , car ,pressed , setPressed}) => {
                 !isAdmin && !canLike &&
                 <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , pressed , setPressed)}/>
             }
-        </div>
+        </Wrapper>
     );
 
 };

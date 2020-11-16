@@ -35,7 +35,7 @@ const  UserHomePage = () => {
 
                     {vipOfferCars.map((car) => {
 
-                            const {_id , brand , model , price , imageUrl , likes } = car;
+                            const {_id , brand , model , price , likes } = car;
 
                             return (
 
@@ -46,7 +46,7 @@ const  UserHomePage = () => {
                                     brand={brand}
                                     model={model}
                                     price={price}
-                                    imageUrl={imageUrl}    
+                                    imageUrl={car.imageUrl || car.images[0]}    
                                 />
                             
                             );

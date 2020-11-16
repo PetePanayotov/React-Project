@@ -13,13 +13,13 @@ import getCreateInputFields from '../../utils/create-Input-Fields';
 import handlers from '../../utils/create-page-handlers';
 
 
-const {handlePlusClick , handleSpecChange , create} = handlers;
+const {addNewImages, handleImageChange , addNewSpecs , handleSpecChange , create} = handlers;
 
 const initialState =  {
     brand: '',
     model: '',
     price: '',
-    imageUrl: '',
+    images: [],
     description: '',
     specifications: [],
     isVipOffer: false,
@@ -32,7 +32,7 @@ const CreatePage = () => {
 
     const history = useHistory();
     const [state , setState] = useState(initialState);
-    const {specifications , isVipOffer , description} = state;
+    const {specifications , isVipOffer , description , images} = state;
     const inputFieldsArray = getCreateInputFields();
 
 
@@ -55,6 +55,36 @@ const CreatePage = () => {
                                 </Wrapper>
                             );
                         })}
+
+                        <Wrapper styling="create-input-wrapper">
+                            <Label styling="create-label" text="Images"/>
+                            <Button 
+                                text="+" 
+                                type="plus" 
+                                handler={(event) => addNewImages(event , setState , images)}
+                            />
+                        </Wrapper>
+
+                        {
+                            images.map((image , index) => {
+
+                                const labelText = `Image ${index + 1}`
+
+                                return (
+                                    
+                                    <Wrapper styling="create-input-wrapper" key={index}>
+                                        <Label styling="create-label" text={labelText}/>
+                                        <Input
+                                            type="text"
+                                            styling="create-input"
+                                            value={image}
+                                            handler={(event) => handleImageChange(event , setState , images , index)}
+                                        />
+                                    </Wrapper>
+                                );
+
+                            })
+                        }
 
                         <Wrapper styling="create-input-wrapper">
                             <Label styling="create-label" text="Vip Offer"/>
@@ -83,7 +113,7 @@ const CreatePage = () => {
                             <Button 
                                 text="+" 
                                 type="plus" 
-                                handler={(event) => handlePlusClick(event , setState , specifications)}
+                                handler={(event) => addNewSpecs(event , setState , specifications)}
                             />
                         </Wrapper>
 
