@@ -5,52 +5,72 @@ import Wrapper from '../../components/wrapper';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import Label from '../../components/label';
-import detailsPageHandlers from '../../utils/details-page-handlers';
+import handlers from '../../utils/details-page-handlers';
 
 
-const CarDetails = ({isAdmin , userId , car ,pressed , setPressed}) => {
+const {like , dislike , deleteCar , leftArrowHandler , rightArrowHandler} = handlers;
+
+const rightArrow = <i className="fas fa-chevron-right"></i>;
+const leftArrow = <i className="fas fa-chevron-left"></i>
+
+
+const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
     
     const history = useHistory();
     const [index , setIndex] = useState(0);
     const mainImageURL = car.images[index] || car.imageUrl;
-    const {like , dislike , deleteCar} = detailsPageHandlers;
     const {price , specifications, images , description , likes} = car;
-    const carId = car._id
+    const carId = car._id;
     const updateLink = `/update?carId=${carId}`;
     const canLike = !likes.includes(userId);
-
+    const canSlide = images.length > 1;
 
     return(
         
         <Wrapper styling="car-details-wrapper">
-            <CarImage 
-                imageUrl={mainImageURL} 
-                styling="big"
-                imagesArray={images}
-                index={index}
-                setIndex={setIndex} 
-                canSlide={images.length > 1} 
-            />
+            
+            <Wrapper styling="details-images-wrapper">
 
-            {
-                car.images.length > 0 &&
+                {
+                    canSlide &&
 
-                <Wrapper styling="small-images-wrapper">
-                    {
-                        car.images.map((imageURL , i) => {
-                            
-                            return (
-                                <CarImage 
-                                    key={i} 
-                                    imageUrl={imageURL} 
-                                    styling="small" 
-                                    handler={() => setIndex(i)}
-                                />
-                            );
-                        })
-                    }
-                </Wrapper>
-            }
+                    <Button type="arrow" text={leftArrow} handler={(event) => leftArrowHandler(event , index , images , setIndex)}/>
+                }
+                
+                <CarImage 
+                    imageUrl={mainImageURL} 
+                    styling="big"
+                />
+
+                {
+                    canSlide &&
+
+                    <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , index , images , setIndex)}/>
+                }
+
+                {
+                    car.images.length > 0 &&
+
+                    <Wrapper styling="small-images-wrapper">
+                        {
+                            car.images.map((imageURL , i) => {
+
+                                const isSelected = index === i;
+
+                                return (
+                                    <CarImage 
+                                        key={i} 
+                                        imageUrl={imageURL} 
+                                        styling={`small-selected-${isSelected}`} 
+                                        handler={() => setIndex(i)}
+                                    />
+                                );
+                            })
+                        }
+                    </Wrapper>
+                }
+
+            </Wrapper>
             
             <Wrapper styling="details-content-wrapper">
                 

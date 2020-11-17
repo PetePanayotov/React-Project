@@ -6,7 +6,7 @@ import maseratiLogo from '../images/maseratiLogo.jpg';
 import lamboLogo from '../images/lamboLogo.jpg';
 import vetteLogo from '../images/vetteLogo.jpg';
 import ferrariLogo from '../images/ferrariLogo.jpg';
-import porscheLogo from '../images/porcheLogo.jpg'
+import porscheLogo from '../images/porscheLogo.jpg'
 
 
 const getLogos = () => { 
