@@ -83,18 +83,16 @@
 }
 
 .arrow-button {
-    align-self: center;
     background-color:#282C34;
     border-radius: 10px;
     font-size: 36px;
-    opacity: 0.3;
-    height: 40%;
-    margin: 0 10px;
+    opacity: 0.2;
+    padding: 70px 5px;
 }
 
 .arrow-button:hover {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 1;
 }
 
 .header-button:hover ,
