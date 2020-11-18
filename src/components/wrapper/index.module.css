@@ -33,11 +33,20 @@
     margin: 0 auto;
 }
 
-.plus-btn-wrapper {
+.images-plus-btn-wrapper {
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.specs-plus-btn-wrapper {
     width: 60%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .spec-input-wrapper {

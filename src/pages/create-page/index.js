@@ -56,7 +56,7 @@ const CreatePage = () => {
                             );
                         })}
 
-                        <Wrapper styling="create-input-wrapper">
+                        <Wrapper styling="images-plus-btn-wrapper">
                             <Label styling="create-label" text="Images"/>
                             <Button 
                                 text="+" 
@@ -108,7 +108,7 @@ const CreatePage = () => {
 
                     <Wrapper styling="rightSide">
 
-                        <Wrapper styling="plus-btn-wrapper">
+                        <Wrapper styling="specs-plus-btn-wrapper">
                             <Label styling="create-label" text="Specifications:"/>
                             <Button 
                                 text="+" 

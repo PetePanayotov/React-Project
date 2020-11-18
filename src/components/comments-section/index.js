@@ -16,7 +16,7 @@ const CommentsSection = ({username , carId , comments , pressed , setPressed}) =
     return (
         <div className={styles.container}>
             
-            <Button type="load" text="Load" handler={(e) => loadComments(e , displayComments , setDisplayComments)}/>
+            <Button type="load" text="Load" handler={(e) => loadComments(e , setDisplayComments)}/>
             
             {
                 displayComments && 
@@ -30,7 +30,7 @@ const CommentsSection = ({username , carId , comments , pressed , setPressed}) =
                                 author={author} 
                                 time={time} 
                                 comment={comment} 
-                                handler={() => removeComment(carId , string , pressed , setPressed)}
+                                handler={() => removeComment(carId , string  , setPressed)}
                             />
                 })
 
@@ -45,7 +45,7 @@ const CommentsSection = ({username , carId , comments , pressed , setPressed}) =
             {
                 displayComments &&
 
-                <CommentInput handler={(event) => comment(event , carId , username , pressed , setPressed)}/>
+                <CommentInput handler={(event) => comment(event , carId , username , setPressed)}/>
             }
 
         </div>

@@ -18,7 +18,6 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
     
     const history = useHistory();
     const [index , setIndex] = useState(0);
-    const mainImageURL = car.images[index] || car.imageUrl;
     const {price , specifications, images , description , likes} = car;
     const carId = car._id;
     const updateLink = `/update?carId=${carId}`;
@@ -34,18 +33,18 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
                 {
                     canSlide &&
 
-                    <Button type="arrow" text={leftArrow} handler={(event) => leftArrowHandler(event , index , images , setIndex)}/>
+                    <Button type="arrow" text={leftArrow} handler={(event) => leftArrowHandler(event , images , setIndex)}/>
                 }
                 
                 <CarImage 
-                    imageUrl={mainImageURL} 
+                    imageUrl={images[index]} 
                     styling="big"
                 />
 
                 {
                     canSlide &&
 
-                    <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , index , images , setIndex)}/>
+                    <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , images , setIndex)}/>
                 }
 
                 {
@@ -111,11 +110,11 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
             }
             {
                 !isAdmin && canLike &&
-                <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(carId , userId , pressed , setPressed)}/>
+                <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(carId , userId , setPressed)}/>
             }
             {
                 !isAdmin && !canLike &&
-                <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , pressed , setPressed)}/>
+                <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , setPressed)}/>
             }
         </Wrapper>
     );

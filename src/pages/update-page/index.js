@@ -20,24 +20,19 @@ const initialState =  {
     model: '',
     price: '',
     imageUrl: '',
-    description: '',
+    images: [''],
     specifications: [],
-    isVipOffer: false,
 };
 
-const {handlePlusClick , handleSpecChange , update} = handlers;
+const {handlePlusClick , handleSpecChange, addNewImages , handleImageChange , update} = handlers;
 
 
 const UpdatePage = () => {
 
-    useEffect(() => {
-        document.title = 'Update Page';
-    } , []);
-
     const history = useHistory();
     const location = useLocation();
     const [state , setState] = useState(initialState);
-    const {specifications , isVipOffer , description} = state;
+    const {specifications , isVipOffer , description , images} = state;
     const inputFieldsArray = getCreateInputFields();
 
     useEffect(() => {
@@ -51,13 +46,14 @@ const UpdatePage = () => {
             const response = await promise.json();
             const parsedSpecs = JSON.parse(response.specifications);
             
-            setState({
+            return setState({
                 ...response,
                 specifications: parsedSpecs
             });
 
         };
-
+        
+        document.title = 'Update Page';
         getCar();
 
     }, [location]);
@@ -86,6 +82,35 @@ const UpdatePage = () => {
                         })
                     }
 
+                    <Wrapper styling="images-plus-btn-wrapper">
+                        <Label styling="create-label" text="Images"/>
+                        <Button 
+                            text="+" 
+                            type="plus" 
+                            handler={(event) => addNewImages(event , setState , images)}
+                        />
+                    </Wrapper>
+
+                    {
+                        images.map((imgUrl , index) => {
+
+                            const labelText = `Image ${index + 1}`
+
+                            return (
+                                <Wrapper styling="create-input-wrapper" key={index}>
+                                    <Label styling="create-label" text={labelText}/>
+                                    <Input
+                                        type="text"
+                                        styling="create-input"
+                                        value={imgUrl}
+                                        handler={(event) => handleImageChange(event , setState , images , index)}
+                                    />
+                                </Wrapper>
+                            );
+
+                        })
+                    }
+
                     <Wrapper styling="create-input-wrapper">
                         <Label styling="create-label" text="Vip Offer"/>
                         <CheckBox
@@ -108,7 +133,7 @@ const UpdatePage = () => {
 
                 <Wrapper styling="rightSide">
 
-                    <Wrapper styling="plus-btn-wrapper">
+                    <Wrapper styling="specs-plus-btn-wrapper">
                         <Label styling="create-label" text="Specifications:"/>
                         <Button 
                             text="+" 
