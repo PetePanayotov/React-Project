@@ -91,6 +91,7 @@ const create = async (event , state , history) => {
 const update = async (event , state , history) => {
         
     event.preventDefault();
+    
     const {_id} = state;
     const url = `http://localhost:9999/api/car/${_id}`;
 
@@ -107,7 +108,7 @@ const update = async (event , state , history) => {
     const promise = await fetch(url , headerObj);
     
     if (promise.status === 200) {
-        return history.push('/home')
+        return history.push('/catalog')
     };
 
     return console.error('Something went wrong!')

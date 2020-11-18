@@ -1,4 +1,4 @@
-const like = async (carId , userId , pressed , setPressed) => {
+const like = async (carId , userId , setPressed) => {
 
         const url = `http://localhost:9999/api/car/like/${carId}`;
         
@@ -17,13 +17,13 @@ const like = async (carId , userId , pressed , setPressed) => {
         const promise  = await fetch(url , headerObj);
     
         if (promise.status === 200) {
-            setPressed(!pressed)
+            setPressed(pressed => !pressed)
         };
     
 };
 
 
-const dislike = async (carId , userId , pressed , setPressed) => {
+const dislike = async (carId , userId ,  setPressed) => {
 
         const url = `http://localhost:9999/api/car/dislike/${carId}`;
 
@@ -42,7 +42,7 @@ const dislike = async (carId , userId , pressed , setPressed) => {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            setPressed(!pressed)
+            setPressed(pressed => !pressed)
         };
     
 };
@@ -55,17 +55,17 @@ const deleteCar = async (history , carId) => {
         history.push('/home');
 };
 
-const loadComments = (event , displayComments , setDisplayComments) => {
+const loadComments = (event , setDisplayComments) => {
 
     const button = event.target;
     
     button.textContent !== 'Load' ? button.textContent = 'Load' : button.textContent = 'Hide'
 
-    return setDisplayComments(!displayComments);
+    return setDisplayComments(displayComments => !displayComments);
 
 };
 
-const comment = async (event ,carId , username , pressed , setPressed) => {
+const comment = async (event ,carId , username , setPressed) => {
 
         const parent = event.target.parentNode.parentNode;
         const children = Array.from(parent.children).slice(1);
@@ -95,13 +95,13 @@ const comment = async (event ,carId , username , pressed , setPressed) => {
         if (promise.status === 200) {
             textArea.value = '';
             children.map(child => child.style.display = 'flex');
-            setPressed(!pressed)
+            setPressed(pressed => !pressed)
         };
 
 };
 
 
-const removeComment = async (carId , string , pressed , setPressed) => {
+const removeComment = async (carId , string , setPressed) => {
 
         const url = `http://localhost:9999/api/car/remove-comment/${carId}`;
         const data = {comment: string};
@@ -117,39 +117,38 @@ const removeComment = async (carId , string , pressed , setPressed) => {
         const promise = await fetch(url , headerObj);
 
         if (promise.status === 200) {
-            setPressed(!pressed)
+            setPressed(pressed => !pressed)
         };
     
 };
 
-const leftArrowHandler = (event , index , imagesArray , setIndex) => {
+const leftArrowHandler = (event , imagesArray , setIndex) => {
 
     event.preventDefault();
 
-    let newIndex = null;
-    
-    if (index === 0) {
-        newIndex = imagesArray.length - 1;
-    }else {
-        newIndex = index - 1;
-    };
+    return setIndex(index => {
+        
+        const {length} = imagesArray;
+        const newIndex = index === 0  ? length - 1  
+                                      : index - 1;
 
-    setIndex(newIndex)
+        return newIndex;
+    });
 };
 
-const rightArrowHandler = (event , index , imagesArray , setIndex) => {
+const rightArrowHandler = (event , imagesArray , setIndex) => {
 
     event.preventDefault();
 
-    let newIndex = null;
-    
-    if (index === imagesArray.length - 1) {
-        newIndex = 0;
-    }else {
-        newIndex = index + 1;
-    };
+    return setIndex(index => {
 
-    setIndex(newIndex);
+        const {length} = imagesArray;
+        const newIndex = index === (length - 1)   ? 0  
+                                                  : index + 1;
+
+        return newIndex;
+    });
+
 };
 
 export default {
