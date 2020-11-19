@@ -14,7 +14,7 @@ const rightArrow = <i className="fas fa-chevron-right"></i>;
 const leftArrow = <i className="fas fa-chevron-left"></i>
 
 
-const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
+const CarDetails = ({isAdmin , userId , car  , setPressed}) => {
     
     const history = useHistory();
     const [index , setIndex] = useState(0);
@@ -22,7 +22,6 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
     const carId = car._id;
     const updateLink = `/update?carId=${carId}`;
     const canLike = !likes.includes(userId);
-    const canSlide = images.length > 1;
 
     return(
         
@@ -30,22 +29,18 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
             
             <Wrapper styling="details-images-wrapper">
 
-                {
-                    canSlide &&
+                <Button type="arrow" text={leftArrow} handler={(event) => leftArrowHandler(event , images , setIndex)}/>
 
-                    <Button type="arrow" text={leftArrow} handler={(event) => leftArrowHandler(event , images , setIndex)}/>
-                }
-                
                 <CarImage 
                     imageUrl={images[index]} 
                     styling="big"
                 />
 
-                {
-                    canSlide &&
+                <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , images , setIndex)}/>
 
-                    <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , images , setIndex)}/>
-                }
+                <p style={{width:"100%" , textAlign: "center" , margin: 0 , fontWeight: 500}}>
+                    {index + 1} / {images.length}
+                </p>
 
                 {
                     car.images.length > 0 &&
@@ -105,16 +100,16 @@ const CarDetails = ({isAdmin , userId , car , pressed , setPressed}) => {
                 isAdmin &&
                 <Wrapper styling="update-delete-wrapper">                   
                     <LinkComponent title="Update" href={updateLink} type="update"/>
-                    <Button type ="delete" text="Delete" handler={(e) => deleteCar(history , carId)}/>
+                    <Button type ="delete" text="Delete" handler={() => deleteCar(history , carId)}/>
                 </Wrapper>
             }
             {
                 !isAdmin && canLike &&
-                <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={(e) => like(carId , userId , setPressed)}/>
+                <Button type ="like" text={<i className="far fa-thumbs-up"> Like</i>} handler={() => like(carId , userId , setPressed)}/>
             }
             {
                 !isAdmin && !canLike &&
-                <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={(e) => dislike(carId , userId , setPressed)}/>
+                <Button type ="like" text={<i className="far fa-thumbs-down"> Don't Like</i>} handler={() => dislike(carId , userId , setPressed)}/>
             }
         </Wrapper>
     );

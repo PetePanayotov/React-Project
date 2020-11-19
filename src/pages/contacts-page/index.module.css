@@ -1,11 +1,9 @@
 .infoBox {
     align-self: flex-end;
     margin: 0 auto;
-    margin-bottom: 70px;
     border: 2px solid lightgrey;
     border-radius: 30px;
     padding: 5px;
-
 }
 
 .info {

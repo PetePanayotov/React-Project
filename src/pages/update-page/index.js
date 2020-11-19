@@ -24,7 +24,7 @@ const initialState =  {
     specifications: [],
 };
 
-const {handlePlusClick , handleSpecChange, addNewImages , handleImageChange , update} = handlers;
+const {addNewSpecs , handleSpecChange, addNewImages , handleImageChange , update} = handlers;
 
 
 const UpdatePage = () => {
@@ -138,7 +138,7 @@ const UpdatePage = () => {
                         <Button 
                             text="+" 
                             type="plus" 
-                            handler={(event) => handlePlusClick(event , setState , specifications)}
+                            handler={(event) => addNewSpecs(event , setState , specifications)}
                         />
                     </Wrapper>
 

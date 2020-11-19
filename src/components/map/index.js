@@ -13,9 +13,7 @@ const mapStyles = {
 const containerStyle = {
     width: '70%',
     height: '35%',
-    marginTop: '20px',
     marginLeft: '225px'
- 
 }
 
 class MapContainer extends Component {
