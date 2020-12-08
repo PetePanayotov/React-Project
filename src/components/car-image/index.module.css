@@ -3,12 +3,14 @@
     height: 570px;
     border-radius: 10px;
     margin: 0 20px;
+    overflow: hidden;
 }
 
 .medium-imageWrapper {
     width: 100%;
     height: 230px;
     border-bottom: 1px solid #282C34;
+    overflow: hidden;
 }
 
 .small-selected-true-imageWrapper,
@@ -44,4 +46,14 @@
 .small-selected-true-image,
 .small-selected-false-image {
     border-radius: 10px;
+}
+
+.medium-image,
+.big-image {
+    transition: transform 0.7s;
+}
+
+.medium-image:hover,
+.big-image:hover {
+    transform: scale(1.3);
 }

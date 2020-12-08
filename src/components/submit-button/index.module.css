@@ -2,7 +2,6 @@
     outline: none;
     padding: 5px 20px;
     font-size: 18px;
-    font-family: impact;
     border: 1px solid #282C34;
     border-radius: 5px;
     margin: 0 auto;
@@ -22,9 +21,10 @@
     border: 2px solid #282C34;
     padding: 5px 30px;
     font-size: 22px;
-    font-family: impact;
     border-radius: 10px;
     outline: none;
+    position: relative;
+    bottom: 70px;
 }
 
 .createUpdate:hover{

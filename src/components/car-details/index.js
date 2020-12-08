@@ -5,6 +5,7 @@ import Wrapper from '../../components/wrapper';
 import LinkComponent from '../link';
 import Button from '../../components/button';
 import Label from '../../components/label';
+import Paragraph from '../../components/paragraph';
 import handlers from '../../utils/details-page-handlers';
 
 
@@ -38,9 +39,9 @@ const CarDetails = ({isAdmin , userId , car  , setPressed}) => {
 
                 <Button type="arrow" text={rightArrow} handler={(event) => rightArrowHandler(event , images , setIndex)}/>
 
-                <p style={{width:"100%" , textAlign: "center" , margin: 0 , fontWeight: 500}}>
+                <Paragraph styling="images-counter-paragraph">
                     {index + 1} / {images.length}
-                </p>
+                </Paragraph>
 
                 {
                     car.images.length > 0 &&
@@ -70,18 +71,21 @@ const CarDetails = ({isAdmin , userId , car  , setPressed}) => {
                 
                 <Wrapper styling="details-spec-wrapper">
                     
-                    <p>
+                    <Paragraph styling="details-spec-paragraph">
                         <Label styling="details-label" text={`Price: `}/>
                         {price} BGN
-                    </p>
+                    </Paragraph>
 
                     <Label styling="details-label" text="Specifications:"/>
                     {
                         specifications.map(([property , value] , index) => {
-                            const text = `${property} : ${value}`
+                         
                             return(
-                                <p key={index}>{text}</p>
-                            )
+                                <Paragraph styling="details-spec-paragraph" key={index}>
+                                    <Label styling="details-label" text={property}/>
+                                    : {value}
+                                </Paragraph>
+                            );
                         })
                     }
 

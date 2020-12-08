@@ -147,7 +147,8 @@ const CreatePage = () => {
                         type="createUpdate"
                         text="Create"
                         handler={(event) => create(event , state , history)}
-                    /> 
+                    />
+
                 </Form>
         </PageWrapper>
     );

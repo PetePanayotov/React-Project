@@ -1,0 +1,10 @@
+.images-counter-paragraph{
+    width: 100%; 
+    text-align: center; 
+    font-weight: 700;
+}
+
+.details-spec-paragraph {
+    margin: 10px 0 ;
+    font-size: 18px;
+}
